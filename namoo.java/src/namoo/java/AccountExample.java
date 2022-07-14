@@ -11,13 +11,64 @@ public class AccountExample {
 	public static void main(String[] args) {
 //	클래스로부터 인스턴스 생성
 //	레퍼런스 변수 선언
-	Account account;
+		Account account;
 //	생성자 호출을 이용한 인스턴스 생성
-	account = new Account("111-222","나");
-	
-	Account account2 = new Account("111-333","너",1234,10000000);
-	
+		account = new Account("111-222", "나");
 
+		System.out.println(account.getSerialNum());
+		System.out.println(account.getAccountNum());
+		System.out.println(account.getAccountOwner());
+		System.out.println(account.getPasswd());
+
+//	비밀번호 체크	
+		if (account.checkPasswd(1234)) {
+
+// 입금테스트
+			long restMoney = account.deposit(300000);
+			restMoney = account.deposit(0);
+			if (restMoney > 0) {
+				System.out.println("입금 후 현재 잔액" + restMoney);
+			} else {
+				System.out.println("똑바로 입력해라...");
+			}
+
+//	출금 테스트
+			restMoney = account.withdraw(5000);
+//	restMoney = account.withdraw(300020);
+			if (restMoney > 0) {
+				System.out.println("출금 후 현재 금액: " + restMoney);
+			} else {
+				System.out.println("금액이 부족합니다..");
+			}
+		}
+
+		
+		Account account2 = new Account("111-333", "너", 1234, 10000000);
+
+		System.out.println(account2.getSerialNum());
+		System.out.println(account2.getAccountNum());
+		System.out.println(account2.getAccountOwner());
+		System.out.println(account2.getPasswd());
+
+		// 입금 테스
+
+		// static변수는 클래스이름.변수명 접근을 권장 for 가독성
+		System.out.println(Account.bankName);
+		System.out.println(account.bankName);
+		
+		
+		Account account3 = account; //pass by reference    동일한 값을 공유하고 있다.
+		
+		System.out.println(account3.deposit(10000000));
+		System.out.println(account.getRestMoney());
+		
+		
 	}
+	
+	
+		
+		}
 
-}
+	
+
+
