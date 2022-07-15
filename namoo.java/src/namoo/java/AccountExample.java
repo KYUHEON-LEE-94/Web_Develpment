@@ -1,5 +1,7 @@
 package namoo.java;
 
+
+
 /*
  * @author Administer
  * 애플리케이션 실행을 위한 애플리케이션 클래스 정의
@@ -7,6 +9,24 @@ package namoo.java;
  */
 
 public class AccountExample {
+	
+//	call by value //편한 테스트를 위한 static
+	public static void triple(int num) {
+		System.out.println(num*3);
+		
+	}
+	
+	
+//	call by reference	//편한 테스트를 위한 static
+	public static void triple(Account account) {
+		long money = account.getRestMoney();
+		account.deposit(money*3);
+		System.out.println(account.getRestMoney());
+	}
+	
+	
+	
+	
 
 	public static void main(String[] args) {
 //	클래스로부터 인스턴스 생성
@@ -63,6 +83,23 @@ public class AccountExample {
 		System.out.println(account.getRestMoney());
 		
 		
+		
+//	call by Test
+	int num = 10;
+	triple(num);
+	System.out.println(num);
+	
+	System.out.println(account.getRestMoney());
+	triple(account);
+	System.out.println(account.getRestMoney());
+		
+	java.util.Date today = new java.util.Date();
+	System.out.println(today.toLocaleString());
+	java.util.Scanner sc = new java.util.Scanner(System.in);
+	
+
+	
+	
 	}
 	
 	
