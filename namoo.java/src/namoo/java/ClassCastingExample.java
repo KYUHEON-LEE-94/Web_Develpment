@@ -20,9 +20,11 @@ public class ClassCastingExample {
 		MinusAccount ma = (MinusAccount)account2;
 		System.out.println(ma.getBorrowMoney());
 		
-		
-		
-		
+		//instance of
+		if(account2 instanceof MinusAccount) {
+			MinusAccount ma2 = (MinusAccount)account2;
+			System.out.println(ma); 
+		}
 						
 		
 		

@@ -28,8 +28,16 @@ public class MinusAccount extends Account{
 	}
 
 
+	
+	
+	
 	//메소드 재정의(Overriding)
 	
+	@Override
+	public String toString() {
+		return super.toString() + "\t" + getBorrowMoney();
+	}
+
 	@Override
 	public long getRestMoney() {
 		

@@ -116,8 +116,21 @@ public class Account {
 		this.restMoney = restMoney;
 	}
 	
+	
+	
+	
+
+	
+	
 	//-------------------
 	
+	@Override
+	public String toString() {
+		return getAccountNum()+"\t"+getAccountOwner()+"\t****\t"+getRestMoney();
+	}
+	
+	
+
 	/**
 	 * 현재 은행계좌에 입금
 	 * @param money 입금 금액
