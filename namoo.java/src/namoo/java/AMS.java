@@ -7,9 +7,9 @@ public class AMS {
 		
 		//신규계좌 등록
 		inventory.open(new Account("1111-2222","이규헌",1234,10000000));
-		inventory.open(new MinusAccount("1111-3333","김규헌",134,2321, 12340));
-		inventory.open(new Account("2222-5678","박규헌",124,2340000));
-		inventory.open(new MinusAccount("1111-234","조규헌",123, 231,345000));
+		inventory.open(new MinusAccount("1111-3333","이규헌",134,2321, 12340));
+		inventory.open(new Account("2222-5678","이규헌",124,2340000));
+		inventory.open(new MinusAccount("1111-234","이규헌",123, 231,345000));
 		
 		//전체 목록 조회
 		Account[] list = inventory.getAccounts();
@@ -37,11 +37,10 @@ public class AMS {
 		 * 예시) 이규헌이 3명이라면, 3명다 프린트 될수있게
 		 */
 		
-		public Account[] search(String accountOwner) {
-			
-			
+		Account findName = inventory.findName("이규헌");
+		if(findName != null) {
+			System.out.println(findName);
 		}
-		
 	}
 
 }

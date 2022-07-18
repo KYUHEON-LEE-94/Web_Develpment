@@ -63,16 +63,21 @@ public class Inventory {
 	}
 	
 	public Account findName(String accountOwner) {
-		for (int i = 0; i < count; i++) {
-			Account account = accounts[i];
-			if(account.getAccountOwner().equals(accountOwner)) {
-				return accounts[i];
+		Account[] list = new Account[accounts.length];
+		for (int i = 0; i <count; i++) {
+			if(accounts[i].getAccountOwner().equals(accountOwner)) {
+				list[i] = accounts[i];
+				for (Account account : list) {
+					System.out.println(list[i]);
+					break;
+				}
+				}
+			
 			}
-		}
 		return null;
-		
+		}
 	}
 	
+	//accounts에 담긴 각 배열과 이름을 대입할 배열
 	
-	
-}
+
