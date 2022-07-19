@@ -9,7 +9,7 @@ public class AMS {
 		inventory.open(new Account("1111-2222","이규헌",1234,10000000));
 		inventory.open(new MinusAccount("1111-3333","이규헌",134,2321, 12340));
 		inventory.open(new Account("2222-5678","이규헌",124,2340000));
-		inventory.open(new MinusAccount("1111-234","이규헌",123, 231,345000));
+		inventory.open(new MinusAccount("1111-234","김규헌",123, 231,345000));
 		
 		//전체 목록 조회
 		Account[] list = inventory.getAccounts();
