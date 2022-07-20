@@ -134,12 +134,13 @@ public class Account {
 	 * @return 입금 후 잔액
 	 */
 	
+	//throws를 이용한 예외 간접 처리(예외 던지기)
 	//계좌 관련 기능 인스턴스 메소드
 	//입금
-	public long deposit(long money) {
+	public long deposit(long money) throws InvalidException{
 		
 		if(money <= 0) {
-			return -1;
+			throw new InvalidException("입력하고자 하는 금액은 0이거나 음수일 수 없습니다.");
 		}
 		
 		restMoney += money;
@@ -148,10 +149,14 @@ public class Account {
 	}
 	
 	//출금
-	public long withdraw(long money) {
+	public long withdraw(long money) throws InvalidException{
+		
+		if(money <= 0) {
+			throw new InvalidException("입력하고자 하는 금액은 0이거나 음수일 수 없습니다.");
+		}
 		
 		if(restMoney < money) {
-			
+			throw new InvalidException("출금하고자 하는 잔액이 부족합니다.");
 		}
 		restMoney -= money;
 		

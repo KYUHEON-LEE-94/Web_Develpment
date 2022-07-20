@@ -20,7 +20,11 @@ public class AccountExample {
 //	call by reference	//편한 테스트를 위한 static
 	public static void triple(Account account) {
 		long money = account.getRestMoney();
+		try {
 		account.deposit(money*3);
+		}catch (InvalidException e) {
+			System.err.println(e.getMessage());
+		}
 		System.out.println(account.getRestMoney());
 	}
 	
@@ -44,23 +48,37 @@ public class AccountExample {
 		if (account.checkPasswd(1234)) {
 
 // 입금테스트
-			long restMoney = account.deposit(300000);
-			restMoney = account.deposit(0);
-			if (restMoney > 0) {
-				System.out.println("입금 후 현재 잔액" + restMoney);
-			} else {
-				System.out.println("똑바로 입력해라...");
+			long restMoney;
+			
+			try {
+				restMoney = account.deposit(300000);
+			} catch (InvalidException e) {
+				
+				System.err.println(e.getMessage());
+			}
+			
+			try {
+				restMoney = account.deposit(0);
+				if (restMoney > 0) {
+					System.out.println("입금 후 현재 잔액" + restMoney);
+				} else {
+					System.out.println("똑바로 입력해라...");
+				}
+				
+			} catch (Exception e) {
+				System.err.println(e.getMessage());
 			}
 
 //	출금 테스트
-			restMoney = account.withdraw(5000);
-//	restMoney = account.withdraw(300020);
-			if (restMoney > 0) {
+			
+			try {
+				restMoney = account.withdraw(5000);
 				System.out.println("출금 후 현재 금액: " + restMoney);
-			} else {
-				System.out.println("금액이 부족합니다..");
+			}catch(InvalidException e) {
+				System.err.println(e.getMessage());
+				}
 			}
-		}
+		
 
 		
 		Account account2 = new Account("111-333", "너", 1234, 10000000);
@@ -79,7 +97,12 @@ public class AccountExample {
 		
 		Account account3 = account; //pass by reference    동일한 값을 공유하고 있다.
 		
-		System.out.println(account3.deposit(10000000));
+		try {
+			System.out.println(account3.deposit(0));
+			
+		} catch (InvalidException e) {
+			System.err.println(e.getMessage());
+		}
 		System.out.println(account.getRestMoney());
 		
 		
