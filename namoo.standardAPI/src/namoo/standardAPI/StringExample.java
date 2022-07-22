@@ -8,6 +8,8 @@ public class StringExample {
 		System.out.println(name.equals(name2));
 		System.out.println(name == name2);
 		
+		//------------------------------------
+		
 		String name3 = new String("JAVA");
 		String name4 = new String("JAVA");
 		
@@ -43,6 +45,14 @@ public class StringExample {
 		
 		int number3 = 12345;
 		String.valueOf(number3).length();
+		
+		
+		
+		StringBuilder sb = new StringBuilder("JAVA");
+		System.out.println(sb.append(true).append(10).append("Last"));
+		System.out.println(sb.reverse());
+		System.out.println(sb.insert(3, "what"));
+		
 		
 		
 	}

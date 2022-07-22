@@ -24,6 +24,8 @@ public class ObjectExample {
 		Account account2 = new Account("1111","이규헌",111,1000);
 		System.out.println(account.equals(account2));
 		
+
+		
 		//clone
 		
 		try {
@@ -33,6 +35,7 @@ public class ObjectExample {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		
 		
 	}
