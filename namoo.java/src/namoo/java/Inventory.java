@@ -76,8 +76,12 @@ public class Inventory {
 			}
 		return null;
 		}
+	
+	
+	
+	
 	}
 	
-	//accounts에 담긴 각 배열과 이름을 대입할 배열
+
 	
 
