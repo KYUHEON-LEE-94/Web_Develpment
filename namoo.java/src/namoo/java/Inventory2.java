@@ -1,10 +1,14 @@
 package namoo.java;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
 /**
  * 은행계좌 목록 관리
@@ -14,6 +18,7 @@ import java.util.Map;
 
 
 public class Inventory2 {
+	
 	private Map<String, Account> accounts;
 	
 	
@@ -22,8 +27,6 @@ public class Inventory2 {
 	}
 	
 
-
-	
 
 	
 	/**
@@ -79,28 +82,32 @@ public class Inventory2 {
 	 */
 	
 	public List<Account> search(String accountOwner) {
+		//이름을 입력받는다.
+		
+		Collection<Account> values = accounts.values();
+		Iterator<Account> lt = values.iterator();
 		
 		
-		for (int i = 0; i < values.size(); i++) {
-			
-			if(values.equals(accountOwner)) {
-				values.
+			while (lt.hasNext()) {
+				Account i = (Account) lt.next();
+				if(i.getAccountOwner().equals(accountOwner)) {
+				System.out.println(i.getAccountOwner());
+				}
 			}
+		
+		
+		return null;
+		
+		
+		
+		}
 			
-		}
 		
+
 
 		
 		
-		}
-	
-
-	
-	
-	
-	
-	}
-	
+}
 
 	
 

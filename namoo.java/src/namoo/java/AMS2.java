@@ -1,5 +1,6 @@
 package namoo.java;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -16,9 +17,12 @@ public class AMS2 {
 		inventory.open(new Account("2222-5678","이규헌",124,2340000));
 		inventory.open(new MinusAccount("1111-234","김규헌",123, 231,345000));
 		
+		
+		
 		//전체 목록 조회
 		Collection<Account> list = inventory.getAccounts();
 		Iterator<Account> iter = list.iterator();
+		
 		while (iter.hasNext()) {
 			Account account = iter.next();
 			System.out.println(account);
@@ -51,10 +55,13 @@ public class AMS2 {
 		 * 예시) 이규헌이 3명이라면, 3명다 프린트 될수있게
 		 */
 		
-		Collection<Account> findName = inventory.search("이규헌");
-		if(findName != null) {
-			System.out.println(findName);
-		}
+		
+		List<Account> findName = inventory.search("이규헌");
+		
+		
+		System.out.println(findName);
+		
+		
 		
 	
 	}
