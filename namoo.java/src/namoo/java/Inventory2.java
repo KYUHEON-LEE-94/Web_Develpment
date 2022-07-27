@@ -4,11 +4,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
 
 /**
  * 은행계좌 목록 관리
@@ -18,7 +15,6 @@ import java.util.Map.Entry;
 
 
 public class Inventory2 {
-	
 	private Map<String, Account> accounts;
 	
 	
@@ -27,6 +23,8 @@ public class Inventory2 {
 	}
 	
 
+
+	
 
 	
 	/**
@@ -82,32 +80,33 @@ public class Inventory2 {
 	 */
 	
 	public List<Account> search(String accountOwner) {
-		//이름을 입력받는다.
-		
+		List<Account> searchList = new ArrayList<>();  //추가 삭제없이 목록만 전달하면 되니까,
 		Collection<Account> values = accounts.values();
-		Iterator<Account> lt = values.iterator();
+		Iterator<Account> iter = values.iterator();
 		
-		
-			while (lt.hasNext()) {
-				Account i = (Account) lt.next();
-				if(i.getAccountOwner().equals(accountOwner)) {
-				System.out.println(i.getAccountOwner());
-				}
+		while (iter.hasNext()) {
+			Account account = iter.next();
+			if(account.getAccountOwner().equals(accountOwner)) {
+				searchList.add(account);
+				
 			}
-		
-		
-		return null;
-		
+		}
+		return searchList;
 		
 		
 		}
-			
 		
 
+		
+	
 
-		
-		
-}
+	
+	
+	
+	
+	}
+	
+	
 
 	
 

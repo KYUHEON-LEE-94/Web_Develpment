@@ -1,6 +1,5 @@
 package namoo.java;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -16,13 +15,12 @@ public class AMS2 {
 		inventory.open(new MinusAccount("1111-3333","이규헌",134,2321, 12340));
 		inventory.open(new Account("2222-5678","이규헌",124,2340000));
 		inventory.open(new MinusAccount("1111-234","김규헌",123, 231,345000));
-		
-		
+		inventory.open(new MinusAccount("1111-234","이규헌",123, 231,345000));
+		inventory.open(new MinusAccount("1111-234","박규헌",123, 231,345000));
 		
 		//전체 목록 조회
 		Collection<Account> list = inventory.getAccounts();
 		Iterator<Account> iter = list.iterator();
-		
 		while (iter.hasNext()) {
 			Account account = iter.next();
 			System.out.println(account);
@@ -56,13 +54,10 @@ public class AMS2 {
 		 */
 		
 		
-		List<Account> findName = inventory.search("이규헌");
-		
-		
-		System.out.println(findName);
-		
-		
-		
+		//예금주 검색
+		List<Account> sl = inventory.search("이규헌");
+		if (sl.isEmpty()) System.out.println("해당 계좌가 존재하지 않습니다.");
+		else System.out.println(sl);
 	
 	}
 
