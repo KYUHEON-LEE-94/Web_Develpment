@@ -54,7 +54,7 @@ public class SomePanel extends Panel {
 		add(status, BorderLayout.SOUTH);
 		
 		
-		Component[] components= getComponents(); //component의 자식인 panel이기떄문에 기본적으로 getcomponents메소드가 있음.
+		Component[] components= menuPanel.getComponents(); //component의 자식인 panel이기떄문에 기본적으로 getcomponents메소드가 있음.
 		System.out.println(components);
 		for (Component component : components) {
 			if(component instanceof Button) {
