@@ -5,16 +5,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
-public class UserEventListner implements MouseListener, WindowListener, ActionListener {
+public class UserEventListner extends WindowAdapter implements MouseListener, ActionListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		if(e.getButton() == MouseEvent.BUTTON1) System.out.println("left");
 		System.out.println(e.getButton());
 		System.out.println("Event....");
+		
+
 
 	}
 
@@ -39,49 +42,16 @@ public class UserEventListner implements MouseListener, WindowListener, ActionLi
 	}
 
 	
-//	===============윈도우 메서드===========	
+//	===============윈도우 리스너===========	
 	
-	
-	@Override
-	public void windowOpened(WindowEvent e) {
-		
-	}
 
 	@Override
 	public void windowClosing(WindowEvent e) {
-		System.exit(0); // 0이 정상 종료
-		
+		System.exit(0); // 0이 정상 종료	
 	}
+	
+		
 
-	@Override
-	public void windowClosed(WindowEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void windowIconified(WindowEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void windowDeiconified(WindowEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void windowActivated(WindowEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void windowDeactivated(WindowEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	
 //	=======액션 리스너==========================
