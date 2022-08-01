@@ -1,38 +1,34 @@
 package namoo.IO;
 
+import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class InputStreamExample {
+public class BufferedInputStreamExample {
 	public static void main(String[] args) {
+		
 		String path = "D:\\웹개발_이규헌\\Cat.jpg";
 		InputStream in = null;
+		BufferedInputStream bis = null;
 		
 		try {
 			in = new FileInputStream(path);
-			int count = in.available();
-			System.out.println(count);
+//			bis = new BufferedInputStream(in); //buffer size: 512byte
+			bis = new BufferedInputStream(in, 1024); //buffer size: 1024byte
 			
-			
-//			int data = in.read();
-//			System.out.println(data);
-//			while ((data = in.read()) != -1) {
-//				System.out.println(data);
-//				
-//			}
-			
-			byte[] buffer = new byte[4*1024];
-//			int readCount = in.read(buffer);
-//			System.out.println(readCount);
-			int readcount = 0;
-			while((readcount = in.read(buffer)) != -1) {
-				for (byte b : buffer) {
-					System.out.println(b);
-				}
-			}
-			System.out.println("파일 데이터 다 읽음");
+			bis.mark(0);
+			System.out.println(bis.read());
+			System.out.println(bis.read());
+			System.out.println(bis.read());
+			System.out.println(bis.read());
+			System.out.println(bis.read());
+			bis.skip(200);
+			System.out.println(bis.read());
+			System.out.println(bis.read());
+			bis.reset();
+			System.out.println(bis.read());
 			
 		} catch (FileNotFoundException e) {
 			
