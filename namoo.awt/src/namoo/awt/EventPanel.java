@@ -67,6 +67,7 @@ public class EventPanel extends Panel {
 	}
 	
 	public void appendText(String message) {
+		//포매터 활용
 		ta.append(message+"\n");
 	}
 	
