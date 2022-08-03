@@ -16,6 +16,7 @@ import java.io.RandomAccessFile;
 
 public class RandomAccessFileExample {
 	public static void main(String[] args) throws IOException {
+		
 		String path = "example4.dat";
 		RandomAccessFile raf = new RandomAccessFile(path, "rw");
 		long fileSize = raf.length();
