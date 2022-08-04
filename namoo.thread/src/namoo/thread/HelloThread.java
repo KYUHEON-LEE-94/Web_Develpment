@@ -18,12 +18,13 @@ public class HelloThread extends Thread {
 		
 		for (int i =0; i<count; i++) {
 			System.out.println(getName()+": " + i);
-			try {
-				Thread.sleep(500);
-			} catch (InterruptedException e) {
-				
-				e.printStackTrace();
-			}
+//			try {
+//				Thread.sleep(500);
+//			} catch (InterruptedException e) {
+//				
+//				e.printStackTrace();
+//			}
+			Thread.yield();
 			
 		}
 		System.out.println(getName()+"-- 스레드 종료--");
