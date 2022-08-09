@@ -32,7 +32,7 @@ public class URLExample2 {
 			int index = fileName.lastIndexOf('/');
 			//2. 해당 url마지막 위치의 index값+1 지점을 변수에 저장한다.
 			fileName = fileName.substring(index+1);
-			//3. System.getProperty의 <user.home> 사용자의 홈 dir를 의미
+			//3. System.getProperty()는 괄호 안에 있는 파일 주소 경로를 찾아옴. user.home은 home dir을 의미
 			String savePath = System.getProperty(("user.home") + File.separator+"Downloads"+File.separator+fileName);
 			//													운영체제마다 / or \\일수있기 때문에 동적으로 하기 위해여 separator 사용
 			
