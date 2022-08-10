@@ -45,17 +45,17 @@ public class ChatPanel extends Panel {
 		sendB.setPreferredSize(new Dimension(125, 15));
 		messageTA = new TextArea();
 		userList = new List();
-		userList.add("방그리");
-		userList.add("손오공");
-		userList.add("사오정");
-		userList.add("저팔계");
+//		userList.add("방그리");
+//		userList.add("손오공");
+//		userList.add("사오정");
+//		userList.add("저팔계");
 		userChoice = new Choice();
 //		userChoice.setPreferredSize(new Dimension(80, 50));
 		userChoice.add("전체에게");
-		userChoice.add("방그리");
-		userChoice.add("손오공");
-		userChoice.add("사오정");
-		userChoice.add("저팔계");
+//		userChoice.add("방그리");
+//		userChoice.add("손오공");
+//		userChoice.add("사오정");
+//		userChoice.add("저팔계");
 	}
 
 	/** 컴포넌트 배치 */
@@ -100,28 +100,32 @@ public class ChatPanel extends Panel {
 		try {
 			//ChatClient 클래스와 ChatPanel을 연결
 			chatclient = new ChatClient(this);
-			//연결 되자 마자 접속한 닉네임 전송
-			chatclient.sendMessage(""+nickName); //chatTread에서 Map으로 Thread를 담는 컬렉션을 만들었다.
-			//key값으로 nickname을 사용하기 위해서, 서버로 보내는 메시지를 닉네임 메시지와 채팅 메시지로 구분할 수 있도록 하자.
-		
 			chatclient.receiveMessage();//항상 수신받을 수 있는 스레드 실행, 해당 메서드가 지속적으로 TextArea에 메시지를 뿌려주는중
+			
+			//스레드를 먼저 실행하고 아래의 메시지를 전송 접속한 닉네임 전송
+			String connectMessage = "CONNCECT!" + nickName; //"구분자" + nickname
+			chatclient.sendMessage(connectMessage);  //서버에서 닉네임과 보내는 메시지의 구분을 위하여 구분자를 설정
+		
 		}catch (IOException e) {
 			appendMessage("채팅 서버에 연결할 수 없습니다.");
 		}
 		
-		
+
 		//nickNameTF.setText("[" + nickName + "]님 대화 참여중...");
 		nickNameTF.setEditable(false); //성공적으로 닉네임을 입력받으면 해당 TF를 변경 불가능하게 false 설정
 		nickNameTF.setEnabled(false); //커서도 입력이 안되게 하는 설정
 		connectB.setLabel("Exit");
 		inputTF.requestFocus(); //닉네임이 정상적으로 설정되면 inputTF에 커서가 바로 옮겨감
-		appendMessage("채팅서버에 연결되었습니다.");
 	}
+	
 	
 	/** 서버 연결 종료 */
 	public void disConnect() {
-		System.out.println("Server Disconnect....");
+		String disConnectMessage = "DISCONNECT!"+nickName;
+		chatclient.sendMessage(disConnectMessage);
+		chatclient.close();
 	}
+	///---//
 	
 
 	/** 메시지 전송 */
@@ -132,7 +136,8 @@ public class ChatPanel extends Panel {
 			return;
 		}
 		//서버에 전송
-		chatclient.sendMessage("["+nickName+"]: "+message);
+		String chatmessage = "CHAT!"+nickName+"!"+message;
+		chatclient.sendMessage(chatmessage);
 		inputTF.setText("");
 		inputTF.requestFocus();
 	}
@@ -149,6 +154,15 @@ public class ChatPanel extends Panel {
 		messageTA.append(message +"\n");
 	}
 	
+	
+	public void appendUserItem(String csv) {
+		String[] tokens = csv.split(",");
+		for (String nickname : tokens) {
+			userList.add(nickname);
+			userChoice.add(nickname);
+			
+		}
+	}
 	
 	
 	/**

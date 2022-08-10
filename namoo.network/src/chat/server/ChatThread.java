@@ -16,9 +16,11 @@ public class ChatThread extends Thread {
 	private Socket socket;
 	BufferedReader in;
 	PrintWriter out;
+	private ChatService chatService;
 
-	public ChatThread(Socket socket) throws IOException {
+	public ChatThread(Socket socket, ChatService chatService) throws IOException {
 		this.socket = socket;
+		this.chatService = chatService;
 		// 소켓의 스트림 열기
 		in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 		out = new PrintWriter((socket.getOutputStream()));
@@ -32,11 +34,25 @@ public class ChatThread extends Thread {
 		while((Message =in.readLine()) != null) {
 			
 			System.out.println("Client send message: " + Message);
+			String[] tokens = Message.split("!");
+			String MessageType = tokens[0]; //CONNCECT
+			String senderNickname = tokens[1]; //nickname
 			
-			if(Message.equalsIgnoreCase("quit")) {
+			switch (MessageType) {
+			case "CONNCECT": //최초 입장
+				chatService.addClient(senderNickname, this); //최초 입장했을 때 key로 닉네임을 등록하고, 스레드를 등록한다. 그리고 sendall
+				chatService.sendAllMessage(Message); //원래의 원형 메시지를 그대로 보낸다.
+				//현재 참여한 모든 클라이언트 리스트 전송
+				chatService.sendAllMessage("USERLIST!"+senderNickname+"!"+chatService.getNicknameList(senderNickname));
 				break;
+			case "CHAT": //채팅메시지
+				chatService.sendAllMessage(Message);
+				break;
+			case "DISCONNECT": //퇴장-접속 끊기
+				chatService.removeClient(senderNickname); //Client 켈렉션에서 this 스레드를 제거
+				chatService.sendAllMessage(Message); //메세지를 보내고
+				return; //해당 MessageProcess()메서드 자체를 빠져나가면서 스레드 자체를 종료
 			}
-			sendMessage(Message);
 			
 		}
 		
