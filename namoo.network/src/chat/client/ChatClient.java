@@ -58,20 +58,11 @@ public class ChatClient {
 							chatpanel.appendMessage("★★★★"+senderNickname+"님이 대화방에 최초 입장하였습니다.★★★★");
 							break;
 							
-						case "USERLIST": //접속자 리스트
-							if(tokens.length <3) {
-								chatpanel.appendUserItem(senderNickname);
-							}else {
-								//user1,user2;
-								if(tokens[0] != null) {
-								for (int i =0; i<tokens.length; i++) {
-									String userList = tokens[i+1];
-										chatpanel.appendUserItem(userList);	
-									}
-									
-								}
-							}
+						case "USERLIST": //접속자 리스트	
 
+							String userList =tokens[2];
+							chatpanel.appendUserItem(userList);
+							
 							break;
 						case "CHAT": //채팅메시지
 							String chatMessage = tokens[2]; //위에 선언을 해버리면, chatThread에서는 파싱하지 않았기 때문에 NullPontException 발생
@@ -82,6 +73,15 @@ public class ChatClient {
 						case "DISCONNECT": //퇴장-접속 끊기
 							chatpanel.appendMessage("###"+senderNickname+"님이 대화방에서 나갔습니다.###");
 							break; 
+						
+						case "DM":
+							String DMMessage = tokens[0];
+							chatpanel.appendMessage(DMMessage);
+							break; 
+								
+						case "DELETE":
+							chatpanel.DELETE(senderNickname);
+					
 							
 							
 						}

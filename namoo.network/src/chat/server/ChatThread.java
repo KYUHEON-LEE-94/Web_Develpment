@@ -35,7 +35,7 @@ public class ChatThread extends Thread {
 			
 			System.out.println("Client send message: " + Message);
 			String[] tokens = Message.split("!");
-			String MessageType = tokens[0]; //CONNCECT
+			String MessageType = tokens[0];
 			String senderNickname = tokens[1]; //nickname
 			
 			switch (MessageType) {
@@ -43,14 +43,22 @@ public class ChatThread extends Thread {
 				chatService.addClient(senderNickname, this); //최초 입장했을 때 key로 닉네임을 등록하고, 스레드를 등록한다. 그리고 sendall
 				chatService.sendAllMessage(Message); //원래의 원형 메시지를 그대로 보낸다.
 				//현재 참여한 모든 클라이언트 리스트 전송
-				chatService.sendAllMessage("USERLIST!"+senderNickname+"!"+chatService.getNicknameList(senderNickname));
+				chatService.sendAllMessage("USERLIST!"+senderNickname+"!"+chatService.getNicknameList());
 				break;
 			case "CHAT": //채팅메시지
 				chatService.sendAllMessage(Message);
 				break;
+				
+			case "DM!":	
+				String receivename = tokens[2];
+				String receiveMessage = tokens[3];
+				chatService.findClient(receivename, receiveMessage);
+
+				break;
 			case "DISCONNECT": //퇴장-접속 끊기
 				chatService.removeClient(senderNickname); //Client 켈렉션에서 this 스레드를 제거
 				chatService.sendAllMessage(Message); //메세지를 보내고
+				chatService.sendAllMessage("DELETE!"+senderNickname);
 				return; //해당 MessageProcess()메서드 자체를 빠져나가면서 스레드 자체를 종료
 			}
 			

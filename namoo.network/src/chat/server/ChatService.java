@@ -45,6 +45,14 @@ public class ChatService {
 		
 	}
 	
+	//DM을 보내기 위한 특정한 클라이언트를 찾음
+	public void findClient(String nick, String message) {
+		ChatThread sender = Clients.get(nick);
+		sender.sendMessage("DM!"+ message);
+		
+	}
+	
+	
 	//접속자 리스트에서 클라라이언트 제거
 	public void removeClient(String nickName) {
 		Clients.remove(nickName);
@@ -65,7 +73,7 @@ public class ChatService {
 	
 	
 	//접속자 닉네임리스트 반환
-	public String getNicknameList(String conncectNickname) {
+	public String getNicknameList() {
 		Set<String> keys = Clients.keySet();
 		if(keys.isEmpty()) {
 			return null;
@@ -74,9 +82,6 @@ public class ChatService {
 		Iterator<String> iter = keys.iterator();
 		while (iter.hasNext()) {
 			String nickname = (String) iter.next();
-			if(nickname.equals(conncectNickname)) {
-				continue;
-			}
 			sb.append(nickname+",");
 		}
 		System.out.println(sb.toString());

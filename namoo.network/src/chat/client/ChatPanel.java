@@ -141,6 +141,28 @@ public class ChatPanel extends Panel {
 		inputTF.setText("");
 		inputTF.requestFocus();
 	}
+	
+	//DM 메시지 전송 to server
+	public void DMMessage() {
+		String message = inputTF.getText();
+		String receiveNick = userChoice.getSelectedItem();
+		System.out.println(receiveNick);
+		// 유효성 검증
+		if (isEmpty(message)) {
+			return;
+		}
+		//서버에 전송
+		String DMmessage = "DM!"+nickName+"!"+ receiveNick+ "!"+message;
+		chatclient.sendMessage(DMmessage);
+		inputTF.setText("");
+		inputTF.requestFocus();
+	}
+	public static void main(String[] args) {
+		ChatPanel cp = new ChatPanel();
+		cp.DMMessage();
+	}
+	
+
 
 	/** 닉네임 선택 */
 	public void selectUser() {
@@ -156,12 +178,21 @@ public class ChatPanel extends Panel {
 	
 	
 	public void appendUserItem(String csv) {
+		userList.removeAll();
+		userChoice.removeAll();
+		userChoice.add("전체에게");
 		String[] tokens = csv.split(",");
 		for (String nickname : tokens) {
 			userList.add(nickname);
 			userChoice.add(nickname);
 			
 		}
+	}
+	
+	//USERLIST와 USERCHOICE에서 접속종료한 닉네임 제거.
+	public void DELETE(String nick) {
+		userList.remove(nick);
+		userChoice.remove(nick);
 	}
 	
 	
