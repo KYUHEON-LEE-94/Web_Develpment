@@ -128,8 +128,8 @@ public class ChatPanel extends Panel {
 	///---//
 	
 
-	/** 메시지 전송 */
-	public void sendMessage() {
+	/**일반적인 메시지 전송 메시지 전송 to server */
+	public void ChatMessage() {
 		String message = inputTF.getText();
 		// 유효성 검증
 		if (isEmpty(message)) {
@@ -157,12 +157,19 @@ public class ChatPanel extends Panel {
 		inputTF.setText("");
 		inputTF.requestFocus();
 	}
-	public static void main(String[] args) {
-		ChatPanel cp = new ChatPanel();
-		cp.DMMessage();
+	
+	//choice.getSelectedItem으로 지금 설정되어이 있는 구문이 "전체에게"(index 0)이라면
+	//ChatMessage()를 실행하고, 
+	//그 이외의 경우라면 DMMessage()를 실행해서 DM!라는 구문 단어를 붙여서 서버에 날릴수 있도록 함
+	public void sendMessage() {
+		String receiveNick = userChoice.getSelectedItem();
+		if(!(receiveNick.equalsIgnoreCase(userChoice.getItem(0)))) {
+			DMMessage();
+		}else {
+			ChatMessage();
+		}
 	}
 	
-
 
 	/** 닉네임 선택 */
 	public void selectUser() {

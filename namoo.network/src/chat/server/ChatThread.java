@@ -49,16 +49,16 @@ public class ChatThread extends Thread {
 				chatService.sendAllMessage(Message);
 				break;
 				
-			case "DM!":	
+			case "DM":	
 				String receivename = tokens[2];
 				String receiveMessage = tokens[3];
-				chatService.findClient(receivename, receiveMessage);
+				chatService.findClient(senderNickname,receivename, receiveMessage);
 
 				break;
 			case "DISCONNECT": //퇴장-접속 끊기
 				chatService.removeClient(senderNickname); //Client 켈렉션에서 this 스레드를 제거
 				chatService.sendAllMessage(Message); //메세지를 보내고
-				chatService.sendAllMessage("DELETE!"+senderNickname);
+				chatService.sendAllMessage("DELETE!"+senderNickname); //제거된 스레드를 client에서도 삭제할 수 있도록 client에 이 사실을 전달.
 				return; //해당 MessageProcess()메서드 자체를 빠져나가면서 스레드 자체를 종료
 			}
 			
@@ -85,8 +85,7 @@ public class ChatThread extends Thread {
 				try {
 					if(socket != null)socket.close();
 				} catch (IOException e) {
-
-					e.printStackTrace();
+					System.out.println("서버 종료");
 				}
 		}
 

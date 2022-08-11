@@ -75,12 +75,12 @@ public class ChatClient {
 							break; 
 						
 						case "DM":
-							String DMMessage = tokens[0];
-							chatpanel.appendMessage(DMMessage);
+							String DMMessage = tokens[2];
+							chatpanel.appendMessage("["+senderNickname+"]: "+DMMessage);
 							break; 
 								
 						case "DELETE":
-							chatpanel.DELETE(senderNickname);
+							chatpanel.DELETE(senderNickname); //Delete 메서드를 실행하셔, choice와 list에서 전부 제거
 					
 							
 							

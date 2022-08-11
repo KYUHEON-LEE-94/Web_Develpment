@@ -46,9 +46,9 @@ public class ChatService {
 	}
 	
 	//DM을 보내기 위한 특정한 클라이언트를 찾음
-	public void findClient(String nick, String message) {
-		ChatThread sender = Clients.get(nick);
-		sender.sendMessage("DM!"+ message);
+	public void findClient(String sender, String nick, String message) {
+		ChatThread receiver = Clients.get(nick);
+		receiver.sendMessage("DM!"+sender+"!"+ message);
 		
 	}
 	
