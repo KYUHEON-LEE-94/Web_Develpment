@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css 선택자 종료</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            background-color: darkkhaki;
+        }
+        p{
+            background-color: rgb(43, 198, 183);
+        }
+        .test{
+            color:red;
+        }
+        #test2{
+            background-color: beige;
+        }
+        /* 그룹 선택자 */
+        body, h2{
+            width: 100%;
+        }
+        #target1{
+            border: 2px solid brown;
+        }
+        #target2{
+            border: 3px solid darkgreen;
+        }
+
+        div > div{
+            background-color: greenyellow;
+        }
+
+        /* 형제 선택자 */
+        .std+ li{
+            background: blue;
+        }
+
+        .std2~ li{
+            background: crimson;
+        }
+        a:link{
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body>
+    CSS 선택자
+    <p>태그 선택자</p>
+    <div class="test">
+        클래스 선택자
+    </div>
+    <h3 id="test2">id 선택자</h3>
+    <span></span>
+
+    <div class="block">1</div>
+    <div class="block">2</div>
+    <div class="block">3</div>
+
+    <ul>
+        <li class="block"></li>
+        <li class="block"></li>
+    </ul>
+    <div class="block blockx">클래스 이름은 중복 적용이 가능하다!</div>
+    <div id="target1">target1</div>
+    <div id="target2">target2</div>
+    <div>
+        <div>자식 선택자</div>
+    </div>
+    <ul>
+        <li class="std">1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <ul>
+        <li class="std2">1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <a href="https://www.naver.com/">구글</a>
+</body>
+</html>
