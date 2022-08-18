@@ -13,8 +13,18 @@
         *{
             background-color: wheat;
         }
+        .first span{
+            display: block;
+            cursor: pointer;
+        }
 
+        .first span:nth-child(even):active{
+            color: cyan;
+        }
 
+        .notTest p:not(:nth-child(1)){
+            border: 1px solid red;
+        }
     </style>
 </head>
 <body>
@@ -25,5 +35,16 @@
         <li>4</li>
         <li>5</li>
     </ol>
+    <div class="first">
+        <span>nth child</span>
+        <span>nth child</span>
+        <span>nth child</span>
+    </div>
+    <div class="notTest">
+        <p>notTest1</p>
+        <p>notTest2</p>
+        <p>notTest3</p>
+    </div>
+
 </body>
 </html>
