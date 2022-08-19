@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>float</title>
+    <style>
+        a{
+            text-decoration: none;
+            color: black;
+            padding: 10px;
+        }
+        #container{
+            width: 1000px;
+            border: 2px solid #000;
+        }
+        
+        ul{
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+        ul>li{
+            display: inline-block;
+            margin: 30px 50px;
+            cursor: pointer;
+        }
+        ul>li> a:hover{
+            color: tomato;
+            box-shadow: 1px 1px 4px -1px black;
+            border-radius: 30px;
+        }
+        #header{
+            height: 80px;
+            background-color: #ad9696;
+        }
+        #left, #right{
+            background-color: yellow;
+            float: left;
+            width: 150px;
+            height: 540px;
+        }
+        #body{
+            float: left;
+            width: 700px;
+            height: 540px;
+            background-color: orange;
+        }
+        #footer{
+            width: 120px;
+            height: 80px;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <ul>
+                <li><a href="#">홈</a></li>
+                <li><a href="#">메뉴</a></li>
+                <li><a href="#">프로필</a></li>
+            </ul>
+        </div>
+        <div id="left">왼쪽메뉴</div>
+        <div id="body">중앙 메뉴 영역</div>
+        <div id="right">오른쪽메뉴</div>
+        <div id="footer">하단 메뉴영역</div>
+    </div>
+</body>
+</html>

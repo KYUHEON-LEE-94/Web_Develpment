@@ -1,0 +1,71 @@
+/* City Mouse CSS by Janie Hadsel        */
+/* Hadsel Design - www.hadseldesign.com  */
+
+table {
+    font: 80% Verdana, "New York", Arial, Helvetica, sans-serif;
+    color: #000;
+    background: #eee url(mouse.jpg) bottom right no-repeat;
+    text-align: left;
+    border-collapse: collapse;
+    border: 2px solid #27a0bd;
+    border-top: none;
+}
+
+table a {
+    text-decoration: underline;
+    color: #105c6e;
+}
+
+table a:visited {
+    text-decoration: none;
+}
+
+table a:hover, table a:active {
+    background-color: #008eb1;
+    text-decoration: none;
+    color: #eee;
+}
+
+thead th {
+    font-size: 105%;
+    color: #eee;
+    background-color: #27a0bd;
+    border-bottom: 2px solid #008eb1;
+}
+
+tbody {
+
+}
+
+tr {
+    vertical-align: top;
+}
+
+tr, th, td {
+    padding: .75em;
+}
+
+caption {
+    height: 27px;
+    color: white;
+    text-align: left;
+    background: #fff url(table_designs.jpg) no-repeat;
+    background-position: 92% 0;
+}
+
+tr.odd td, tr.odd th {
+    background-image: url(tealbg.gif);
+    background-repeat: repeat;
+}
+
+tfoot th, tfoot td {
+    padding: 0.2em .75em;
+    color: #3a4e58;
+    font-weight: bold;
+    font-size: 105%;
+}
+
+tfoot th {
+    text-align: right;
+}
+

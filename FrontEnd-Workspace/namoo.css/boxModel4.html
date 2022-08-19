@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .container{
+            width: 1000px;
+            border: 2px solid #dddd;
+            padding: 12px 0 0 12px;
+            margin: 10px auto;
+        }
+        .container > div{
+            display: inline-block;
+            width: 300px;
+            height: 300px;
+            margin: 10px 10px;
+            background-color: lightgray;
+        }
+        div.orange{
+            position: sticky;
+            background-color: orange;
+            /* position: fixed;  */
+            /* fixed는 무조건 viewport를 기준으로 고정됨 */
+            top: 0px;
+            /* opacity: 0; */
+            /* visibility: hidden; */
+            display: none;
+        }
+        div.blue{
+            /* position: fixed;
+            bottom: 10px;
+            right: 10px; */
+            text-align: center;
+            width: 100px;
+            height: 100px;
+            background-color: palegoldenrod;
+            cursor: pointer;
+        }
+    </style>
+    <title>박스모델</title>
+</head>
+<body>
+    <div class="container">
+        <div></div>
+        <div></div>
+        <div></div>
+
+        <div></div>
+        <div class="orange">
+            <div class="blue">
+                도움말
+            </div>
+        </div>
+        <div></div>
+
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</body>
+</html>

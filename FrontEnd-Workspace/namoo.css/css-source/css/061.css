@@ -1,0 +1,67 @@
+/* Spearmint tints > http://inspire.server101.com/bttdb/html/tables/ */
+
+/* table */
+table {
+    margin: 0 0 1em;
+    background: #FFF;
+    border-collapse: collapse;
+    border-top: 1px solid #363;
+    border-bottom: 2px solid #363;
+}
+
+/* caption = table title/heading */
+caption {
+    text-align: left;
+    font: bold small-caps 120%/1.3 "trebuchet ms", Helvetica, Arial, Sans-Serif;
+    color: #363;
+    margin: .3em 0;
+}
+
+/* reduced font size to save space */
+tr {
+    font-size: 90%;
+}
+
+/* prevent nested tables reducing font size further */
+tr tr {
+    font-size: 100%;
+}
+
+/* tinted rows */
+/* in CSS3 selectors: tbody tr:even or tbody tr:nth-child(2n) */
+tr.odd {
+    background: #DFD;
+}
+
+/* table cells */
+th, td {
+    font-weight: normal;
+    padding: .3em .7em;
+    text-align: left;
+    vertical-align: top;
+}
+
+/* borders to separate body sections */
+tbody tr:first-child th,
+tbody tr:first-child td,
+tfoot tr:first-child th,
+tfoot tr:first-child td {
+    border-top: 1px solid #363;
+}
+
+/* tints for column headings */
+thead {
+    background: #9C9;
+    white-space: nowrap;
+}
+
+/* tints for totals */
+tfoot {
+    background: #ADA;
+}
+
+/* bold text for totals */
+tfoot th,
+tfoot td {
+    font-weight: bold;
+}

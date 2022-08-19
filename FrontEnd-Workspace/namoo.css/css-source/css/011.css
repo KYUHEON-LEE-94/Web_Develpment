@@ -1,0 +1,70 @@
+/*
+Theme: BakeSale admin
+Author: Matti Putkonen - FI3.fi
+Web site: http://www.fi3.fi/
+Icons from http://www.famfamfam.com/lab/icons/silk/
+*/
+
+table {
+    border-collapse: collapse;
+    border-spacing: 1px;
+}
+
+td, th {
+    padding: 6px 6px;
+    border-bottom: solid 1px #eee;
+    vertical-align: top;
+}
+
+table caption {
+    background: #efefef;
+    color: #333;
+    text-align: center;
+    font-size: 1.2em;
+    line-height: 3em;
+}
+
+thead th {
+    background: #eee;
+    border-bottom: solid 1px #ddd;
+    border-top: solid 1px #fff;
+    text-align: left;
+}
+
+tfoot td, tfoot th {
+    background: #eee;
+    border-bottom: solid 1px #fff;
+    border-top: solid 1px #ccc;
+}
+
+tr.odd td, tr.odd th {
+    background: #edf3fe;
+}
+
+/* links */
+
+td a, td a:visited {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    margin-top: -6px;
+    margin-bottom: -6px;
+}
+
+td a {
+    color: #333;
+}
+
+td a:visited {
+    color: #999;
+}
+
+tbody th a {
+    background: url(http://fi3.fi/table.png) center left no-repeat;
+    padding-left: 20px;
+    color: #333;
+}
+
+tbody a[title^="Download"] {
+    background: url(http://fi3.fi/arrow_down.png) center left no-repeat;
+    padding-left: 20px;
+}

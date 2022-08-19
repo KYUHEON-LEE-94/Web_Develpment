@@ -1,0 +1,38 @@
+table, td, th {
+    margin: 0;
+    padding: 0.2em;
+    border: none
+}
+
+table, a {
+    color: #fff
+}
+
+table {
+    font-family: monospace;
+    text-transform: uppercase;
+    background-color: #000
+}
+
+thead th, tfoot th {
+    color: #0ff;
+    padding-top: 0.5em
+}
+
+tbody th a {
+    color: #f0f
+}
+
+caption {
+    background-color: #f0f;
+    font-size: 220%;
+    font-weight: bold
+}
+
+caption:before {
+    content: "\2591  \2592  \2593  "
+}
+
+caption:after {
+    content: "  \2593  \2592  \2591"
+}

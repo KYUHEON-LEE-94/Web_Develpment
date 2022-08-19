@@ -1,0 +1,95 @@
+/* TABLE STRUCTURE > http://inspire.server101.com/bttdb/html/tables/ */
+
+/* CAPTIONS (tables) */
+caption {
+    color: #000;
+    font-size: 120%;
+    font-weight: bold;
+    text-align: left;
+    margin: .3em 0;
+}
+
+/* TABLES */
+table {
+    background: #FFF;
+    border-collapse: collapse;
+    color: #000;
+    margin: 0 0 1em;
+    table-layout: fixed;
+}
+
+table:after {
+    color: #F00;
+    content: "No summary.";
+    display: table-caption;
+    font-size: 90%;
+    line-height: 1.3;
+}
+
+table[summary]:after {
+    color: #000;
+    content: "Summary: " attr(summary);
+    font-size: 90%;
+}
+
+/* TABLE DATA */
+td {
+    padding: .3em .5em;
+    text-align: left;
+    vertical-align: top;
+    background: #0F0;
+    border: 1px solid #FFF;
+    color: #000;
+}
+
+td[colspan] {
+    text-align: center;
+}
+
+td[rowspan] {
+    vertical-align: middle;
+}
+
+thead td {
+    vertical-align: bottom;
+}
+
+/* TABLE HEADING */
+th {
+    font-weight: normal;
+    padding: .3em .5em;
+    text-align: left;
+    vertical-align: top;
+    background: #F60;
+    border: 1px solid #FFF;
+    color: #000;
+}
+
+thead th {
+    background: #F00;
+    color: #FFF;
+}
+
+th[colspan] {
+    text-align: center;
+}
+
+th[rowspan] {
+    vertical-align: middle;
+}
+
+thead th {
+    vertical-align: bottom;
+}
+
+th:after {
+    content: "\00A0?";
+}
+
+th[scope="col"]:after {
+    content: "\00A0\25BC";
+}
+
+th[scope="row"]:after {
+    content: "\00A0\25BA";
+}

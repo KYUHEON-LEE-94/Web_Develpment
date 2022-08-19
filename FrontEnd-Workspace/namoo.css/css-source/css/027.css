@@ -1,0 +1,112 @@
+/* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xx  CSS Table Gallery                               xx
+xx  Poetry for Browser                              xx
+xx  not for 'browsing with the operating system' :o xx
+xx  Author: Monika Thon-Soun                        xx
+xx  URL: http://www.webdesign-in.de/                xx
+xx  Country: Austria                                xx
+xx  Date: 2006-01-14                                xx
+xx  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */
+
+table {
+    font-size: 0.8em;
+    font-family: Georgia, "Gill Sans MT", "Gill sans", "Trebuchet ms", sans-serif;
+    line-height: 1.4em;
+    color: #5B0006;
+    background-color: #FFEDEF;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+caption {
+    color: #F8EFF0;
+    background-color: inherit;
+    font-size: 25px;
+    background-image: url(poetryforbrowser/caption.jpg);
+    background-repeat: repeat-x;
+    background-position: 0 0;
+    padding: 28px 10px 7px 5px;
+    text-align: right;
+}
+
+tfoot th,
+tfoot td {
+    color: #F8EFF0;
+    background-color: inherit;
+    font-size: 25px;
+    background-image: url(poetryforbrowser/tfoot.jpg);
+    background-repeat: repeat-x;
+    background-position: 0 -2px;
+}
+
+tfoot {
+    text-align: right;
+}
+
+tfoot td {
+    padding: 7px 10px 28px 5px;
+}
+
+tfoot th {
+    padding: 7px 2px 28px 2px;
+}
+
+thead th,
+tbody th {
+    background-color: #FAE5E7;
+    color: #5B0006;
+    padding: 7px;
+    text-align: left;
+}
+
+tbody tr:hover,
+tbody tr th:hover {
+    background-color: #FDF9F9;
+    color: #000;
+}
+
+td {
+    padding: 7px;
+}
+
+thead th {
+    border-bottom: 1px dotted #908F8B;
+}
+
+thead th:first-child {
+    border: none;
+}
+
+tbody th {
+    border-right: 1px dotted #908F8B;
+}
+
+table a {
+    width: 100%;
+    display: block;
+    color: #5B0006;
+    background-color: inherit;
+    line-height: 1.5em;
+}
+
+table a:visited {
+    color: #908F8B;
+    background-color: inherit;
+}
+
+tbody td + td + td + td a:before {
+    content: "\21D3";
+    text-align: right;
+}
+
+table a:hover {
+    color: #C9020F;
+    background-color: inherit;
+}
+
+/*Code is Poetry.
+Internet Explorer you cannot show us arrows and hover effects.
+You cannot show us correct borders.
+It looks like that you cannot understand poetry.
+Don't be jealous of browsers. It is simply:Learn to be a browser and
+everything is going to be alright.*/

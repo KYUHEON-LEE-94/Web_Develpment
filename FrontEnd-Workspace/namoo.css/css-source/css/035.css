@@ -1,0 +1,109 @@
+/*
+ * ------------------------------------------------------------------------------
+ * "THE BEER-WARE LICENSE" (Revision 42):
+ * <choan@alice.0z0ne.com> wrote this file. As long as you retain this notice you
+ * can do whatever you want with this stuff. If we meet some day, and you think
+ * this stuff is worth it, you can buy me a beer in return 
+ * ------------------------------------------------------------------------------
+ */
+
+#itsthetable {
+    font: 13px/1.5 trebuchet ms, verdana, bitstream vera sans, sans-serif;
+    color: #222;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+caption {
+    font-size: 2em;
+    color: #444;
+}
+
+td, th {
+    text-align: left;
+    padding: .6em .4em;
+    vertical-align: top;
+}
+
+thead th, tfoot th, tfoot td {
+    border: 1px solid #361;
+    border-width: 1px 0;
+    background: #e0e5cf url(i/deg.png) top left repeat-x;
+    color: #444;
+    font-weight: bold;
+}
+
+tbody tr {
+    background: #fcfcff;
+}
+
+tbody tr.odd {
+    background: #fffcfc;
+}
+
+tbody tr:hover {
+    background: #f0f0fe url(i/shadow.png) bottom left repeat-x;
+}
+
+tbody tr.odd:hover {
+    background-color: #fef0f0;
+}
+
+tbody td, tbody th {
+    border-bottom: 1px solid #779;
+}
+
+tbody tr.odd td, tbody tr.odd th {
+    border-color: #977;
+}
+
+tbody tr:last-child td, tbody tr:last-child th {
+    border: none;
+}
+
+tbody tr a {
+    color: #449;
+    text-decoration: none;
+}
+
+tbody tr.odd a {
+    color: #944;
+}
+
+tbody a:visited {
+    text-decoration: line-through;
+}
+
+tbody tr a:hover {
+    border-bottom: 1px dotted;
+    text-decoration: none;
+    color: #009;
+}
+
+tbody tr.odd a:hover {
+    color: #900;
+}
+
+tbody td + td + td + td a {
+    background: url(i/down.png) 0 50% no-repeat;
+}
+
+tbody tr.odd td + td + td + td a {
+    background-image: url(i/down2.png);
+}
+
+tbody td + td + td + td a {
+    /* image replacement */
+    display: block;
+    width: 12px;
+    height: 0;
+    padding-top: 12px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+tbody td + td + td + td a:hover {
+    border: none;
+}

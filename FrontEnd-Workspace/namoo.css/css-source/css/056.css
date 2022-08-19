@@ -1,0 +1,115 @@
+/* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xx  CSS Table Gallery            xx          
+xx  Author: Mauricio Samy Silva  xx
+xx  URL: http://www.maujor.com/  xx
+xx  Country: Brazil              xx
+xx  Date: 2005-09-04             xx
+XX  Updated: 2005-09-29          xx
+xx  xxxxxxxxxxxxxxxxxxxxxxxxxxxxx*/
+table {
+    border-collapse: inherit;
+    border-spacing: 0.5em 1.5em; /* 1.0em 1.5em  - Updated: 2005-09-29 */
+    border: 2px solid;
+    border-color: #999 #ccc;
+    color: #000;
+    background: #4e91d1 url(table-bg.gif) -40px 0 repeat-y;
+    padding-left: 0.5em;
+    margin-top: 0.25em;
+}
+
+#itsthetable > table {
+    background-position: 0 0;
+}
+
+td, th {
+    vertical-align: top;
+}
+
+table caption {
+    background: #09c url(bg-caption.jpg) 0 0 repeat-x;
+    border: 2px solid;
+    border-color: #999 #ccc;
+    color: #fff;
+    font-size: 0.00001em;
+    height: 50px;
+    margin-top: 2px;
+}
+
+table * a, table * a:link {
+    text-decoration: none;
+    color: blue;
+    border-bottom: 1px solid blue;
+}
+
+table * a:visited {
+    color: #09c;
+    border-bottom: 1px dotted #09c;
+}
+
+table * a:hover {
+    border-bottom: none;
+    color: #fff;
+    background: #090;
+    display: block;
+}
+
+tr, td, th {
+    background: transparent;
+    border: 2px solid;
+    border-color: #999 #fff #fff #999;
+    font: 0.9em Georgia, "Times New Roman", Times, serif;
+    letter-spacing: 0.1em;
+    padding: 0.2em 0 0.2em 0.4em;
+    width: 15%;
+}
+
+tr th + td + td + td {
+    width: 35%;
+}
+
+tr th + td + td + td + td {
+    background: #ebf7ed url(down.gif) 50% 90% no-repeat;
+    color: #d2e4ef;
+    font-size: 0.8em;
+    height: 50px;
+    padding-left: 0;
+    text-align: center;
+}
+
+tr th + td + td + td + td a:link {
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+}
+
+table thead th {
+    background: #ebf7ed url(bg-th.jpg) 0 0 no-repeat;
+    color: #096;
+    font: bold 0.9em Arial, Helvetica, sans-serif;
+    letter-spacing: normal;
+    padding: 0.3em 0;
+    text-align: center;
+}
+
+table tbody th {
+    background: #ebf7ed url(bg-th.jpg) 0 0 no-repeat;
+    padding-left: 1.0em;
+}
+
+table tfoot {
+    background: #09c url(bg-tfoot.jpg) 0 0 no-repeat;
+}
+
+tfoot tr th {
+    text-align: left;
+}
+
+tfoot tr td {
+    text-align: right;
+    padding-right: 0.6em;
+}
+
+table tfoot tr * {
+    font: bold 0.9em Arial, Helvetica, sans-serif;
+    line-height: 1.8em;
+    color: #096;
+}

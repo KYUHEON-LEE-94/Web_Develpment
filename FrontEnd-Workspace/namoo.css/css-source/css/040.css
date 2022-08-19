@@ -1,0 +1,119 @@
+/*        CSS Table Gallery Submission         */
+
+/*             Turkish Delight                 */
+/*             Paul Brownsmith                 */
+/*           www.fuzzyoutline.com              */
+
+table {
+    width: 646px;
+    color: #000;
+    font: 70% "Verdana" Helvetica, sans-serif;
+}
+
+table, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+caption {
+    text-align: center;
+    padding: 0.9em 0em 0em 1em;
+    color: #fff;
+    background: #BB1757;
+    height: 3em;
+    background: #fff url(header.gif) no-repeat;
+}
+
+/* HEADER */
+thead {
+    background: #BB1757;
+}
+
+thead tr th {
+    padding: 1em 0;
+    text-align: left;
+    color: #fff;
+    font-weight: normal;
+}
+
+/* FOOTER */
+tfoot tr {
+    color: #fff;
+    background: #BB1757;
+    height: 4em;
+    background: #BB1757 url(background.gif) repeat-x bottom;
+}
+
+tfoot {
+    color: #000;
+    background: #fff;
+}
+
+tfoot tr th, tfoot tr td {
+    border-top: 0px;
+}
+
+tfoot tr td {
+    text-align: right;
+    padding-right: 2em;
+}
+
+/* BODY */
+tbody th {
+    background: #E6849F;
+}
+
+tbody tr.odd th {
+    background: #D892A1;
+}
+
+tbody td a:hover {
+    background: transparent;
+    color: #fff;
+}
+
+tbody tr td {
+    background: #aaa;
+    color: #fff;
+    height: 4em;
+}
+
+tbody tr.odd td {
+    background: #bbb;
+    color: #fff;
+    height: 4em;
+}
+
+tbody tr td:hover, tbody tr.odd td:hover {
+    color: #fff;
+}
+
+tbody tr th, tbody tr td {
+    padding: 0.1em 0.4em;
+    border: 0px;
+}
+
+tbody tr th {
+    padding-right: 1em;
+    text-align: left;
+    font-weight: normal;
+}
+
+/* LINKS */
+
+table a {
+    color: #B81750;
+    text-decoration: none;
+}
+
+table a:hover {
+    text-decoration: underline;
+    color: #fff;
+}
+
+tbody tr:hover td,
+tbody tr:hover th {
+    background: #A67157 url(grad.gif) repeat-x top;
+}

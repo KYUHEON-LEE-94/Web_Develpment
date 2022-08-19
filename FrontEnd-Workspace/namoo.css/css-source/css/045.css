@@ -1,0 +1,108 @@
+/*
+Rockstar 0.91
+Table design by Jens Wedin, www.jedisthlm.com
+*/
+
+table {
+    font: 88%/1.7em "Trebuchet MS", "Bitstream Vera Sans", Verdana, Helvetica, sans-serif;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 0 0 1em 0;
+    color: #000;
+}
+
+a {
+    color: #09f;
+    text-decoration: none;
+    border-bottom: 1px solid;
+}
+
+a:visited {
+    color: #c3c;
+    font-weight: normal;
+}
+
+a:hover {
+    border-bottom-style: dotted;
+}
+
+thead th,
+thead td {
+    font-weight: bold;
+    line-height: normal;
+    text-align: left;
+    border-bottom: 0.4em solid #09f;
+}
+
+tfoot th,
+tfoot td {
+    text-align: left;
+    border-top: 0.4em solid #09f;
+    font-weight: bold
+}
+
+th,
+td {
+    padding: 0.25em;
+}
+
+tbody th,
+td {
+    text-align: left;
+    vertical-align: top;
+}
+
+tbody th {
+    font-weight: normal;
+    white-space: nowrap;
+}
+
+tbody th a:link,
+tbody th a:visited {
+    font-weight: bold;
+}
+
+tbody th + td {
+    white-space: nowrap;
+}
+
+tbody td,
+tbody th {
+    border: 1px solid #fff;
+    border-width: 1px 0;
+}
+
+tbody tr.odd th,
+tbody tr.odd td {
+    border-color: #deded8;
+    background: #f9f9fb;
+}
+
+tbody tr:hover td,
+tbody tr:hover th {
+    background: #fbfbf8;
+}
+
+caption {
+    font-weight: bold;
+    font-size: 1.7em;
+    text-align: left;
+    margin: 0;
+    padding: 0.5em 0.25em;
+}
+
+td + td + td + td {
+    white-space: nowrap;
+}
+
+td + td + td + td a:before {
+    content: "\2193 ";
+}
+
+a[href^="http://"]:not([href*="http://icant.co.uk"])::after {
+    content: "\2197";
+}
+
+td + td + td + td a[href^="http://"]:not([href*="http://icant.co.uk"])::after {
+    content: "";
+}
