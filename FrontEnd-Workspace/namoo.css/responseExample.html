@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>미디어 쿼리 활용</title>
+  <style>
+    body {
+      background: url(./img/cup-1.jpg) no-repeat fixed;
+      background-size: cover;
+    }
+
+    @media screen and (max-width: 1024px) {
+
+      /* 너비가 1024 이하일때 배경이미지 설정 */
+      body {
+        background: url(./img/cup-2.jpg) no-repeat fixed;
+        background-size: cover;
+      }
+
+      @media screen and (max-width: 768px) {
+        body {
+          background: url(./img/cup-3.jpg) no-repeat fixed;
+          background-size: cover;
+        }
+      }
+
+      @media screen and (max-width: 320px) {
+        body {
+          background: url(./img/cup-4.jpg) no-repeat fixed;
+          background-size: cover;
+        }
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+</body>
+</html>

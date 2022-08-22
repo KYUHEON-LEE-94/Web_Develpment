@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS 선택자 종류</title>
+  <style>
+    /* 전체선택자 */
+    * {
+      /* background-color: #bcec4b; */
+      /* background-color: rgb(255, 230, 10); */
+      background-color: wheat;
+    }
+
+    /* 태그선택자 */
+    /* 그룹선택자 */
+    body,
+    h2 {
+      color: blue;
+      background-color: darkkhaki;
+    }
+
+    /* 클래스선택자 */
+    .block {
+      background: darkblue;
+    }
+
+    .inline {
+      background: tomato;
+    }
+
+    .some {
+      color: white;
+    }
+
+    #target1 {
+      border: 1px solid blue;
+    }
+
+    #target2 {
+      border: 2px dotted red;
+
+    }
+/* 자손선택자 */
+    div div {
+      background-color: #fc6aad;
+      color: #0076ff;
+    }
+
+    div p {
+      background-color: blue;
+      color: red;
+    }
+/* 자식선택자 */
+    div > div {
+      background-color: green;
+      color: tomato;
+    }
+
+    div > p {
+      background-color: black;
+      color: white;
+    }
+
+    /* 형제선택자 */
+    .std ~ li {
+      background-color: blue;
+      color: white;
+    }
+
+    a:link {
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+      color: blue;
+    }
+    a:active {
+      text-decoration: underline;
+      color: red;
+    }
+    input:focus {
+      background-color: yellow;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>CSS 선택자</h2>
+  <p>선택자의 종류는 엄청 많아요...</p>
+
+  <div class="block">블럭요소1</div>
+  <div class="block">블럭요소2</div>
+  <span class="inline">인라인요소1</span>
+  <span class="inline">인라인요소2</span>
+  <input class="inline" type="text">
+  <ul>
+    <li class="block">1</li>
+    <li class="block">2</li>
+    <li class="block">3</li>
+  </ul>
+  <div class="block some">클래스선택자</div>
+
+  <div id="target1">아 배고파~~~</div>
+  <div id="target2">아 배고파~~~</div>
+
+  <div>
+    <p>하위 선택자</p>
+    <div>
+      <ul>
+        <li>
+          <p>하위선택자</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <ul>
+    <li>1</li>
+    <li class="std">2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+  </ul>
+
+  <a href="https://www.google.com">구글</a>
+</body>
+
+</html>

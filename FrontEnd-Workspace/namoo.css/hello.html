@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="hello.css">
-    <title>HTML에 CSS 적용하기</title>
-    <style>
-        h3{
-            color: blue;
-
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML에 CSS 적용하기(3가지)</title>
+  <style>
+    @import url("./css/style.css");
+    /* 선택자 { ??? : ???;} */
+    h3 {
+      color: blue;
+      font-size: 30px;
+    }
+  </style>
+  <!-- <link rel="stylesheet" href="./css/style.css"> -->
 </head>
 <body>
-    <h2 style="color: red;">인라인 CSS적용</h2>
-    <h3>내부 CSS작용</h3>
-    <h4>외부 CSS작용</h4>
+  <h2 style="color:red ; font-size: 30pt;">인라인 CSS 적용</h2>
+  <h3>내부 CSS 적용</h3>
+  <h3>내부 CSS 적용</h3>
+  <h4>외부 CSS 적용</h4>
 </body>
 </html>
