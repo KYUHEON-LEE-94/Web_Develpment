@@ -8,14 +8,17 @@
 </head>
 <body>
     <h2>구구단</h2>
+    <table border="1">
     <script>
         for(let i =2; i<10; i++){
             document.write('<tr>')
-            for(let j =1; j<10; j++){
-            document.write("<td>"+i+"*"+j+"="+(i*j)+"</td>")
+                for(let j =1; j<10; j++){
+                    document.write("<td>"+i+"*"+j+"="+(i*j)+"</td>")
+                }
+                document.write('</tr>')
             }
-            document.write('</tr>')
-        }
-    </script>
+            </script>
+
+</table>
 </body>
 </html>
