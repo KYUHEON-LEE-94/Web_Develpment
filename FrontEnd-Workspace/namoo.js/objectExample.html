@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<script>
+        let person ={
+            name: "이규헌",
+            age: 40,
+            weight: 72.45,
+            run: function(){
+                console.log("달리다")
+            }
+        }
+
+        //여러개의 person객체 생성
+        //Factory 함수
+        function makePerson(name, age, wieight){
+            let person = {
+                name: name,
+                age: age,
+                wieight, weight
+            };
+            return person
+        }
+        //let newone = makePerson("JS",20,30)
+
+        //생성자 함수
+        function Student (ssn, name, korean="korean"){
+            //this ={}; 가 자동적으로 생성됨
+        this.ssn = ssn;
+        this.name = name;
+        this.korean = korean
+        }
+</script>
+<body>
+    <script>
+
+    </script>
+</body>
+</html>

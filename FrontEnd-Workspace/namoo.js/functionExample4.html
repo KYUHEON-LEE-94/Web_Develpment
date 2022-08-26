@@ -13,6 +13,21 @@
         }
         let simple2 = () => {console.log("arrow 함수");}
         let simple3 = () => console.log("더간단히!")
+
+        let simple4 = (x,y) => x+4;
+        const result = simple(5,8);
+
+        //slef call
+        (function self(){
+            console.log("셀프콜")
+        })()
+
+        //동적 함수 생성
+        let dynamicFunction = new Function('x','y', 'return x+y');
+        const r = dynamicFunction(5,10)
+        console.log(r);
+
+        
     </script>
 </body>
 </html>
