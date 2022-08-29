@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let user = {
+            name: "이규헌",
+            age: 5
+        }
+
+        //전역 함수 선언
+
+        function show(){
+            // console.dir(this);
+            console.log(`이름: ${this.name}`);
+        }
+        // show();
+        show.call(user);
+        
+        function addProperty(name, value){
+            this[name] = value;
+        }
+        // addProperty("hobby", "sports")
+        // console.log(window.hobby);
+        addProperty.call(user, "hobby", "sports")
+        addProperty.apply(user, ["listen", "music"])
+        console.dir(user);
+    </script>
+</body>
+</html>
