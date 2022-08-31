@@ -31,6 +31,6 @@ Student.prototype.toString = function(){
 }
 
 //내보내기
-export {Student};
+// export {Student};
 // export{Student, some,1 some2}
 

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./JS/StudentExample.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let array = [9,2,5,1,7,6,3,4,8]
+        // console.log(array.sort()); //기본오름 차순 정렬
+
+        //내림차순
+        array.sort((x, y) => {
+            //return값이 <0으면 x가 앞에 정렬
+            return x-y
+        });
+
+        for (const num of array) {
+            console.log(num);
+        }
+
+        //문자열 정렬
+        let array2 = ["포도", "watermelon", "apple", "딸기"]
+        // console.log(array2.sort());
+        
+        array2.sort((x, y) => {
+            return y.charCodeAt(0) - x.charCodeAt(0); 
+        })
+        console.log(array2);
+
+        let array3 = [new Student(10, "나야나~",0,0,0),
+        new Student(101, "너야너~",20,30,10),
+        new Student(110, "아니야~",80,90,30),];
+        
+        console.dir(array3);
+
+        //성적준 내림차순 정렬
+        array3.sort((student1, student2) =>{
+            return student2.getAverage() - student1.getAverage();
+        })
+        console.dir(array3);
+    </script>
+</body>
+</html>

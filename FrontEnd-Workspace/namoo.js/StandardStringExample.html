@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let ssn = "940922-177777";
+        console.log(ssn.length);
+        const char = ssn.charAt(ssn.indexOf('-')+1);
+        switch(char){
+            case '1': console.log("2000년 이전 출생 남자"); break;
+            case '2': console.log("2000년 이전 출생 여자"); break;
+            case '3': console.log("2000년 이후 출생 남자"); break;
+            case '4': console.log("2000년 이후 출생 여자"); break;
+
+            default: console.log("외쿡에서 왔어요"); break;
+        }
+
+        let message = "너는 바보";
+        console.log(message.substring(3,5));
+        console.log(message.substr(3,2));
+
+    </script>
+</body>
+</html>

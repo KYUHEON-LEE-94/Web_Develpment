@@ -1,21 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 body{
+    height: 100vh;
     font-family: 'Noto Sans KR', sans-serif;
 }
 .Wrapper{
+    height: 100%;
     width: 80%;
     margin: auto;
 }
 .row{
     margin-bottom: 20px;
 }
-.input-group{
-    height: 50px;
-}
 h2{
     display: block;
     text-align: center;
     margin: 20px;
+
 }
 .row{
     text-align: center;
@@ -36,3 +36,17 @@ form{
 .accountOwner_btnBox button{
     margin-top: 10px;
 }
+
+footer{
+    text-align: center;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-info-rgb), var(--bs-bg-opacity)) !important;
+}
+
+table{
+    overflow: scroll;
+}
+

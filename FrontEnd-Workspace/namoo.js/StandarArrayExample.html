@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //#1. 생성자 함수를 이용한 명시적 생성
+        // let array = new Array();
+        // let array = new Array(30);
+        // let array = new Array("이규헌", "강아지");
+
+        //#2. 표현식을 이용한 배열 생성(묵시적 생성)
+        //JS 배열은 상이한 데이터들을 저장할 수 있다.
+        // [ ]의 key값은 각 index라고 보면 된다.
+        let array = ["이규헌", "박규헌", 50, {name: "안드로이드", age: 30}]
+        console.dir(array);
+        console.log(array[0]); //->array['0'], 내부적으로 문자열로 변경해서 접근함
+        console.log(array.length);
+        console.log(array['length']);
+
+        //전체배열 순회
+        for (const value of array) {
+            console.log(value);
+        }
+
+        //배열 전체 원소 지우기
+        // array.length =0;
+        // console.dir(array);
+
+        array.push("강아지");
+        array.unshift("고양이");
+        console.dir(array);
+
+        //delete는 원소를 undifiend로 만들어버려서 length자체가 줄어들지는 않음
+        // delete array[1]
+
+        let dogBye = array.pop()+" 잘가..."
+        console.log(dogBye);
+
+        let catBye = array.shift()+" 너도 잘가..ㅠ"
+        console.log(catBye);
+
+        //다차원 배열 만들기
+        let marray = new Array(5);
+        for (let i = 0; i < marray.length; i++) {
+            marray[i] = new Array(5);
+        }
+
+        for (let i = 0; i < marray.length; i++){
+            for (let j = 0; j < marray[i].length; j++) {
+                marray[i][j] = `${i}번째의, ${j}번째`
+            }
+        }
+        console.dir(marray);
+
+        marray = [[1,2,3,4,5],
+            [1,1,1,1,1],
+            [2,2,2,2,2],
+            [3,3,3,3,3], 
+            [4,4,4,4,4]]
+
+            for (const array of marray) {
+                for (const arrValue of array) {                    
+                    console.log(arrValue);
+                }
+            }
+
+
+        let numbers = [1, 2, 3, 4, 5]
+        let Strings =  numbers.join('#');
+        console.log(Strings);
+        Strings = Strings.split("#");
+        console.log(Strings);
+
+        console.clear();
+
+        let arrays = [1,2,3,4,5,6,7];
+        console.dir(arrays.slice(1,4))// ~부터~까지 
+        console.dir(arrays);
+        // console.dir(arrays.splice(1,4)) //~부터 몇개까지 //가져오고 length자체도 줄어들음
+        // console.dir(arrays);
+
+        arrays.splice(1,4,"바보");
+        console.dir(arrays);
+    </script>
+</body>
+</html>
