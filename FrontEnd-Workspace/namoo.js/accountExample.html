@@ -15,22 +15,82 @@
         <h2>Korea IT Bank 은행 계좌 관리 사이트</h2>
         <div class="container">
             <div class="row">
-            <div class="col accountNum">
-                <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="xxx-xxx">
-                    <label for="floatingInput">Account Number</label>
+            <div class="col-10 accountNum">
+                <div class="input-group">
+                    <span class="input-group-text">계좌번호</span>
+                    <input type="text" aria-label="First name" class="form-control">
                 </div>
+            </div>
+            <div class="col-2 accountNum_btnBox">
+                <button type="button" class="btn btn-primary">검색</button>
+                <button type="button" class="btn btn-danger">삭제</button>
             </div>
             </div>
             <div class="row">
-                <div class="col accountOwner">
-                    <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="floatingInput" placeholder="ex)홍길동">
-                        <label for="floatingInput">accountOwner</label>
+                <div class="col-10 accountOwner">
+                    <div class="input-group">
+                        <span class="input-group-text">예금주명</span>
+                        <input type="text" aria-label="First name" class="form-control">
                     </div>
                 </div>
+                <div class="col-2 accountOwner_btnBox">
+                    <button type="button" class="btn btn-primary">검색</button>
                 </div>
-        </div>
+            </div>
+            <div class="row">
+                <div class="col subject">
+                    <div class="input-group">
+                        <span class="input-group-text">국어</span>
+                        <input type="text" aria-label="First name" class="form-control">
+                    </div>
+                </div>
+                <div class="col subject">
+                    <div class="input-group">
+                        <span class="input-group-text">영어</span>
+                        <input type="text" aria-label="First name" class="form-control">
+                    </div>
+                </div>
+                <div class="col subject">
+                    <div class="input-group">
+                        <span class="input-group-text">수학</span>
+                        <input type="text" aria-label="First name" class="form-control">
+                    </div>
+                </div>
+                <div class="col-2 subject">
+                        <button type="button" class="btn btn-primary subjectBtn">등록</button>
+                        <button type="button" class="btn btn-success subjectBtn">전체 검색</button>
+                </div>
+                </div>
+            </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Handle</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td colspan="2">Larry the Bird</td>
+                    <td>@twitter</td>
+                </tr>
+            </tbody>
+        </table>
 
 
     </div>

@@ -1,9 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+body{
+    font-family: 'Noto Sans KR', sans-serif;
+}
 .Wrapper{
     width: 80%;
     margin: auto;
 }
+.row{
+    margin-bottom: 20px;
+}
+.input-group{
+    height: 50px;
+}
 h2{
+    display: block;
     text-align: center;
+    margin: 20px;
 }
 .row{
     text-align: center;
@@ -13,4 +25,14 @@ input[type="text"]{
 }
 form{
     margin: 10px;
+}
+.accountNum_btnBox{
+    padding: 0;
+}
+
+.subjectBtn{
+    margin-top: 10px;
+}
+.accountOwner_btnBox button{
+    margin-top: 10px;
 }
