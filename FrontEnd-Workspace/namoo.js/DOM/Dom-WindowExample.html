@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.dir(window);
+        // let shat = parseInt(prompt("아무 숫자나 입력"));
+        // if(shat === 1){
+        //     close();
+        // }else if (shat === 2){
+        //     location ="https://www.naver.com/"
+        // }
+
+        //공지사항 창 띄우기
+        let popupWindow = open("gugudan.html", "pop", "left=100, top=100, width=300, height=500 toolbar= yes")
+        if(popupWindow === null){
+            alert("팝업 설정 해제")
+        }
+        popupWindow.close();
+        </script>
+</body>
+</html>

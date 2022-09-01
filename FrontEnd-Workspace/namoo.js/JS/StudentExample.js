@@ -23,11 +23,15 @@ Student.prototype.getsum = function(){
 }
 
 Student.prototype.getAverage = function(){
+    if((this.getsum()/3) === 0){
+        return 0;
+    }
+
     return this.getsum()/3
 }
 
 Student.prototype.toString = function(){
-    return `${this.ssn}  ${this.name} ${this.korean} ${this.eng} ${this.math}`
+    return `${this.ssn}  ${this.name} ${this.korean} ${this.eng} ${this.math} ${this.getsum()} ${this.getAverage()}`
 }
 
 //내보내기

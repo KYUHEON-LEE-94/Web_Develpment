@@ -10,15 +10,16 @@
 </head>
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script type="module" src="./JS/app.js"></script>
 
     <div class="Wrapper">
-        <h2>Korea IT Bank 은행 계좌 관리 사이트</h2>
+        <h2 id="title">Korea IT Bank 은행 계좌 관리 사이트</h2>
         <div class="container">
             <div class="row">
             <div class="col-10 accountNum">
                 <div class="input-group">
                     <span class="input-group-text form-control-lg">계좌번호</span>
-                    <input type="text" aria-label="First name" class="form-control">
+                    <input type="text" aria-label="First name" class="form-control" id="accountNumInput">
                 </div>
             </div>
             <div class="col-2 accountNum_btnBox">
@@ -30,11 +31,11 @@
                 <div class="col-10 accountOwner">
                     <div class="input-group">
                         <span class="input-group-text form-control-lg">예금주명</span>
-                        <input type="text" aria-label="First name" class="form-control">
+                        <input type="text" aria-label="First name" class="form-control" id="accountOwnerInput">
                     </div>
                 </div>
                 <div class="col-2 accountOwner_btnBox">
-                    <button type="button" class="btn btn-primary">검색</button>
+                    <button type="button" class="btn btn-primary" id="accountOwnerBtn">검색</button>
                 </div>
             </div>
             <div class="row">
@@ -74,7 +75,7 @@
             <tbody>
                     <tr>
                     <th scope="row">1</th>
-                    <td>Mark</td>
+                    <td id="classname">Mark</td>
                     <td>Otto</td>
                     <td>@mdo</td>
                 </tr>
@@ -99,23 +100,5 @@
     </footer>
 
 </body>
-    <script src="./JS/account.js"></script>
-    <script src="./JS/MinujsAccount.js"></script>
-    <script>
-        let account = new Account(123124-111,"이규헌", 1234,1000);
-        console.log(account.toString());
-        console.dir(account.prototype);
 
-        let maaccount = new MinusAccount(123124-222,"박규헌", 1234,1000, 100);
-        console.log(maaccount);
-        console.log(maaccount.getRestMoney());
-
-        //instance if
-        console.log(account instanceof Account);
-        console.log(account instanceof MinusAccount);
-        console.log(account instanceof Object);
-        console.log(maaccount instanceof Account);
-        console.log(maaccount instanceof MinusAccount);
-        console.log(maaccount instanceof Object);
-    </script>
 </html>
