@@ -50,3 +50,10 @@ table{
     overflow: scroll;
 }
 
+
+#status{
+    display: block;
+    color:  red;
+    text-align: center;
+}
+

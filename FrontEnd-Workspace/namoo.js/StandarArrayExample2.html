@@ -49,10 +49,11 @@
         const findname = array3.find(student => student.name === "나야나~")
         console.log(findname);
 
+        console.clear()
         //filter 함수
 
         const findnames = array3.filter(student => student.name === "나야나~")
-        console.log(findnames);
+        console.log(findnames[0].name);
 
         //map 함수
         const flags = array3.map( student => student.getAverage() >= 60? student.name+": Pass" : "Fail")

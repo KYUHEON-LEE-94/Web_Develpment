@@ -7,9 +7,13 @@
     <title>Document</title>
     <script>
         function openClose(){
-            alert(document.dupform.id.value);
-
+            //alert(document.dupform.id.value);
+            opener.document.regForm.id.value = document.dupform.id.value
+            self.close();
         }
+        window.addEventListener("load", ()=> {
+            opener.document.regForm.id.value = document.dupform.id.value
+        })
     </script>
 </head>
 <body>

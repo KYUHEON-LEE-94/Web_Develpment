@@ -4,10 +4,10 @@
             //static 프로퍼티
             static schoolname = "Korea IT School"
 
-            constructor(ssn, name, korean, eng, math){
+            constructor(ssn, name, kor, eng, math){
                 this.ssn = ssn
                 this.name = name
-                this.korean = korean
+                this.kor = kor
                 this.eng = eng
                 this.math = math
             }
@@ -29,11 +29,11 @@
             return this._name
             }
 
-            set korean(korean){
-            this._korean = korean;
+            set kor(kor){
+            this._kor = kor;
             }
-            get korean(){
-            return this._korean
+            get kor(){
+            return this._kor
             }    
 
 

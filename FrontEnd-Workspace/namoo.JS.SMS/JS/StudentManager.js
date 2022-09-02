@@ -1,8 +1,12 @@
+
+
 //Array를 이용한 학생 성정 관리
 class StudentManager{
 
     //static 프로퍼티
     static schoolname = "Korea IT School"
+
+
 
     constructor(){
         //this ={}가 존재하는 상황
@@ -20,8 +24,17 @@ class StudentManager{
     }
 
     //학생이름으로 찾아오기
-    findNumber(student){
+    findnames(name){
+        const findnames = this.students.find(student => student.name === name)
+        return findnames
+        
+    }
 
+    //학번으로 찾기
+    findssn(ssn){
+        const findssn = this.students.find(student => student.ssn === parseInt(ssn))
+        return findssn
+        
     }
 
     toString(){

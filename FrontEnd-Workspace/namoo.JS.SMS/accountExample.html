@@ -16,79 +16,88 @@
         <h2 id="title">Korea IT Bank 은행 계좌 관리 사이트</h2>
         <div class="container">
             <div class="row">
-            <div class="col-10 accountNum">
+            <div class="col-10 ssn">
                 <div class="input-group">
-                    <span class="input-group-text form-control-lg">계좌번호</span>
-                    <input type="text" aria-label="First name" class="form-control" id="accountNumInput">
+                    <span class="input-group-text form-control-lg">학번</span>
+                    <input type="text" aria-label="First name" class="form-control" id="ssninput">
                 </div>
             </div>
-            <div class="col-2 accountNum_btnBox">
-                <button type="button" class="btn btn-primary">검색</button>
+            <div class="col-2 ssn_btnBox">
+                <button type="button" class="btn btn-primary" id="ssnBtnSearch">검색</button>
                 <button type="button" class="btn btn-danger">삭제</button>
             </div>
             </div>
             <div class="row">
-                <div class="col-10 accountOwner">
+                <div class="col-10 studentname">
                     <div class="input-group">
-                        <span class="input-group-text form-control-lg">예금주명</span>
-                        <input type="text" aria-label="First name" class="form-control" id="accountOwnerInput">
+                        <span class="input-group-text form-control-lg">학생명</span>
+                        <input type="text" aria-label="First name" class="form-control" id="studentnameinput">
                     </div>
                 </div>
                 <div class="col-2 accountOwner_btnBox">
-                    <button type="button" class="btn btn-primary" id="accountOwnerBtn">검색</button>
+                    <button type="button" class="btn btn-primary" id="stNameBtn">검색</button>
                 </div>
             </div>
             <div class="row">
                 <div class="col subject">
                     <div class="input-group">
                         <span class="input-group-text form-control-lg">국어</span>
-                        <input type="text" aria-label="First name" class="form-control">
+                        <input type="text" aria-label="First name" class="form-control" id="kor">
                     </div>
                 </div>
                 <div class="col subject">
                     <div class="input-group">
                         <span class="input-group-text form-control-lg">영어</span>
-                        <input type="text" aria-label="First name" class="form-control">
+                        <input type="text" aria-label="First name" class="form-control" id="eng">
                     </div>
                 </div>
                 <div class="col subject">
                     <div class="input-group">
                         <span class="input-group-text form-control-lg">수학</span>
-                        <input type="text" aria-label="First name" class="form-control">
+                        <input type="text" aria-label="First name" class="form-control" id="math">
                     </div>
                 </div>
                 <div class="col-2 subject">
-                        <button type="button" class="btn btn-primary subjectBtn">등록</button>
+                        <button type="button" class="btn btn-primary subjectBtn" id="enroll">등록</button>
                         <button type="button" class="btn btn-success subjectBtn">전체 검색</button>
                 </div>
                 </div>
+                <span id="status"></span>
             </div>
         <table class="table">
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">학번</th>
+                    <th scope="col">학생명</th>
+                    <th scope="col">국어</th>
+                    <th scope="col">영어</th>
+                    <th scope="col">수학</th>
                 </tr>
             </thead>
             <tbody>
-                    <tr>
+                <tr class="tr">
                     <th scope="row">1</th>
-                    <td id="classname">Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                    <td id="stussn">Mark</td>
+                    <td id="stuname">Otto</td>
+                    <td id="stukor">@mdo</td>
+                    <td id="stueng">Otto</td>
+                    <td id="stumath">@mdo</td>
                 </tr>
-                <tr>
+                <tr  class="tr">
                     <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
-                <tr>
+                <tr  class="tr">
                     <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
+                    <td colspan="2"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
             </tbody>
         </table>
