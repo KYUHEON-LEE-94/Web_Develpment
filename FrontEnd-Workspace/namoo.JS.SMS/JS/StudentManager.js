@@ -45,6 +45,11 @@ class StudentManager {
 
     }
 
+    //평균 순서대로 sort해주는 함수
+    sortave(array){
+        array.sort((student1, student2) => student1.getAverage() - student2.getAverage())
+    }
+
     toString() {
         return `${this.ssn}  ${this.name} ${this.korean} ${this.eng} ${this.math}`
     }
