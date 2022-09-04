@@ -3,26 +3,31 @@ import { Student } from "./Student.js"
 import { StudentManager } from "./StudentManager.js"
 
 
+
+
+
 //테스트 객체화
 let cat = new Student(1, "고양이", 30, 20, 10);
 let studentManager = new StudentManager();
 studentManager.addStudent(cat);
+studentManager.addStudent(new Student(1, "얼룩고양이", 20, 30, 40));
 studentManager.addStudent(new Student(2, "이규헌", 10, 20, 30));
 studentManager.addStudent(new Student(3, "강아지", 20, 30, 40));
 
 //---객체와 여기까지--
+
+
 //변수 선언---------------------
 //타이틀
 let h2 = document.getElementById('title');
 
+//알림창 선택자 변수
 let status = document.getElementById('status');
 
-let trchildren = document.getElementsByClassName('tr');
 //table ----------
 let tbody = document.getElementById('tbody')
 //tr을 복제하기 위한 변수 선언
 let tr = document.getElementsByClassName('tr');
-
 
 
 //input 분류------------
@@ -34,17 +39,11 @@ let engInput = document.getElementById('eng');
 let mathInput = document.getElementById('math');
 
 
-
-let stussn = document.getElementById('stussn');
-let stuname = document.getElementById('stuname');
-let stukor = document.getElementById('stukor');
-let stueng = document.getElementById('stueng');
-let stumath = document.getElementById('stumath');
-
 //버튼 분류-----------------------------
 //학생명 검색 버튼
 let stNameBtn = document.getElementById('stNameBtn');
 let ssnBtnSearch = document.getElementById('ssnBtnSearch');
+let ssnBtnDelete = document.getElementById('ssnBtnDelete');
 
 //등록 버튼
 let enrollBtn = document.getElementById('enroll');
@@ -59,31 +58,35 @@ let engInputValue = null
 let mathInputValue = null
 //변수 선언 여기까지..
 
+//윈도우창 로딩되자마자 선언할 초기화함수
+window.addEventListener("load", function () {
+    tdRank();
+})
+
 //td의 앞에 순위 지정
 function tdRank() {
-    for(let i=0; i<= tr.length; i++){
-        let td = tr[i].children[0];
-        td.textContent = i+1;
+    for (let i = 0; i <= tr.length; i++) {
+        tr[i].children[0].textContent = i + 1;
     }
 }
 //tr 추가 함수
-function addtr(number){
+function addtr(number) {
     for (let i = 0; i < number; i++) {
         let clone = tr[1].cloneNode(true);
-        tbody.appendChild(clone);
+        tr[1].parentElement.appendChild(clone);
     }
     //tr셀을 추가하면 바로 순위를 추가해줌
-    tdRank()
+
 }
 //tr 제거함수
 function deletrtr(number) {
     for (let i = 0; i < number; i++) {
-        tbody.removeChild(tr[tr.length-1])
-       
+        tbody.removeChild(tr[tr.length - 1])
+
     }
-    
+
 }
-function statusreset(){
+function statusreset() {
     status.textContent = '';
 }
 
@@ -99,70 +102,71 @@ function regitinfo() {
 }
 //HTML 테이블 화면에 학생의 정보들을 입력해주는 함수
 //student 객체를 인자로 받아서 해당 인자의 ssn,name등의 정보를 각 테이블 위치에 입력해서 화면으로 보여줌
-function tableshow(findobj) {
-    if (findobj === 0) {
-        status.textContent = "유효하지 않는 값입니다."
-    } else {
-        stussn.textContent = findobj.ssn;
-        stuname.textContent = findobj.name;
-        stukor.textContent = findobj.kor;
-        stueng.textContent = findobj.eng;
-        stumath.textContent = findobj.math;
-
-        statusreset();
-    }
-}
-
-function searchAll() {
-    inputAllvalue()
-    statusreset();
-
-}
-//각 테이블의 tr의 자식 값들을 찾아서 각위치에 ssn과 name등의 값을 넣어서 HTML에 표시해줌
-function inputAllvalue() {
-    let list = studentManager.listAll()
-    for (let i = 0; i < trchildren.length; i++) {
-        for (let j = 1; j < trchildren[i].children.length; j++) {
-
+function inputSearchvalue(Objs) {
+    for (let i = 0; i < tr.length; i++) {
+        for (let j = 1; j < tr[i].children.length; j++) {
             switch (j) {
-                case 1: trchildren[i].children[j].textContent = list[i].ssn; break;
-                case 2: trchildren[i].children[j].textContent = list[i].name; break;
-                case 3: trchildren[i].children[j].textContent = list[i].kor; break;
-                case 4: trchildren[i].children[j].textContent = list[i].eng; break;
-                case 5: trchildren[i].children[j].textContent = list[i].math; break;
+                case 1: tr[i].children[j].textContent = Objs[i].ssn; break;
+                case 2: tr[i].children[j].textContent = Objs[i].name; break;
+                case 3: tr[i].children[j].textContent = Objs[i].kor; break;
+                case 4: tr[i].children[j].textContent = Objs[i].eng; break;
+                case 5: tr[i].children[j].textContent = Objs[i].math; break;
             }
         }
-
     }
 }
 
+function resetAllInput() {
+    for (let i = 0; i < tr.length; i++) {
+        for (let j = 1; j < tr[i].children.length; j++) {
+            tr[i].children[j].textContent = '';
+        }
+    }
+}
 
+//목록 전부 찾아오기
+function searchAll() {
+    statusreset();
+    if (studentManager.students.length > tr.length) {
+        addtr(studentManager.students.length - tr.length)
+        inputSearchvalue(studentManager.listAll())
+    }
+    inputSearchvalue(studentManager.listAll())
+}
 
 //-----학생명 검색버튼으로 성적 정보 찾기
 function searchName() {
     regitinfo()
     let findname = studentManager.findnames(studentnamevalue);
-    tableshow(findname);
+    inputSearchvalue(findname);
 }
 
 
 //-----학번 검색버튼으로 성적 정보 찾기
 function searchSSN() {
     regitinfo()
-    let findssn = studentManager.findssn(ssninputValue);
-    tableshow(findssn);
+    let findssns = studentManager.findssns(ssninputValue);
+    if (findssns === 0) {
+        status.textContent = "없는학번 입니다.";
+    }
+    inputSearchvalue(findssns);
+
 }
 
 
 
 //----StudentManager에 student객체를 생성해서 등록해주는 함수
 function enrollment() {
+    statusreset();
     regitinfo();
 
-    if (ssninputValue === '') {
-        status.textContent = "학번을 입력해 주세요"
+    if (ssninputValue === '' || studentnamevalue === '') {
+        if (ssninputValue === '') {
+            status.textContent = "학번를 입력해주세요"
+
+        }
         if (studentnamevalue === '') {
-            status.textContent = "이름을 입력해 주세요"
+            status.textContent = "이름을 입력해주세요"
         }
     } else {
         statusreset();
@@ -173,10 +177,16 @@ function enrollment() {
 }
 
 
-//----전체검색
-function Allsearch() {
-    searchAll();
 
+
+function DeleteSsn() {
+    statusreset()
+    regitinfo();
+    let deletessn = studentManager.deletessn(ssninputValue);
+    if (deletessn === 0) {
+        status.textContent = "없는학번 입니다.";
+    }
+    status.textContent = "학번:" + ssninputValue + "삭제 완료"
 }
 
 
@@ -185,10 +195,13 @@ function Allsearch() {
 //h2 타이틀 적어주기
 h2.innerText = Student.schoolname + " 학생 성적 관리"
 //전체검색 버튼을 누르면 전체 목록을 불러오기
-SearchAll.onclick = Allsearch;
+SearchAll.onclick = searchAll;
 //등록 버튼을 누르면 해당 정보가 등록됨
 enrollBtn.onclick = enrollment;
 //학번 검색 버튼을 누르면 해당 학번으로 검색 함수가 실행됨
 ssnBtnSearch.onclick = searchSSN;
 //학생 이름으로 검색해서 찾기
 stNameBtn.onclick = searchName;
+//학번으로 정보 삭제하기
+ssnBtnDelete.onclick = DeleteSsn;
+

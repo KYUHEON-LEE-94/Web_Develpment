@@ -1,4 +1,3 @@
 
 
-
-export{DeclareVariable}
+export { DeclareVariable }
