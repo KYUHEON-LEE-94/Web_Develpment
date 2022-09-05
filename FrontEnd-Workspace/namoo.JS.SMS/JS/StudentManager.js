@@ -37,11 +37,13 @@ class StudentManager {
     deletessn(ssn) {
         //1. 입력받은 ssn가 포함되지 않는 배열을 리턴받는다.
         const deletessn = this.students.filter(student => student.ssn != parseInt(ssn))
-        console.log(deletessn);
         //*일치하는 학번이 없으면 this.students.length 전체를 반환해버림
         if (deletessn.length === this.students.length) {
             return 0
-        } else {
+        }else if(deletessn.length === 0){
+            this.students.length = 0;
+            return 1;
+        }else {
             //2.새롭게 배열을 구성해주기 위하여 this.students를 초기화해준다.
             this.students.length = 0;
             //3. forEach를 사용하여 위에서 리턴받는 값을 다시 입력해준다.
