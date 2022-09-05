@@ -33,17 +33,30 @@ class StudentManager {
         }
 
     }
+    //학생이름으로 삭제
+    Deletenames(name) {
+        const findnames = this.students.filter(student => student.name != name)
+        if (findnames.length === this.students.length) {
+            //app.js에서 활용하기 위해서 0값을 반환해준다.
+            return 0
+        } else {
+            //2.새롭게 배열을 구성해주기 위하여 this.students를 초기화해준다.
+            this.students.length = 0;
+            //3. forEach를 사용하여 위에서 리턴받는 값을 다시 입력해준다.
+            findnames.forEach((array) => { this.students.push(array) })
+        }
+
+    }
+
     //학번으로 삭제하기
     deletessn(ssn) {
         //1. 입력받은 ssn가 포함되지 않는 배열을 리턴받는다.
         const deletessn = this.students.filter(student => student.ssn != parseInt(ssn))
         //*일치하는 학번이 없으면 this.students.length 전체를 반환해버림
         if (deletessn.length === this.students.length) {
+            //app.js에서 활용하기 위해서 0값을 반환해준다.
             return 0
-        }else if(deletessn.length === 0){
-            this.students.length = 0;
-            return 1;
-        }else {
+        } else {
             //2.새롭게 배열을 구성해주기 위하여 this.students를 초기화해준다.
             this.students.length = 0;
             //3. forEach를 사용하여 위에서 리턴받는 값을 다시 입력해준다.
