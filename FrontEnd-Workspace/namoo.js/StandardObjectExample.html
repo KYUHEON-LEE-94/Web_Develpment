@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let obj = new Object();
+        let obj2 = {}; //권장사항
+        let person = {
+            name: "안드로이드",
+            age: 10,
+            toString: function(){
+                return `${this.name}, ${this.age}살입니다.`;
+            }
+        };
+
+        console.log(person.constructor === Object);
+        let person2 = person.constructor();
+        console.dir(person2);
+
+        //얇은 복사
+        let person3 = person;
+        console.log(person3);
+
+
+        Object.prototype.isPrototypeOf(person)
+
+
+        for(let key in person){
+            console.log(key, person[key]);
+        }
+
+        console.log(person.toLocaleString());
+        console.log(person.toString());
+        console.log(person.valueOf());
+
+        //Object의 정적(static)메소드
+        let array = Object.keys(person);
+        for(let i of array){
+            console.log(i);
+        }
+
+        array = Object.values(person);
+        for(let i of array){
+            // if('function' == typeof i){
+            //     i();
+            // }
+            console.log(i);
+        }
+
+        //깊은 복사
+        let copyPerson  = {}// 빈객체를 만든다
+        Object.assign(copyPerson, person);
+        copyPerson.name = "애플"
+        console.dir(copyPerson);
+        console.dir(person)
+
+    </script>
+</body>
+</html>

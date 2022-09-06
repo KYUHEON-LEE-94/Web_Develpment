@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script defer type="module">
+    //default Event 덮어쓰기 작업중....
+    const Form = document.querySelector("#myForm");
+    const id = document.querySelector("#id");
+    
+    myForm.addEventListener('submit', sendData);
+
+    function sendData(event){
+        //1.default Event 제거
+        event.preventDefault();
+        //폼 유효성 검증 작업(주로 이거때문에 덮어쓰기를 많이함)
+        const inputID = id.value;
+        if(!inputID){
+            alert('당신의 아이디를 입력해줘')
+            id.focus();
+        }else{
+            Form.submit();
+        }
+    }
+</script>
+<body>
+<h2>폼 데이터 전송</h2>
+<form id="myForm" action="some.xxx">
+    <label for="">아이디</label>
+    <input type="text" id="id">
+    <input type="submit" value="서버 전송">
+    <!-- type="submit"을 누르면 자동적으로 웹페이지 이벤트가 발생함 -> 기본적으로 이벤트가 발생하도록 되어있다는 뜻 -> 이런걸 default 이벤트라고 함 -->
+    <!-- submit을 누르면 form의 action에서 이벤트가 발생함 / submit을 누르면 실제로 이벤트가 발생하는 곳은 form -->
+    <input type="reset" value="취소">
+</form>
+</select>
+</body>

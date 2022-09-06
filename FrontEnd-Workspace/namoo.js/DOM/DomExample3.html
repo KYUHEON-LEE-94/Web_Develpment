@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer type="module">
+        let h2Element = document.querySelector('#DOM');
+        console.dir(h2Element);
+        h2Element.addEventListener('click', function () {
+            alert("클릭")
+        })
+//리턴되는 NodeList는 반복 가능한 유사 배열객체이다.
+let h2list = document.querySelectorAll('h2');
+console.log(h2list.length);
+for (const e of h2list) {
+    console.log(e);
+}
+//css 클래서 선택자로 접근
+let pList = document.querySelectorAll(".content");
+for (const p of pList) {
+    p.style.color = "red";
+}
+
+//css 선택자를 이용한 세부 접근
+document.querySelector('li:first-child').style.background = "yellow";
+document.querySelector('li:nth-child(2)').style.background = "blue";
+
+//부모접근
+console.dir(document.querySelector("#DOM").parentNode)
+
+console.dir(document.querySelector("#DOM").parentElement);
+
+//자식접근
+console.dir(document.querySelector("ul").childNodes);
+//--> 빈공백도 다 가져옴
+console.dir(document.querySelector("#List").children);
+
+console.dir(document.querySelector("#List").firstChild);
+//->맨앞의 빈공백을 가져옴
+console.dir(document.querySelector("#List").firstElementChild);
+
+document.querySelector("li:nth-child(4)").previousElementSibling.style.background = 'red';
+
+//동적 노드 생성 및 추가
+let li = document.createElement('li');
+let text = document.createTextNode("screen");
+li.appendChild(text);
+document.querySelector("#BOM").appendChild(text)
+
+document.querySelector("#table").innerHTML = "굿";
+
+
+//속성 추가 및  수정
+document.querySelector('img').setAttribute("src", "https://product.cdn.cevaws.com/var/storage/images/_aliases/reference/media/feliway-2017/images/kor-kr/1_gnetb-7sfmbx49emluey4a/6341829-1-kor-KR/1_gNETb-7SfMBX49EMLUeY4A.jpg")
+
+document.querySelector('img').setAttribute("alt", "고양이였던것.")
+document.querySelector('img').setAttribute("width", "400")
+// document.querySelector('img').removeAttribute("width")
+
+//노드 복제
+document.querySelector("#BOM").cloneNode;
+
+//스타일 제어
+let titleList = document.querySelectorAll('h2');
+titleList.forEach(header =>{
+    header.style.width ="500px";
+    header.style.backgroundColor = 'green';
+})
+
+document.querySelectorAll('li').forEach(li => li.className = 'test');
+
+    </script>
+    <style>
+        .test{
+            width: 200px;
+            background-color: blue;
+            color: white;
+            border: 2px solid purple;
+        }
+    </style>
+</head>
+<body>
+    <h2 id="DOM">Document Object Model</h2>
+    <p class="content">Dom은 .....이다</p>
+    <ul id="List">
+        <li>검색</li>
+        <li>추가</li>
+        <li>수정</li>
+        <li>삭제</li>
+    </ul>
+
+    <h2  id="BOM">Browser Object Model</h2>
+    <p class="content">Bom .....이다</p>
+    <ul>
+        <li>window</li>
+        <li>location</li>
+        <li>history</li>
+        <li>Navigator</li>
+    </ul>
+
+    <table id="table" border="1"></table>
+
+    <img src="" alt="">
+</body>
+</html>

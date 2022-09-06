@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <script src="./JS/StudentExample.js"></script>
+<body>
+    <script>
+        function xxx(a){
+            console.log(a);
+            //return undefined - return을 명시하지않으면 undifined가 자동적으로 리턴됨
+        }
+
+        let na = new Student(1,"나",30,20,50);
+        console.dir(na.getsum());
+        console.dir(na.getAverage());
+        // Object 프로토타입객체의 매소드 재사용
+        console.dir(na);
+
+        //object의 프로토타입이 제공하는 공통 메소드 재사용
+        console.log("name" in na);
+        console.log(na.hasOwnProperty("ssn"))
+
+        console.clear()
+        //프로토타입 접근 방법 2가지
+        console.dir(Student.prototype)
+        console.dir(na.__proto__)
+        console.log(Student.prototype === na.__proto__);
+
+        //Constructor 프로퍼티
+        console.log(Student.prototype.constructor === Student);
+        console.log(na.constructor === Student);
+
+        console.clear()
+        //객체 비교 3가지
+        console.log(typeof na); //기본타입(String, number, boolean), 객체:Obcject, 함수비교: function만 가능
+
+        console.log(na instanceof Student);
+        console.log(na instanceof Object);
+        
+            //--정확한 일치 여부
+        console.log(na.constructor === Student);
+        console.log(na.constructor === Object);
+
+        //프로토타입에 동적 프로퍼티 추가 및 삭제
+        // Student.prototype.schoolName = "Korea IT Academy"
+        // delete Student.prototype.schoolName;
+        let strange = Student(1,"이건 뭘까",30,20,50);
+
+        //instanceof
+        console.log(na instanceof Student);
+
+        let person = {
+            name: "이규헌",
+            age: 10,
+            show: function(){
+                console.log(this.name);
+            }
+        }
+
+/*         let person = new Object{
+            person.name= "이규헌";
+            person.age = 10;
+            person.show = function(){
+                console.log(person.name);
+            }
+        } */
+
+        console.clear()
+        console.log(person.constructor === Object);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function showMessage(){
+            console.log("메시지를 출력합니다.");
+        }
+        function show(message){
+            if(!message){
+                console.log(message);
+            }else{
+                console.log("값 전달하라고..");
+            }
+        }
+        //함수 사용(호출)
+        showMessage();
+        show("JS 어려워요...")
+        show();
+
+
+        //Default Parameter
+        function sendMessage(sender ="guest", message = "hello"){
+            console.log(sender, message);
+        }
+        sendMessage('bangry',"굿")
+        sendMessage('전달')
+
+
+        //Rest Parameter
+        function showAll(...args){
+            let sum = 0;
+            // for(let i =0; i<args.length; i++) {
+            //     sum += args[i];
+
+            // }
+            // for (const key in args) {
+            //     //key가 index값을 반환함
+            //     sum += args[key]
+            // }
+            for (const iterator of args) {
+                //iterator는 배열의 값을 줌
+                sum += iterator
+            }
+            return sum;
+        }
+        console.log(showAll(1,2,3));
+        console.log(showAll(1));
+    </script>
+</body>
+</html>

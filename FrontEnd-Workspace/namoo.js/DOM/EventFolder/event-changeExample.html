@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script defer type="module">
+    let inputTF = document.querySelector('#inputTF');
+    let pets = document.querySelector('#pets');
+    inputTF.addEventListener('change', event => console.log(inputTF.value))
+    pets.addEventListener('change', selectPets)
+
+
+    function selectPets(event){
+        let selectedValue =  pets.options[pets.selectedIndex].value;
+        let selectedName =  pets.options[pets.selectedIndex].text;
+        alert(selectedValue+selectedName)
+
+    }
+</script>
+<body>
+<input type="text" id="inputTF">
+<select name="" id="pets">
+    <option value="">--please Choose an option--</option>
+    <option value="dog">강아지</option>
+    <option value="cat">고양이</option>
+    <option value="hamster">햄스터</option>
+</select>
+</body>
+</html>

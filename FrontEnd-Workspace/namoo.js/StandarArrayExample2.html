@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./JS/StudentExample.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let array = [9,2,5,1,7,6,3,4,8]
+        // console.log(array.sort()); //기본오름 차순 정렬
+
+        //내림차순
+        array.sort((x, y) => x-y );
+        //return이 -1이 기준
+
+        for (const num of array) {
+            console.log(num);
+        }
+
+        //문자열 정렬
+        let array2 = ["포도", "watermelon", "apple", "딸기"]
+        // console.log(array2.sort());
+        
+        array2.sort((x, y) => {
+            return y.charCodeAt(0) - x.charCodeAt(0); 
+        })
+        console.log(array2);
+
+        let array3 = [new Student(10, "나야나~",0,0,0),
+        new Student(12, "나야나~",10,20,30),
+        new Student(101, "너야너~",20,30,10),
+        new Student(110, "아니야~",80,90,30),];
+        
+        console.dir(array3);
+
+        console.clear()
+        //성적준 내림차순 정렬
+        array3.sort((student1, student2) => student2.getAverage() - student1.getAverage())
+        console.dir(array3);
+
+        //배열.foreach 함수를 이용한 배열 반복
+        array3.forEach(value => console.log(value.toString()));
+
+        //Array 객체의 주요 메소드 추가++
+
+        //#find 함수
+        const findname = array3.find(student => student.name === "나야나~")
+        console.log(findname);
+
+        //filter 함수
+
+        const findnames = array3.filter(student => student.name === "나야나~")
+        console.log(findnames[0].name);
+
+        //map 함수
+        const flags = array3.map( student => student.getAverage() >= 60? student.name+": Pass" : "Fail")
+        console.log(flags);
+
+        //some(); 해당하는 조건이 있어? 없어?
+        const result = array3.some( student => student.getAverage() === 100)
+        console.log(result);
+
+        //every(); 모든 애들이 만족해? 안해?
+        const result2 = array3.every( student => student.getAverage() >= 50)
+        console.log(result2);
+    </script>
+</body>
+</html>
