@@ -1,5 +1,4 @@
-
-
+import {Validator} from "./validator.js"
 //Array를 이용한 학생 성정 관리
 class StudentManager {
 
@@ -26,7 +25,7 @@ class StudentManager {
     //학생이름으로 찾아오기
     findnames(name) {
         const findnames = this.students.filter(student => student.name === name)
-        if (findnames === undefined) {
+        if (!findnames) {
             return 0
         } else {
             return findnames
@@ -48,18 +47,22 @@ class StudentManager {
 
     }
 
-    //학번으로 삭제하기
+    /** 학번으로 삭제하기
+     * 
+     * @param {*} ssn 
+     * @returns 
+     *1. 입력받은 ssn가 포함되지 않는 배열을 리턴받는다.
+     *일치하는 학번이 없으면 this.students.length 전체를 반환해버림
+     *app.js에서 활용하기 위해서 0값을 반환해준다.
+     *2.새롭게 배열을 구성해주기 위하여 this.students를 초기화해준다.
+     *3. forEach를 사용하여 위에서 리턴받는 값을 다시 입력해준다.
+     */
     deletessn(ssn) {
-        //1. 입력받은 ssn가 포함되지 않는 배열을 리턴받는다.
         const deletessn = this.students.filter(student => student.ssn != parseInt(ssn))
-        //*일치하는 학번이 없으면 this.students.length 전체를 반환해버림
         if (deletessn.length === this.students.length) {
-            //app.js에서 활용하기 위해서 0값을 반환해준다.
             return 0
         } else {
-            //2.새롭게 배열을 구성해주기 위하여 this.students를 초기화해준다.
             this.students.length = 0;
-            //3. forEach를 사용하여 위에서 리턴받는 값을 다시 입력해준다.
             deletessn.forEach((array) => { this.students.push(array) })
         }
     }
@@ -76,6 +79,13 @@ class StudentManager {
 
     toString() {
         return `${this.ssn}  ${this.name} ${this.korean} ${this.eng} ${this.math}`
+    }
+
+    sortinfo(){
+        this.students.sort((student1, student2) => {
+            return student2.getAverage()- student1.getAverage()
+            
+        })
     }
 }
 

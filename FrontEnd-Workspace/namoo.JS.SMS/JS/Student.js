@@ -52,14 +52,14 @@
             }  
 
             getsum(){
-                return this.korean + this.eng + this.math
+                return this.kor + this.eng + this.math
             }
             
             getAverage(){
                 return this.getsum()/3
             }
             toString(){
-                return `학번: ${this.ssn},  이름: ${this.name}, 국어: ${this.korean}점/ 영어: ${this.eng}점/ 수학: ${this.math}점`
+                return `학번: ${this.ssn},  이름: ${this.name}, 국어: ${this.kor}점/ 영어: ${this.eng}점/ 수학: ${this.math}점`
             }
         }
 

@@ -1,16 +1,16 @@
 // 애플리케이션 엔트리 포인트
 import { Student } from "./Student.js"
 import { StudentManager } from "./StudentManager.js"
-
+import {Validator} from "./validator.js"
 
 //테스트 객체화
-let cat = new Student(1, "고양이", 30, 20, 10);
+let cat = new Student(12, "고양이", 40, 50, 60);
 let studentManager = new StudentManager();
 studentManager.addStudent(cat);
-studentManager.addStudent(new Student(2, "이규헌", 10, 20, 30));
-studentManager.addStudent(new Student(3, "강아지", 20, 30, 40));
+studentManager.addStudent(new Student(21-1, "이규헌", 100, 90, 80));
+studentManager.addStudent(new Student(30-1, "강아지", 20, 30, 40));
 
-//---객체와 여기까지--
+//---객체화 여기까지--
 
 
 //변수 선언---------------------
@@ -60,8 +60,8 @@ let mathInputValue = null
 window.addEventListener("load", function () {
     //출력되는 예시를 window가 실행되자마자 로드해서 보여줌
     DisplayShow(studentManager.students[0], 0);
-    //앞의 순번은 항상 자동적으로 입력됨        
-    tdRank();
+    //내림차순으로 자동적으로 정렬해놓음
+    studentManager.sortinfo();     
 })
 
 /**
@@ -86,6 +86,7 @@ function tdRank() {
         tr[i].children[0].textContent = i + 1;
     }
 }
+
 /** tr 추가 함수
  * 
  * @param {*} number - 몇개의 tr을 추가해줄 것인지 결정해주는 인수
@@ -180,6 +181,7 @@ function searchAll() {
     CtrTr(studentManager.listAll())
     //else의 경우
     inputSearchvalue(studentManager.listAll())
+    tdRank();
 }
 
 /**
@@ -199,6 +201,7 @@ function searchName() {
     }
     CtrTr(findname)
     inputSearchvalue(findname);
+    tdRank();
 }
 
 
@@ -221,6 +224,7 @@ function searchSSN() {
     CtrTr(findssns);
     //else
     inputSearchvalue(findssns);
+    tdRank();
 
 }
 
@@ -231,7 +235,7 @@ function searchSSN() {
  *  3. //입력되는 ssn값이 없거나 학생명이 없을때 상태창에 출력해줄 문구를 출력하는 제어문
  *  if (ssninputValue === '' || studentnamevalue === '')...
  * 3-1. 그외의 경우에는 정상출력해줄 else 제어문 - else {.....
- * 
+ * 4. 등록되는 학생 성적들을 바로 성적으로 나열해주기 위해서 studentManager.sortinfo(); 입력
  */
 function enrollment() {
     statusreset();
@@ -239,13 +243,16 @@ function enrollment() {
     if (ssninputValue === '' || studentnamevalue === '') {
         ssninputValue === '' ? status.textContent = "학번를 입력해주세요" : status.textContent = "이름을 입력해주세요"
     } else {
-        //정상 출력이 되는 경우에, 상태창 문구를 한번 지워주고
-        statusreset();
         //해당 정보들을 입력받아 새로운 정보를 studentManager에 추가해준다. 그리고 상태창 문구로 표시해준다.
-        let student = new Student(ssninputValue, studentnamevalue, korInputValue, engInputValue, mathInputValue)
-        studentManager.addStudent(student);
-        status.textContent = studentnamevalue + " 학생의 성적 정보 추가 완료"
+        if(Validator.isSSN( parseInt(ssninputValue))){
+            let student = new Student(ssninputValue, studentnamevalue, korInputValue, engInputValue, mathInputValue)
+            studentManager.addStudent(student);
+            status.textContent = studentnamevalue + " 학생의 성적 정보 추가 완료"
+        }else{
+            status.textContent = "학번은 2자리 이상이어야합니다."
+        }
     }
+    studentManager.sortinfo();  
 }
 
 
@@ -266,6 +273,7 @@ function DeleteSsn() {
     deletessn === 0 ? status.textContent = "없는학번 입니다." : status.textContent = "학번:" + ssninputValue + "삭제 완료"
 
     Noinfo();
+    tdRank(); //순위 지정 함수
 }
 
 /**------학번을 기준으로 정보를 삭제하는 함수
@@ -284,6 +292,7 @@ function DeleteName() {
     findname === 0 ? status.textContent = "없는학번 입니다." : status.textContent = "이름:" + studentnamevalue + "학생 삭제 완료"
 
     Noinfo();
+    tdRank();
 }
 
 
@@ -326,6 +335,3 @@ Enterkey(studentnameinput, searchName)
 
 //학생이름으로 삭제하기
 stNameDelete.onclick = DeleteName;
-
-
-
