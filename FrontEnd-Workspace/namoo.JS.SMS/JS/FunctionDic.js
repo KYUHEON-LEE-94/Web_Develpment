@@ -45,8 +45,6 @@ let mathInputValue = null
 
 //윈도우창 로딩되자마자 선언할 초기화함수
 window.addEventListener("load", function () {
-    //출력되는 예시를 window가 실행되자마자 로드해서 보여줌
-    DisplayShow(studentManager.students[0], 0);
     //내림차순으로 자동적으로 정렬해놓음
     studentManager.sortinfo();
 })
