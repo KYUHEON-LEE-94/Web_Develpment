@@ -99,6 +99,7 @@ JOIN salgrade s
 ON salary BETWEEN losal AND hisal
 ORDER BY s.grade DESC;
 
+
 ------------------OUTER JOIN-------------------------------------------
 -- 오라클 OUTER JOIN에서는 조인 시킬 값이 없는 쪽에 (+) 기호를 추가한다
 -- employees 테이블에에서 부서번호가 NULL 인 Kimberely는 EQUI Join만으로는 검색되지 않음
@@ -125,7 +126,7 @@ LEFT OUTER JOIN departments d
 ON e.department_id = d.department_id;
 
 -- RIGHT OUTER JOIN
-SELECT e.first_name,
+SELECT e.last_name,
 d.department_name
 FROM employees e
 RIGHT OUTER JOIN departments d
@@ -135,6 +136,14 @@ ON e.department_id = d.department_id;
 SELECT e.first_name,
 d.department_name
 FROM employees e
-
 FULL OUTER JOIN departments d
 ON e.department_id = d.department_id;
+
+
+---Self JOIN--------------------------------
+-- ANSI 표준 SELF JOIN
+SELECT e.first_name , m.first_name "BOSS"
+FROM EMPLOYEES e
+LEFT OUTER JOIN EMPLOYEES m
+ON e.manager_id = m.employee_id;
+
