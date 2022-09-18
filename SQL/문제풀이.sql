@@ -37,22 +37,22 @@ FROM employees
 WHERE MOD(employee_id, 2) =1;
 
 --8
-SELECT SYSDATE "¿À´Ã", TO_CHAR(NEXT_DAY(ADD_MONTHS(SYSDATE,6), 7),'YYYY/MM/DD HH24:MI:SS DAY') "6°³¿ù ÈÄ Åä¿äÀÏ"
+SELECT SYSDATE "ì˜¤ëŠ˜", TO_CHAR(NEXT_DAY(ADD_MONTHS(SYSDATE,6), 7),'YYYY/MM/DD HH24:MI:SS DAY') "6ê°œì›” í›„ í† ìš”ì¼"
 FROM dual;
 
 --9
-SELECT employee_id, first_name, NVL2(TO_CHAR(manager_id), TO_CHAR(manager_id), '´ë»§')
+SELECT employee_id, first_name, NVL2(TO_CHAR(manager_id), TO_CHAR(manager_id), 'ëŒ€ë¹µ')
 FROM employees;
--- manager_id´Â ¼ýÀÚÇüÀÌ±â ¶§¹®¿¡ Çüº¯È¯ÀÌ ÇÊ¿äÇÏ´Ù.
+-- manager_idëŠ” ìˆ«ìží˜•ì´ê¸° ë•Œë¬¸ì— í˜•ë³€í™˜ì´ í•„ìš”í•˜ë‹¤.
 
 --10
 SELECT first_name,
 employee_id,
 CASE
-WHEN MOD(employee_id,3)=0 THEN '¿µÈ­¹è¿ìÆÀ'
-WHEN MOD(employee_id,3)=1 THEN '°³±×¸ÇÆÀ'
-WHEN MOD(employee_id,3)=2 THEN '°¡¼öÆÀ'
-END "ÆÀÀÌ¸§"
+WHEN MOD(employee_id,3)=0 THEN 'ì˜í™”ë°°ìš°íŒ€'
+WHEN MOD(employee_id,3)=1 THEN 'ê°œê·¸ë§¨íŒ€'
+WHEN MOD(employee_id,3)=2 THEN 'ê°€ìˆ˜íŒ€'
+END "íŒ€ì´ë¦„"
 FROM employees;
 
 
@@ -77,7 +77,7 @@ HAVING NOT AVG(salary)> 10000
 ORDER BY AVG(salary);
 
 --14 ****
-SELECT TO_CHAR(hire_date, 'MM')||'¿ù' "ÀÔ»ç´Þ", COUNT(*)||' ¸í' "Á÷¿ø¼ö"
+SELECT TO_CHAR(hire_date, 'MM')||'ì›”' "ìž…ì‚¬ë‹¬", COUNT(*)||' ëª…' "ì§ì›ìˆ˜"
 FROM EMPLOYEES
 GROUP BY TO_CHAR(hire_date, 'MM')
 ORDER BY TO_CHAR(hire_date, 'MM');
@@ -112,7 +112,7 @@ WHERE salary BETWEEN 3000 AND 5000
 ORDER BY salary;
 
 --18
-SELECT e.last_name,TO_CHAR(e.hire_date,  'YYYY"³â"MM"¿ù"DD"ÀÏ" DAY')
+SELECT e.last_name,TO_CHAR(e.hire_date,  'YYYY"ë…„"MM"ì›”"DD"ì¼" DAY')
 FROM employees e
     JOIN departments d
         ON e.department_id =  d.department_id
@@ -140,11 +140,62 @@ WHERE salary > (SELECT e2.salary
                 WHERE e2.last_name ='Lee')
 ORDER BY salary;
 
+--22
 SELECT e.last_name, e.salary
 FROM employees e
 WHERE salary IN (SELECT e2.salary
                 FROM employees e2
                 WHERE e2.department_id = 50);
                 
-                
+ --23
+ SELECT e.employee_id, e.last_name, e.salary
+ FROM employees e
+ WHERE salary > (SELECT AVG(salary)
+                FROM employees);
+ 
+ --24
+ SELECT e.employee_id, e.last_name
+ FROM employees e
+ WHERE e.department_id IN(SELECT e2.department_id
+                            FROM employees e2
+                            WHERE e2.last_name LIKE '%T%');
+                            
+--25   
+SELECT e.employee_id, e.last_name,e.salary
+ FROM employees e
+ WHERE e.salary = (SELECT MAX(salary)
+                    FROM employees e2
+                    WHERE e2.department_id = 10);
+                            
+ --26
+SELECT e.employee_id, e.last_name, e.salary, e.department_id
+FROM employees e
+WHERE salary > (SELECT MAX(e2.salary)
+        FROM employees e2
+        JOIN departments d
+            ON e2.department_id = d.department_id
+         WHERE e2.job_id = 'IT_PROG');
+         
+--27
+SELECT e.employee_id, e.last_name, e.salary
+FROM employees e
+WHERE salary > (SELECT MAX(e2.salary)
+        FROM employees e2
+        JOIN departments d
+            ON e2.department_id = d.department_id
+         WHERE e2.last_name LIKE '%u%');
+         
+--28
+SELECT job_id, AVG(salary)
+FROM employees
+GROUP BY job_id
+HAVING AVG(salary) = (SELECT MIN(AVG(salary))
+                FROM employees
+                GROUP BY job_id);
+
+
+
+
+
+                         
                 
