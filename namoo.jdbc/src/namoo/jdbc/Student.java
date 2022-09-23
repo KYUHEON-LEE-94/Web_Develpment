@@ -57,6 +57,13 @@ public class Student {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	@Override
+	public String toString() {
+		String str = " [Student] "+"ssn: "+ssn+" name: "+name+" korean: "+korean+" english: "+english+" math: "+math;
+		return str;
+		
+	}
 	
 	
 	
