@@ -3,34 +3,24 @@ package namoo.jdbc;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-import javax.sql.DataSource;
-
 import org.apache.commons.dbcp2.BasicDataSource;
 
-/**
- * 싱글톤 디자인 패턴을 적용한 Connection Factory
- * @author Lee KyuHeon
- *
- */
-
-public class ConnectionFactory {
+public class JDBCDaoFactory implements DaoFactory {
+	private StudentDao studentDao;
+	
 	private String driver;
 	private String url;
 	private String username ;
 	private String password;
 	
-	private static ConnectionFactory factory = new ConnectionFactory();
+	private static JDBCDaoFactory factory = new JDBCDaoFactory();
 	
 	private BasicDataSource dataSource;
-	
-	//ConnectionFactory를 객체화했을 떄 커넥션 연결이 필요하기 떄문에 안에서 BasicDataSource를 객체화해줘야함.
-	//그러나, 여기안에서 선언한경우 지역변수로 작용하기 때문에 getConnection()에서 해당 BasicDataSource를 사용할 수 없음
-	//그래서 위에서 클래스 내의 전역변수로 선언을 해줌
-	private ConnectionFactory() {
+
+	private JDBCDaoFactory() {
 		loadProperties();
 		BasicDataSource ds = new BasicDataSource();
 		ds.setDriverClassName(driver);
@@ -58,10 +48,9 @@ public class ConnectionFactory {
 		} catch (IOException e) {
 		e.printStackTrace();
 		}
-		}
+	}
 	
-	
-	public static ConnectionFactory getInstance() {
+	public static JDBCDaoFactory getInstance() {
 		return factory;
 	}
 	
@@ -76,5 +65,19 @@ public class ConnectionFactory {
 		}
 		return con;
 	}
+	
+	
+	//Factory가 생성하고 실제 사용할때는 얘를 얻어가는 형태
+	@Override
+	public StudentDao getStudentDao() {
+		if(studentDao != null) {
+			studentDao = new JDBCStudentDao(dataSource);	
+		}
+		return studentDao;
+			
+		
+	}
+	
+	
 
 }
