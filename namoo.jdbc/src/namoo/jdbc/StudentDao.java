@@ -15,7 +15,7 @@ public interface StudentDao {
 
 	public void  create(Student student) throws SQLException;
 	
-	public Student findBySsn(String ssn) throws SQLException;
+	public Student findBySsn(int ssn) throws SQLException;
 	
 	public List<Student> findAll() throws SQLException;
 	

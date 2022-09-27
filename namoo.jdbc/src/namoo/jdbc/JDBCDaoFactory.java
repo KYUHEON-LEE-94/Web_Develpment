@@ -70,8 +70,10 @@ public class JDBCDaoFactory implements DaoFactory {
 	//Factory가 생성하고 실제 사용할때는 얘를 얻어가는 형태
 	@Override
 	public StudentDao getStudentDao() {
-		if(studentDao != null) {
+		if(studentDao == null) {
 			studentDao = new JDBCStudentDao(dataSource);	
+//			studentDao = new MyBatisStudentDao();
+//			studentDao = new JPAStudentDao();
 		}
 		return studentDao;
 			

@@ -57,7 +57,7 @@ public class JDBCStudentDao implements StudentDao {
 	}
 
 	@Override
-	public Student findBySsn(String ssn) throws SQLException {
+	public Student findBySsn(int ssn) throws SQLException {
 		
 		Student student = null;
 		Connection conn = null;
@@ -69,6 +69,7 @@ public class JDBCStudentDao implements StudentDao {
 		try {
 			conn = dataSource.getConnection();
 			pstmt = conn.prepareStatement(sb.toString());
+			pstmt.setInt(1, ssn);
 			result = pstmt.executeQuery();	
 			if(result.next()) {
 				student = makeStudent(result);

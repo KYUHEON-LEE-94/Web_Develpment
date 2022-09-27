@@ -13,11 +13,9 @@ public class StudentAPP {
 			student.setName("얼룩이");
 			student.setEnglish(100);
 			student.setKorean(100);
-			student.setKorean(100);	
+			student.setMath(100);	
 			studentDB.create(student);
-			
-			StudentDao stu = JDBCDaoFactory.getInstance().getStudentDao();
-			stu.create(student);
+
 			
 //			List<Student> list = studentDB.listAll();
 //			for (Student student : list) {
@@ -42,7 +40,6 @@ public class StudentAPP {
 			System.err.println(e);
 			System.err.println("에뤄봘생");
 		}
-		
 		
 
 	}
