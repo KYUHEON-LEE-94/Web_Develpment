@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>서블릿 테스트</title>
+</head>
+<body>
+  <form action="join" method="post">
+  <fieldset>
+    <label for="name">이름</label>
+    <input type="text" id="name" name="name">
+    <input type="submit" value="전송">
+    
+    <label for="age">나이</label>
+    <input type="number" id="age" name="age">
+    
+    <label for="password">비밀번호</label>
+    <input type="password" id="password" name="password">
+	<legend>선택사항</legend>  
+	<div>
+	  	<input  type="checkbox" id="actor" name="actor" value="woo">
+  		<label>우영우</label>
+	</div>
+
+  	<div>
+  		<input  type="checkbox" id="actor" name="actor" value="bts">
+  		<label>BTS</label>
+  	</div>
+
+	<select name="language" multiple>
+		<option value="java">Java</option>
+		<option value="javaScript">JS</option>
+		<option value="sql">SQL</option>
+	</select>
+
+  </fieldset>
+	<input type ="submit" value="전송">
+	<input type ="reset" value="취소">
+    
+  </form>
+</body>
+</html>
