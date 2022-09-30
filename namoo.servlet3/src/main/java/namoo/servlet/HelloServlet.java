@@ -27,6 +27,7 @@ public class HelloServlet extends HttpServlet {
 	@Override
 	//생성자의 역할처럼 초기화시켜주는 메서드
 		public void init(ServletConfig config) throws ServletException {
+		
 			System.out.println("init(ServletConfig) 호출됨");
 			count = 0;
 		}
