@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+body{
+    height: 100vh;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+.Wrapper{
+    height: 100vh;
+    width: 80%;
+    margin: auto;
+}
+.row{
+    margin-bottom: 20px;
+}
+h2{
+    display: block;
+    text-align: center;
+    margin: 20px;
+
+}
+.row{
+    text-align: center;
+}
+input[type="text"]{
+    width: 70%;
+}
+form{
+    margin: 10px;
+}
+.accountNum_btnBox{
+    padding: 0;
+}
+
+.subjectBtn{
+    margin-top: 10px;
+}
+.accountOwner_btnBox button{
+    margin-top: 10px;
+}
+
+footer{
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    height: 50px;
+    bottom: 0;
+    line-height: 50px;
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-info-rgb), var(--bs-bg-opacity)) !important;
+}
+
+table{
+    overflow: scroll;
+    width: 100%;
+}
+
+
+#status{
+    display: block;
+    color:  red;
+    text-align: center;
+}
+
