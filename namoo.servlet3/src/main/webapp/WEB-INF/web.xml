@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="https://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="https://xmlns.jcp.org/xml/ns/javaee https://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
-  <display-name>namoo.servlet3</display-name>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-  </welcome-file-list>
-  <!-- 모든 서블릿들을 위한 초기파라미터 등록 -->
-  <context-param>
-  	<param-name>bts</param-name>
-  	<param-value>a whole new world~</param-value>
-  </context-param>
+<web-app xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+	xmlns="https://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="https://xmlns.jcp.org/xml/ns/javaee https://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<display-name>namoo.servlet3</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+	</welcome-file-list>
+	<!-- 모든 서블릿들을 위한 초기파라미터 등록 -->
+	<context-param>
+		<param-name>bts</param-name>
+		<param-value>a whole new world~</param-value>
+	</context-param>
+	<context-param>
+		<param-name>fileStorage</param-name>
+		<param-value>D:/웹개발_이규헌/respository/fileStorage</param-value>
+	</context-param>
+	<context-param>
+		<param-name>limitFileSize</param-name>
+		<param-value>5242880</param-value>
+	</context-param>
 </web-app>
