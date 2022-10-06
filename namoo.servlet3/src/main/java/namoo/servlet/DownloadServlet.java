@@ -22,8 +22,7 @@ public class DownloadServlet extends HttpServlet {
 	// 클라이언트에서 파일을 업로드하면 서버에 그 파일을 저장하는 특정 위치를 나타내는 변수
 	private String fileStorage;
 
-	// 업로드되는 파일의 사이즈를 제한하기 위한 변수 2MB
-	private int limitFileSize = 2 * 1024 * 1024;
+
 
 	@Override
 	public void init() throws ServletException {
