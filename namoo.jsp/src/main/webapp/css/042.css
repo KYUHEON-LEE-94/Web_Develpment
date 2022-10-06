@@ -1,0 +1,97 @@
+/*
+  CSS - table design
+  Copyright (c) 2005 Patryk Zawadzki <patrys AT pld-linux org>
+  Feel free to use
+*/
+table {
+    background: #fff;
+    border: 0;
+    color: #666;
+    font: normal 80%/150% "Trebuchet MS", "Lucida Grande", Verdana, Arial, sans-serif;
+}
+
+caption {
+    background: #4779B6;
+    -moz-border-radius: 8px;
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 0 0 4px;
+    padding: 1em;
+    text-align: center;
+}
+
+td, th {
+    padding: 1em .5em;
+}
+
+th {
+    background: #9CA2CB;
+    border-left: 2px solid #4779B6;
+    -moz-border-radius: 8px;
+    color: #fff;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: left;
+}
+
+tbody td a {
+    border-bottom: 1px dotted #666;
+    color: #666;
+    text-decoration: none;
+}
+
+tbody td a:after {
+    content: "\00A0\00BB";
+}
+
+tbody th a {
+    border-bottom: 1px dotted #fff;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+tbody th a:hover {
+    border-bottom: 1px dotted #333;
+    color: #333;
+}
+
+tbody th a:visited:after {
+    content: "\00A0\221A";
+}
+
+tbody th a:visited {
+    border-bottom: 0 none;
+}
+
+tbody th, tbody td {
+    text-align: left;
+    vertical-align: middle;
+}
+
+tfoot td, tfoot th {
+    background: #4779B6;
+    -moz-border-radius: 8px;
+    color: #fff;
+}
+
+tbody tr:hover td {
+    color: #333;
+    background: #fafafa;
+}
+
+tbody tr:hover td a {
+    border-bottom: 1px dotted #333;
+    color: #333;
+}
+
+tbody tr:hover td a:hover {
+    border-bottom: 1px dotted #000;
+    color: #000;
+}
+
+tbody tr:hover th {
+    color: #333;
+    background: #C5CCDC;
+}

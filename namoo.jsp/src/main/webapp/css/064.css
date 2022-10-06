@@ -1,0 +1,164 @@
+/* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xx  CSS Table Gallery            xx          
+xx  Author: Mauricio Samy Silva  xx
+xx  URL: http://www.maujor.com/  xx
+xx  Country: Brazil              xx
+xx  Date: 2005-09-02             xx
+xx  xxxxxxxxxxxxxxxxxxxxxxxxxxxxx*/
+table {
+    background: #c2cadd url(bg-table.jpg) 0 0 repeat-y;
+    border-collapse: collapse;
+    margin-top: 3px;
+    border: 1px solid #946f00;
+    padding: 30px 10px 5px;
+}
+
+/* \*/
+* html table {
+    border: 1px solid #09c;
+    border-top: 3px dashed #09c;
+}
+
+/* */
+
+table tr * {
+    font: 1.0em Arial, Helvetica, sans-serif;
+}
+
+table tr td, table tr th {
+    border: 1px solid #09c;
+}
+
+tr th + td + td + td + td {
+    border-right: 3px solid #946f00;
+}
+
+table tr td {
+    color: #946f00;
+}
+
+table tr *:hover, tbody tr.odd td:hover {
+    background: transparent url(alphaover.gif);
+}
+
+table tfoot tr *:hover {
+    background: none;
+}
+
+table thead th[scope]:hover {
+    background: #d7e2f6 url(none);
+    color: #000;
+    border-left: 2px solid #ccc;
+    border-right: 2px solid #999;
+    border-top: 2px solid #ccc;
+    border-bottom: 2px solid #999;
+}
+
+table caption {
+    border: solid #946f00;
+    border-width: 1px 3px 3px 1px;
+    background: #ede6ca url(ns.gif) center repeat-x;
+    font: bold 1.0em/1.8em Arial, Helvetica, sans-serif;
+    color: #946f00;
+    text-transform: uppercase;
+}
+
+/* \*/
+* html table caption {
+    border: 1px solid #09c;
+}
+
+/* */
+
+table caption:hover:before {
+    background: transparent url(alpha3.gif);
+    font-size: 0.9em;
+    padding: 2px 3.9em;
+    margin-right: 10px;
+    color: #fff;
+    content: "     *** I love CSS ***";
+    text-transform: none;
+}
+
+table caption:hover:after {
+    background: transparent url(alpha3.gif);
+    font-size: 0.9em;
+    padding: 2px 1.5em;
+    margin-left: 10px;
+    color: #fff;
+    content: "*** Stylizing data tables ***";
+    text-transform: none;
+}
+
+thead {
+    background: transparent url(alpha.gif);
+    border-right: 3px solid #946f00;
+}
+
+tbody th {
+    background: transparent url(alpha2.gif);
+}
+
+tbody tr.odd td {
+    background: transparent url(alpha1.gif);
+}
+
+tbody td {
+    background: transparent url(alpha1.gif);
+}
+
+thead tr th {
+    border-left: 2px solid #999;
+    border-right: 2px solid #ccc;
+    border-top: 2px solid #ccc;
+    border-bottom: 2px solid #999;
+    padding: 5px;
+    font: bold 1.0em Arial, Helvetica, sans-serif;
+    color: #fff;
+}
+
+tfoot {
+    border: 3px solid #946f00;
+    border-width: 0 3px 3px 0;
+}
+
+tfoot tr th {
+    color: #fff;
+    text-align: left;
+}
+
+tfoot tr td {
+    color: #fff;
+    text-align: right;
+}
+
+table tfoot tr * {
+    padding: 8px 10px;
+    text-transform: uppercase;
+    border-width: 1px 0 0;
+}
+
+tbody tr * {
+    padding: 5px;
+}
+
+tbody th a {
+    color: #fff;
+    padding: 1.0em 3.0em 0 0;
+    text-decoration: none;
+}
+
+tbody th a:hover {
+    background: none;
+    color: #f00;
+}
+
+tbody td a {
+    padding: 1px;
+    text-decoration: none;
+}
+
+tbody td a:hover {
+    background: none;
+    color: #f00;
+}

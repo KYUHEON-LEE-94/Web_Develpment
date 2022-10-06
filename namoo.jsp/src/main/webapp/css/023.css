@@ -1,0 +1,127 @@
+/*
+* Style: Salmon
+* Author: Ricardo Aroca
+* Site: www.agenciaweb.cl
+* Country Origin: Chile
+*/
+/* GENERAL*/
+#itsthetable {
+    font: 11px Verdana, Arial, Helvetica, sans-serif;
+}
+
+a {
+    color: #f60;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:visited {
+    color: #ffb17d;
+}
+
+table caption, th, tfoot td {
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+table caption {
+    font-size: 40px;
+    font-weight: normal;
+    font-variant: small-caps;
+    color: #f60;
+    letter-spacing: .3em;
+    text-align: center;
+    padding-bottom: .5em;
+}
+
+table {
+    width: 650px;
+    border-collapse: collapse;
+    border: 4px solid #f60;
+}
+
+td, th {
+    padding: 5px;
+}
+
+/* THEAD*/
+thead th {
+    font-size: 15px;
+    font-weight: normal;
+    font-variant: small-caps;
+    color: #fff2ea;
+    background-color: #f60;
+}
+
+/* TFOOT */
+tfoot th, tfoot td {
+    font-size: 15px;
+    font-weight: bold;
+    color: #fff2ea;
+    background-color: #f60;
+    padding: 10px;
+}
+
+tfoot td {
+    font-size: 30px;
+    font-weight: normal;
+}
+
+/* TBODY */
+tbody td, tbody th {
+    line-height: 140%;
+    background-color: #fff;
+    color: #666;
+}
+
+tbody tr.odd td, tbody tr.odd th {
+    background-color: #fff2ea;
+    border: 1px solid #f60;
+    border-width: 1px 0;
+}
+
+tbody th a {
+    font-size: 13px;
+    font-weight: normal;
+    font-variant: small-caps;
+}
+
+/* ONLY REAL GOOD BROWSERS */
+/* GENERAL */
+tbody td + td + td + td {
+    text-align: right;
+}
+
+tbody tr th:before {
+    content: "\2588\00A0\00A0";
+    color: #f60;
+}
+
+tbody td + td + td + td:before {
+    content: "\21E9";
+    color: #f60;
+}
+
+/* HOVER */
+tbody tr:hover td, tbody tr:hover th:before {
+    color: #000;
+}
+
+tbody tr:hover td a, tbody tr:hover th a {
+    color: #000;
+    text-decoration: underline;
+}
+
+tbody tr:hover td a:visited, tbody tr:hover th a:visited {
+    color: #ccc;
+}
+
+tbody tr:hover td + td + td + td a {
+    font-weight: bold;
+}
+
+tbody tr:hover td + td + td + td:before {
+    color: #000;
+}

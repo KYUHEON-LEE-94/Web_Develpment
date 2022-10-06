@@ -1,0 +1,126 @@
+/* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xx  CSS Table Gallery 2             xx
+xx  Author: Stu Nicholls            xx
+xx  URL: http://www.cssplay.co.uk/  xx
+xx  Country: England                xx
+xx  Date: 2005-11-02                xx
+xx  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */
+
+table {
+    display: table;
+    font-family: verdana, arial, sans-serif;
+    font-size: 76%;
+    line-height: 1.7em;
+    background: #888;
+    border: 10px solid #eee;
+}
+
+table:before {
+    content: "FOR NON INTERNET EXPLORER BROWSERS ";
+    font-size: 0.8em;
+    margin-left: 1em;
+    color: #ccc;
+}
+
+tbody {
+    display: table-row-group;
+}
+
+tr {
+    display: table-row;
+    padding: 0.5em;
+    background: #fff;
+    border: 10px solid #aaa;
+    border-width: 1px 200px 0 50px;
+    border-color: #000 #888 #000 #888;
+    margin: 2px 25px;
+    width: 300px;
+}
+
+tr.odd {
+    background: #eee;
+}
+
+td, th {
+    display: table-cell;
+    padding: 0.2em;
+}
+
+table, tbody, tr, td, th {
+    display: block;
+}
+
+thead, tfoot {
+    display: none;
+}
+
+* html thead, * html tfoot {
+    display: block;
+}
+
+caption {
+    background: url(two.gif) no-repeat 5px 20px;
+    width: 100%;
+    font-size: 3em;
+    line-height: 2em;
+    font-family: georgia, "times new roman", serif;
+    text-align: right;
+    margin-right: -5em;
+    color: #ddd;
+    padding-right: 0.5em;
+}
+
+* html caption {
+    background: url(one.gif) no-repeat 5px 20px;
+}
+
+th {
+    background: #abc;
+}
+
+th a {
+    display: block;
+    font-size: 1.5em;
+    font-family: georgia, "times new roman", serif;
+    color: #000;
+    text-decoration: none;
+    border-left: 5px solid #fff;
+    padding-left: 1em;
+}
+
+th a:hover {
+    border-left: 5px solid #000;
+    color: #fff;
+}
+
+td {
+    color: #00a;
+}
+
+td:before {
+    content: "Written by:";
+    font-style: italic;
+    font-size: 0.8em;
+    margin-right: 1em;
+    color: #c00;
+}
+
+td + td:before {
+    content: "From:";
+}
+
+td + td + td:before {
+    content: "About this style:";
+}
+
+td + td + td + td:before {
+    content: "For a copy of the CSS: ";
+}
+
+td + td + td {
+    color: #060;
+}
+
+tr:hover {
+    background: #bcd;
+}

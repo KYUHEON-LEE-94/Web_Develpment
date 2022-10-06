@@ -1,0 +1,75 @@
+/*
+* Style: Tabelle rot-weiss
+* Author: Jens Mielke, 4wd media
+* Site: www.4wdmedia.de
+* Country Origin: Germany
+*/
+
+#itsthetable {
+    font: 12px Verdana, sans-serif;
+}
+
+a, a:visited {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+a:visited {
+    text-decoration: line-through;
+}
+
+caption, th, td {
+    vertical-align: top;
+    text-align: left;
+}
+
+table caption, th, tfoot td {
+    font-weight: normal;
+    color: white;
+}
+
+table caption {
+    background-color: red;
+    padding: 8px;
+}
+
+table {
+    border-spacing: 0;
+    width: 650px;
+    background-color: red;
+}
+
+td, th {
+    padding: 8px;
+}
+
+thead th {
+    background-color: white;
+    border-bottom: 1px solid red;
+    color: red;
+}
+
+tfoot th, tfoot td {
+    background-color: white;
+    border-top: 1px solid red;
+    border-bottom: 15px solid red;
+    color: red;
+}
+
+tbody td, tbody th {
+    color: white;
+}
+
+tbody th a {
+    color: white;
+}
+
+tbody tr:hover td, tbody tr:hover th, tbody tr:hover td a, tbody tr:hover th a {
+    color: red;
+    background-color: white;
+}
+
+tbody tr:hover td a:visited, tbody tr:hover th a:visited {
+    color: red;
+}

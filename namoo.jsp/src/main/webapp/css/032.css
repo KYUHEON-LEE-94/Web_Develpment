@@ -1,0 +1,121 @@
+/* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xx  CSS Table Gallery               xx
+xx  Author: Stu Nicholls            xx
+xx  URL: http://www.cssplay.co.uk/  xx
+xx  Country: England                xx
+xx  Date: 2005-10-23                xx
+xx  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */
+table {
+    border-collapse: collapse;
+    font-family: verdana, arial, sans-serif;
+    font-size: 0.75em;
+    line-height: 2em;
+    border: 1px solid #363;
+}
+
+td, th {
+    padding: 0 0.5em;
+    border-top: 1px solid #ddd;
+}
+
+tr.odd {
+    background: #eee;
+}
+
+th {
+    background: #839965;
+}
+
+caption, tfoot {
+    font-family: georgia, "times new roman", serif;
+    font-size: 3em;
+    line-height: 2em;
+    height: 2em;
+    padding-right: 0.25em;
+    text-align: right;
+    color: #363;
+    border: 1px solid #ddd;
+}
+
+tfoot th {
+    background: #fff;
+    color: #363;
+    font-weight: normal;
+}
+
+thead tr {
+    color: #fff;
+    height: 4em;
+}
+
+thead tr th:first-child {
+    color: #fc6;
+    border-right: 1px solid #000;
+    text-align: right;
+    padding-right: 1.5em;
+}
+
+tbody th {
+    padding: 0;
+    border-right: 1px solid #fff;
+    border-top: 1px solid #000;
+    width: 16em;
+    vertical-align: middle;
+}
+
+tbody tr.odd th {
+    border-right: 1px solid #eee;
+}
+
+tbody td {
+    color: #363;
+    vertical-align: middle;
+    height: 4em;
+}
+
+tbody th a {
+    color: #fc3;
+    text-decoration: none;
+    border-right: 0.8em solid #fc3;
+    font-weight: normal;
+    text-align: right;
+    padding-right: 0.5em;
+    float: right;
+    border-top: 0.8em solid #839965;
+    border-bottom: 0.8em solid #839965;
+}
+
+tbody tr th a:visited {
+    border-right: 0.8em solid #fff;
+}
+
+tbody tr.odd th a:visited {
+    border-right: 0.8em solid #eee;
+}
+
+tbody td a:visited {
+    color: #000;
+    font-weight: normal;
+    text-decoration: line-through;
+}
+
+tbody td a {
+    color: #000;
+    font-weight: normal;
+}
+
+tbody tr th a:hover {
+    color: #fff;
+    border-right: 0.8em solid #fff;
+}
+
+tbody tr.odd th a:hover {
+    color: #fff;
+    border-right: 0.8em solid #eee;
+}
+
+tbody td a:hover {
+    color: #c00;
+    font-weight: normal;
+    text-decoration: none;
+}

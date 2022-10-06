@@ -1,0 +1,88 @@
+/* -------------------------------------------------------
+Author: Mya Leigh
+Theme: A Warm, Fall Table - Easy to Read
+URL: http://www.myaleigh.com 
+ ------------------------------------------------------- */
+
+table, td {
+    border: 1px solid #84785e;
+    border-collapse: collapse;
+    font: 100% "Verdana", Arial, Helvetica, sans-serif;
+    padding: 4px;
+}
+
+table {
+    border: 1px solid #84785e;
+}
+
+thead th {
+    background-color: #a24116;
+    border: 0;
+    color: #ffffff;
+    padding: .75em;
+}
+
+tbody th {
+    border-top: 1px solid #84785e;
+    font-weight: normal;
+    padding-left: .75em;
+}
+
+tbody tr td {
+    padding: .75em;
+}
+
+tfoot td, tfoot th {
+    background-color: #a24116;
+    border-left: none;
+    border-top: 1px solid #84785e;
+    color: #ffffff;
+    padding: .75em;
+}
+
+caption {
+    text-align: left;
+    font-size: 100%;
+    padding: .75em;
+    color: #000;
+}
+
+/* ----- Changes odd row to fffce1 */
+
+tr.odd {
+    background-color: #fffce1;
+    color: #101011;
+}
+
+/* ----- Changes row color to a24116 for those browsers that support tr:hover */
+
+tr:hover, tr.odd:hover {
+    background-color: #a24116;
+    color: #ffffff;
+}
+
+/* ----- Changes link color to 101011 */
+
+table a:link {
+    color: #101011;
+    text-decoration: none;
+}
+
+table a:visited {
+    color: #101011;
+    text-decoration: none;
+}
+
+table a:hover, table a:active {
+    text-decoration: underline;
+}
+
+/* ----- Changes link color to white for those browsers that support the tr:hover */
+
+tr:hover a:link, tr.odd:hover a:link {
+    color: #ffffff;
+}
+
+tr:hover a:visited, tr.odd:hover a:visited {
+    color: #ffffff;
+}

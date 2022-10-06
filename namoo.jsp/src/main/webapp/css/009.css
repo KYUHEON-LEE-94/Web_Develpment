@@ -1,0 +1,93 @@
+* {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    background-color: #d2d7db;
+    text-align: left;
+    border-spacing: 0px;
+    border: 1px solid #aeb3b6;
+    border-collapse: collapse;
+}
+
+table a, table, tbody, tfoot, tr, th, td {
+    font-family: georgia, "times new roman", serif;
+    line-height: 1.5em;
+    font-size: 13px;
+    color: #55595c;
+}
+
+table caption {
+    border-top: 1px solid #aeb3b6;
+    padding: .5em 0;
+    font-size: 240%;
+    font-style: italic;
+    color: #d2d7db;
+}
+
+table a {
+    display: block;
+    padding: 0.75em 2px;
+    text-decoration: none;
+    color: #589acf;
+}
+
+table a:hover, table a:focus {
+    text-decoration: underline;
+}
+
+table th a {
+    min-height: 4.5em;
+    text-align: right;
+    padding: 0 2px 1.5em 2px;
+}
+
+table th a:hover, table th a:focus, tbody tr:hover th {
+    background-color: #357eb9;
+    color: #fff !important;
+}
+
+table a:visited {
+    padding-left: 15px;
+    background: url(./check.gif) 2px 50% no-repeat;
+}
+
+table th a:visited {
+    padding-right: 15px;
+    background: url(./check.gif) 98% 0.4em no-repeat;
+}
+
+thead th {
+    text-transform: uppercase;
+    font-weight: normal;
+    letter-spacing: 1px;
+    color: #81888d;
+    padding: 0.75em 2px;
+    border-bottom: 1px solid #fff;
+}
+
+tbody th {
+    color: #25c1e2;
+    font-style: italic;
+    background-color: #fff;
+    border-bottom: 1px solid #aeb3b6;
+}
+
+td {
+    border: 1px dotted #fff;
+    padding: 0 2px;
+}
+
+tbody tr.odd {
+    background-color: #d7dce0;
+}
+
+tbody tr:hover td {
+    background-color: #5f9ed1;
+}
+
+tbody tr:hover td, tbody tr:hover th, tbody tr:hover a {
+    color: #fff !important;
+}

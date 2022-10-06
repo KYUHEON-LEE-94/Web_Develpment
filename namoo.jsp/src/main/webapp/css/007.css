@@ -1,0 +1,138 @@
+* {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    background-color: #baaea3;
+    text-align: left;
+    border-spacing: 0px;
+
+}
+
+table a, table, tbody, tfoot, tr, th, td {
+    font-family: Georgia, Arial, Helvetica, sans-serif;
+    line-height: 14px;
+    font-size: 12px;
+    color: #55595c;
+}
+
+tbody td {
+    padding: 5px;
+    height: 30px;
+}
+
+table caption {
+    border-bottom-color: #b5370e;
+    border-right-color: #b5370e;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    text-transform: uppercase;
+    font-size: 14px;
+    text-align: left;
+    font-style: normal;
+    color: #b5370e;
+    padding: 10px;
+}
+
+table a {
+    text-decoration: none;
+    color: #816658;
+
+}
+
+table a:hover, table a:focus {
+    text-decoration: underline;
+}
+
+table th {
+    font-style: normal;
+    font-weight: normal;
+    border-bottom: 1px dotted #baaea3;
+    border-top: 1px dotted #baaea3;
+}
+
+table th a {
+    color: #816658;
+    text-align: left;
+    padding: 5px;
+    display: block;
+}
+
+table .odd th a, table .odd td a, table .odd td {
+    color: #816658;
+}
+
+table th a:hover, table th a:focus, tbody tr:hover th {
+    font-style: normal;
+    font-weight: normal;
+    background-color: #b5370e;
+}
+
+table .odd th, table .odd td {
+    background-color: #aaa096;
+    border-bottom: 1px dotted #baaea3;
+    border-top: 1px dotted #baaea3;
+}
+
+thead th {
+    height: 30px;
+    text-decoration: none;
+    font-style: normal;
+    font-weight: normal;
+    padding: 5px;
+    background-color: #816658;
+    text-transform: none;
+    color: #baaea3;
+
+}
+
+tfoot {
+    border-top: 1px dotted #fff;
+    height: 30px;
+
+}
+
+tfoot th, tfoot td {
+    text-decoration: none;
+    font-style: normal;
+    font-weight: normal;
+    padding: 5px;
+    background-color: #816658;
+    text-transform: none;
+    color: #baaea3;
+}
+
+tbody th {
+    color: #baaea3;
+    font-style: normal;
+    padding: 5px;
+
+}
+
+td {
+    height: 30px;
+    background-color: #baaea3;
+    color: #816658;
+    border-bottom: 1px dotted #baaea3;
+    border-top: 1px dotted #baaea3;
+
+}
+
+tbody tr.odd {
+    background-color: #baaea3;
+    border-bottom: 1px dotted #baaea3;
+}
+
+tbody tr:hover td {
+    background-color: #b5370e;
+}
+
+tbody tr:hover td, tbody tr:hover th, tbody tr:hover a {
+    color: white;
+}
+
+b, strong {
+    font-weight: normal;
+}
