@@ -1,4 +1,3 @@
-<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@ page contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -10,12 +9,10 @@
 <title></title>
 </head>
 <body>
-<% 
-String customer = "이규헌";
-String item = "TV";
-session.setAttribute("customer", customer);
-session.setAttribute("item", item);
-response.sendRedirect("/sessionExample2.jsp");
-%>
+이름:	 <%= request.getParameter("name") %> <br>
+나이: 	<%= request.getParameter("age") %> <br>
+
+//해당 서블렛을 실행된 결과만 가져옴
+<jsp:include page="/hello.jsp"></jsp:include>
 </body>
 </html>

@@ -1,6 +1,6 @@
-<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@ page contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,12 +10,11 @@
 <title></title>
 </head>
 <body>
-<% 
-String customer = "이규헌";
-String item = "TV";
-session.setAttribute("customer", customer);
-session.setAttribute("item", item);
-response.sendRedirect("/sessionExample2.jsp");
-%>
+
+이름 예시2:	<%= request.getAttribute("name") %><br>
+이름 예시1:	<%= pageContext.getAttribute("name") %><br>
+나이:	<%= pageContext.findAttribute("age") %><br>
+<%= page %> <br> 
+<%= this %>
 </body>
 </html>
