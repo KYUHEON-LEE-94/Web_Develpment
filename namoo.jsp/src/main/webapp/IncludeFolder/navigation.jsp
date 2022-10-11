@@ -2,5 +2,5 @@
 
 <div class="topnav">
 	<a href="#">Link</a> <a href="#">Link</a> <a href="/user/userList.jsp">회원 목록</a> <a
-		href="#">Link</a> <a href="/user/signupForm.jsp" style="float: right">Sign Up</a>
+		href="#">Link</a> <a href="/user/registForm.jsp" style="float: right">Sign Up</a>
 </div>

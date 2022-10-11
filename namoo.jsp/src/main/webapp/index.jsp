@@ -23,18 +23,18 @@
 </style>
 </head>
 <body>
-<!-- header start -->
+	<!-- header start -->
 	<div class="header">
 		<h1>Lee's Portfolio Website</h1>
 		<p>Resize the browser window to see the effect.</p>
 	</div>
 
 	<%-- 탑 네비게이션 시작 --%>
-	<jsp:include page="IncludeFolder/navigation.jsp"/>
+	<jsp:include page="IncludeFolder/navigation.jsp" />
 	<%-- 탑 네비게이션 끝 --%>
-<!-- header end -->
+	<!-- header end -->
 
-<!-- main body start -->
+	<!-- main body start -->
 	<div class="row">
 		<div class="leftcolumn">
 			<div class="w3-container">
@@ -44,15 +44,15 @@
 			</div>
 		</div>
 
-	<%-- 우측 메뉴 시작 --%>
-	<jsp:include page="IncludeFolder/aside.jsp"/>
-	<%-- 우측 메뉴 끝 --%>
+		<%-- 우측 메뉴 시작 --%>
+		<jsp:include page="IncludeFolder/aside.jsp" />
+		<%-- 우측 메뉴 끝 --%>
 
 	</div>
-<!-- main body end -->
+	<!-- main body end -->
 
 	<!-- footer start -->
-	<jsp:include page="IncludeFolder/footer.jsp"/>
+	<jsp:include page="IncludeFolder/footer.jsp" />
 	<!-- footer end -->
 
 </body>
