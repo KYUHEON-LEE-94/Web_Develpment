@@ -1,6 +1,5 @@
 package namoo.user.dao;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import namoo.user.dto.User;
@@ -13,12 +12,12 @@ import namoo.user.dto.User;
  */
 public interface UserDao {
 
-	public void  create(User user) throws SQLException;
+	public void  create(User user) throws RuntimeException;
 	
-	public List<User> findAll() throws SQLException;
+	public List<User> findAll() throws RuntimeException;
 	
-	public User findById(String id) throws SQLException;
+	public User findById(String id) throws RuntimeException;
 	
-	public User findByIdAndPasswd(String id, String Passwd) throws SQLException;
+	public User findByIdAndPasswd(String id, String Passwd) throws RuntimeException;
 		
 }

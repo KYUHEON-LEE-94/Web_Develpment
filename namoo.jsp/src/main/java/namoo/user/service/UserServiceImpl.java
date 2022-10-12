@@ -2,37 +2,43 @@ package namoo.user.service;
 
 import java.util.List;
 
-import namoo.bean.User;
+import namoo.user.dao.UserDao;
+import namoo.user.dto.User;
 /*
  * 회원관리 비즈니스 로직 처리
  * 복잡한 트랜잭션 관리
  */
 public class UserServiceImpl implements UserService {
 	
-//	UserDao userDao = new JDBCUserDao();
 
-	@Override
-	public void registUser(User user) {
-		// TODO Auto-generated method stub
+	UserDao userDao;
 
+	public UserServiceImpl(UserDao userDao) {
+		this.userDao = userDao;
 	}
 
 	@Override
-	public List<User> listALl() {
-		// TODO Auto-generated method stub
-		return null;
+	public void registUser(User user){
+		
+			userDao.create(user);
+	}
+
+	@Override
+	public List<User> listAll() {		
+		
+		return	userDao.findAll();
+	
 	}
 
 	@Override
 	public User findById(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+		return userDao.findById(userId);
+		
 	}
 
 	@Override
 	public User login(String id, String passwd) {
-		// TODO Auto-generated method stub
-		return null;
+		return userDao.findByIdAndPasswd(id, passwd);
 	}
 
 }

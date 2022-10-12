@@ -9,7 +9,7 @@ CREATE TABLE users (
 
 --#2. 제약조건 추가
 ALTER TABLE users
-  ADD ( CONSTRAINT user_id_pk PRIMARY KEY(id),
+  ADD ( CONSTRAINT user_id_pk     PRIMARY KEY(id),
         CONSTRAINT user_email_uk  UNIQUE (email));
 
 --#3. 개발의 편의성을 위해 제약조건 비활성화
@@ -20,7 +20,27 @@ ALTER TABLE users
 ALTER TABLE users
   ENABLE CONSTRAINT user_id_pk
   ENABLE CONSTRAINT user_email_uk;        
-      
+
+-- 전체 조회
+SELECT id, name, email, TO_CHAR(regdate, 'yyyy-MM-DD')
+FROM users
+ORDER BY regdate DESC;
+
+-- ID로 조회(회원 상세)
+SELECT id, name, email, TO_CHAR(regdate, 'yyyy-MM-DD HH24:MI:SS')
+FROM users
+WHERE id = 'bangry';
+
+-- ID/PW로 조회(회원 로그인)
+SELECT id, name, email, TO_CHAR(regdate, 'yyyy-MM-DD HH24:MI:SS')
+FROM users
+WHERE id = 'bangry' AND passwd = '1111';
+
+-- 회원 등록
+INSERT INTO users(id, name, passwd, email)
+VALUES ('honggildong', '홍길동', 'honggildong@gmail.com', '1234');
+
+ROLLBACK;
         
 -- 선택페이지에 따른 사용자 목록 반환
 SELECT id, name, passwd, email, regdate

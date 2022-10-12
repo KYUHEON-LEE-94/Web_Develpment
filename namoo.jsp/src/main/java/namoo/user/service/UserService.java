@@ -2,7 +2,7 @@ package namoo.user.service;
 
 import java.util.List;
 
-import namoo.bean.User;
+import namoo.user.dto.User;
 
 /**
  * 회원 관리 비즈니스 메서드 선언
@@ -12,7 +12,7 @@ import namoo.bean.User;
  */
 public interface UserService {
 	public void registUser(User user);
-	public List<User> listALl();
+	public List<User> listAll();
 	public User findById(String userId);
 	public User login(String id, String passwd);
 	

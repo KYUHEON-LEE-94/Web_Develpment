@@ -4,18 +4,31 @@ package namoo.user.dto;
  * 사용자 정보 저장을 위한 자바 빈
  */
 public class User {
-	private String id, name, passwd, email;
+	private String id, name, passwd, email, regdate;
 	
 	public User() {}
 
 	
 	
-	public User(String id, String name, String passwd, String email) {
+	public String getRegdate() {
+		return regdate;
+	}
+
+
+
+	public void setRegdate(String regdate) {
+		this.regdate = regdate;
+	}
+
+
+
+	public User(String id, String name, String passwd, String email, String regdate) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.passwd = passwd;
 		this.email = email;
+		this.regdate = regdate;
 	}
 
 
@@ -54,7 +67,7 @@ public class User {
 	
 	@Override
 	public String toString() {
-		String str = " [Student] "+"id: "+id+" name: "+name+" passwd: "+passwd+" email: "+email;
+		String str = " [Student] "+"id: "+id+" name: "+name+" passwd: "+passwd+" email: "+email +"regdate "+regdate;
 		return str;
 		
 	}
