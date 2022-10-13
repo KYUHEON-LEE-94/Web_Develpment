@@ -20,4 +20,8 @@
   	<error-code>404</error-code>
   	<location>/error/error_404.jsp</location>
   </error-page>
+  <context-param>
+  	<param-name>message</param-name>
+  	<param-value>열심히 하자!</param-value>
+  </context-param>
 </web-app>

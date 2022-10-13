@@ -35,7 +35,7 @@ List<User> list = userService.listAll();
 <body>
 	<!-- header start -->
 	<div class="header">
-		<h1>Looney's Portfolio Website</h1>
+		<h1>Lee's Portfolio Website</h1>
 		<p>Resize the browser window to see the effect.</p>
 	</div>
 
@@ -77,11 +77,11 @@ List<User> list = userService.listAll();
 						</thead>
 						<tbody>
 						<%
-						for(int i=0; i<list.size(); i++){
-							User user = list.get(i);
+						int i =1;
+						for(User user: list){
 						%>
 							<tr class="w3-white">
-								<td><%= ++i %></td>
+								<td><%= i++ %></td>
 								<td><a href="view.jsp?id=<%= user.getId() %>"><%= user.getId() %></a></td>
 								<td><%= user.getName() %></td>
 								<td><%= user.getEmail() %></td>

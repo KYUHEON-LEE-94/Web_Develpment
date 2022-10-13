@@ -26,8 +26,8 @@
 		<p style="color:blue">죄송합니다. 유효하지 않은 요청입니다(404).<br/>주소를 확인해 주세요.</p>
 	</div>
 	<p class="btn">
-	<input type="submit" value="이전 페이지" style="padding: 3px; color: #333333; border: 1px solid #ddd; margin: 5px 5px" onclick="history.back();"/>
-	<input type="button" value="홈 페이지" style="padding: 3px; color: #333333; border: 1px solid #ddd;" onclick="location.href='/index.jsp'"/>
+	<input type="button" value="이전 페이지" style="padding: 3px; color: #333333; border: 1px solid #ddd; margin: 5px 5px" onclick="history.back();"/>
+	<input type="button" value="홈 페이지" style="padding: 3px; color: #333333; border: 1px solid #ddd;" onclick="location.href='/'"/>
 	</p>
 </div>
 </body>

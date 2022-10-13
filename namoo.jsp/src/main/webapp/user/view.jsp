@@ -6,6 +6,11 @@
 <%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%
 String id = request.getParameter("id");
+if(id == null){
+	//response.sendError(HttpServletResponse.SC_NOT_FOUND);
+	throw new RuntimeException("요청실패");
+	//return;
+}
 ServiceFactory serviceFactory = ServiceFactoryImpl.getInstance();
 UserService userService = serviceFactory.getUserService();
 User user = userService.findById(id);

@@ -1,3 +1,7 @@
+<%@page import="java.net.URLEncoder"%>
+<%@page import="namoo.user.service.UserService"%>
+<%@page import="namoo.common.factory.ServiceFactoryImpl"%>
+<%@page import="namoo.user.service.UserServiceImpl"%>
 <%@page import="namoo.bean.User"%>
 <%@ page contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
@@ -16,22 +20,25 @@ user.setEmail(email);
 %>     --%>
 
 <!-- param으로 받아와서 설정   -->
-<jsp:useBean id="user" class="namoo.bean.User"/>
+<jsp:useBean id="user" class="namoo.user.dto.User"/>
 <!-- 파라미터 이름과 클래스의 속성 이름이 같아야지만 적용이됨 -->
 <jsp:setProperty name="user" property="*"/>
 
 <%-- <jsp:setProperty name="user" property="name" param="name"/>
 <jsp:setProperty name="user" property="passwd" param="passwd"/>
 <jsp:setProperty name="user" property="email" param="email"/> --%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta charset="utf-8">
-<title></title>
-</head>
-<body>
-	사용자: <%=user %>
-</body>
-</html>
+
+
+<%
+UserService userService = ServiceFactoryImpl.getInstance().getUserService();
+userService.registUser(user);
+//회원 가입 결과 화면으로 이동
+//forward(이중등록 문제 가능성)
+
+//PRG 적용
+ //인코딩하는 방법
+String name = URLEncoder.encode(user.getName(),"utf-8");
+response.sendRedirect("/user/registResult.jsp?id="+user.getId()+"&name="+name+"&email="+user.getEmail()+"");
+%>
+<%-- <jsp:forward page="/user/registRes<%-- <jsp:forward page="/user/registResult.jsp"></jsp:forward> --%>ult.jsp"> --%>
+
