@@ -49,5 +49,10 @@ ${paramValues.lang['0']},${paramValues.lang['1']}<br>
 
 getinit: ${initParam.message}<br>
 요청방식: ${pageContext.request.method}
+
+<h2>Cookie----</h2>
+저장 쿠키 읽기: ${cookie.JSESSIONID.value}
+
+${user.getName()}, ${user.name}
 </body>
 </html>

@@ -15,5 +15,6 @@ public interface UserService {
 	public List<User> listAll();
 	public User findById(String userId);
 	public User login(String id, String passwd);
-	
+	public List<User> search(String type, String value);
+	public int searchCount(String type, String value);
 }

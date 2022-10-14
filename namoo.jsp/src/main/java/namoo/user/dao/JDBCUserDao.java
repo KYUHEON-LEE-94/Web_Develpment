@@ -58,6 +58,48 @@ public class JDBCUserDao implements UserDao {
 	}
 
 	@Override
+	public int countBySearchOption(String type, String value) {
+		int count = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet result = null;
+		StringBuilder sb = new StringBuilder();
+		sb.append(" SELECT COUNT(*) cnt").append(" FROM users");
+		
+		switch (type) {
+		case "id": sb.append(" WHERE  id = ?"); break;
+		case "name": sb.append(" WHERE name LIKE ?"); break;		
+		}
+
+		try {
+			conn = dataSource.getConnection();
+			pstmt = conn.prepareStatement(sb.toString());
+			if(!(type.equals(""))) {			
+				pstmt.setString(1, value);			  
+			}
+			result = pstmt.executeQuery();
+			while (result.next()) {
+				count = result.getInt("cnt");
+				
+			}
+
+		} catch (SQLException e) {
+			//SQL Exception을 RuntimeException으로 변환
+			throw new RuntimeException(e.getMessage());
+		} finally {
+				try {
+					if (pstmt != null) pstmt.close();
+					if (result != null) result.close();
+					if (conn != null) conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		}
+		return count;
+	}
+
+	@Override
 	public List<User> findAll() throws RuntimeException {
 		List<User> list = new ArrayList<User>();
 		Connection conn = null;
@@ -66,6 +108,8 @@ public class JDBCUserDao implements UserDao {
 		StringBuilder sb = new StringBuilder();
 		sb.append(" SELECT id, name, email, TO_CHAR(regdate, 'yyyy-MM-DD') regdate").append(" FROM users")
 				.append(" ORDER BY regdate DESC");
+		
+		
 
 		try {
 			conn = dataSource.getConnection();
@@ -90,6 +134,52 @@ public class JDBCUserDao implements UserDao {
 				}
 		}
 		return list;
+	}
+
+	@Override
+	public List<User> findAllBySearchOption(String type, String value) {
+		List<User> list = new ArrayList<User>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet result = null;
+		StringBuilder sb = new StringBuilder();
+		sb.append(" SELECT id, name, email, TO_CHAR(regdate, 'yyyy-MM-DD') regdate").append(" FROM users");
+		
+		//type에 따라 Where절 동적 추가
+		switch (type) {
+		case "id": sb.append(" WHERE  id = ?"); break;
+		case "name": sb.append(" WHERE name LIKE ?"); break;		
+		}
+		
+		
+		try {
+			conn = dataSource.getConnection();
+			pstmt = conn.prepareStatement(sb.toString());
+			if(!(type.equals(""))) {			
+				pstmt.setString(1, value);			  
+			}
+			 
+			result = pstmt.executeQuery();
+			while (result.next()) {
+				User user = makeUser(result);
+				list.add(user);
+			}
+
+		} catch (SQLException e) {
+			//SQL Exception을 RuntimeException으로 변환
+			throw new RuntimeException(e.getMessage());
+		} finally {
+				try {
+					if (pstmt != null) pstmt.close();
+					if (result != null) result.close();
+					if (conn != null) conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		}
+		return list;
+		
 	}
 
 	@Override

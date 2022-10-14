@@ -19,5 +19,11 @@ public interface UserDao {
 	public User findById(String id) throws RuntimeException;
 	
 	public User findByIdAndPasswd(String id, String Passwd) throws RuntimeException;
+	
+	//검색옵션에 따른 회원 목록 조회
+	public List<User> findAllBySearchOption(String type, String value);
+	
+	//검색옵션에 따른 회원수 조회
+	public int countBySearchOption(String type, String value);
 		
 }

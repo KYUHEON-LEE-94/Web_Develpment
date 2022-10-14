@@ -41,4 +41,20 @@ public class UserServiceImpl implements UserService {
 		return userDao.findByIdAndPasswd(id, passwd);
 	}
 
+	@Override
+	public List<User> search(String type, String value) {
+		if(type.equalsIgnoreCase("name")) {
+			value = "%"+value+"%";
+		}
+		return userDao.findAllBySearchOption(type, value);
+	}
+
+	@Override
+	public int searchCount(String type, String value) {
+		if(type.equalsIgnoreCase("name")) {
+			value = "%"+value+"%";
+		}
+		return userDao.countBySearchOption(type, value);
+	}
+
 }

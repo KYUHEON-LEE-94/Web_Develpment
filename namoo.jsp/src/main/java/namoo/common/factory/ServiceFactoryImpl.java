@@ -71,21 +71,4 @@ public class ServiceFactoryImpl implements ServiceFactory {
 		return new UserServiceImpl(getUserDao());
 	}
 	
-	// test main
-	public static void main(String[] args) {
-		UserService serviceFactory = ServiceFactoryImpl.getInstance().getUserService();
-//		System.out.println(serviceFactory);
-//		User user = new User();
-//		user.setId("안드로이드");
-//		user.setName("갤럭시");
-//		user.setPasswd("123456");
-//		user.setEmail("efse@efes.com");
-//		serviceFactory.registUser(user);
-//		List<User> list = serviceFactory.listALl();
-//		System.out.println(list);
-		
-		System.out.println(serviceFactory.findById("gono"));
-		System.out.println(serviceFactory.login("gono", "1111"));
-		
-	}
 }

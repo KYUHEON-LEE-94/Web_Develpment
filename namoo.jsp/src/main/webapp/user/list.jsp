@@ -6,9 +6,17 @@
 <%@page import="namoo.user.service.UserService"%>
 <%@page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <% 
+String type = request.getParameter("type");
+if(type == null) type = "";
+
+String value = request.getParameter("value");
+if(value == null) value = "";
+
+
 ServiceFactory serviceFactory = ServiceFactoryImpl.getInstance();
 UserService userService = serviceFactory.getUserService();
-List<User> list = userService.listAll();
+List<User> list = userService.search(type, value);
+int count = userService.searchCount(type, value);
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -49,17 +57,19 @@ List<User> list = userService.listAll();
 		<div class="leftcolumn">
 			<div class="w3-container">
 				<div class="w3-center">
-					<h3>회원 목록(총 ?명)</h3>
+					<h3>회원 목록(총 <%= count %>명)</h3>
 				</div>
 
 				<!-- 검색폼 -->
 				<div class="search">
+				<!-- action지정 필요 없음 -> 현재의 URL에서 실행하면 되기때문에  -->
 					<form>
-						<select name="searchType">
-							<option value="all">전체</option>
+						<select name="type">
+							<option value="">전체</option>
 							<option value="id">아이디</option>
 							<option value="name">이름</option>
-						</select> <input type="text" name="searchValue" placeholder="Search..">
+						</select> 
+						<input type="text" name="value" placeholder="Search..">
 						<input type="submit" value="검색">
 					</form>
 				</div>
@@ -75,6 +85,8 @@ List<User> list = userService.listAll();
 								<th>가입일자</th>
 							</tr>
 						</thead>
+						<% if(count != 0){
+							%>
 						<tbody>
 						<%
 						int i =1;
@@ -89,10 +101,21 @@ List<User> list = userService.listAll();
 							</tr>
 						<%
 						}
-						%>
-
-							
+						%>						
 						</tbody>
+													
+							<%
+							
+						}else{
+							%>
+						<tbody>
+							<tr class="w3-white">
+								<td colspan=5; style="color:red; text-align:center;">검색된 목록이 없습니다.</td>						
+							</tr>
+						</tbody>
+						<%
+						}
+						%>						
 					</table>
 				</div>
 				<div class="pagination">
