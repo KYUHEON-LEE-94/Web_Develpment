@@ -2,6 +2,7 @@ package namoo.user.service;
 
 import java.util.List;
 
+import namoo.common.web.Params;
 import namoo.user.dto.User;
 
 /**
@@ -17,4 +18,5 @@ public interface UserService {
 	public User login(String id, String passwd);
 	public List<User> search(String type, String value);
 	public int searchCount(String type, String value);
+	public List<User> search(Params params);
 }

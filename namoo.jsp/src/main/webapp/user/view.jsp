@@ -56,19 +56,19 @@ User user = userService.findById(id);
 				<div class="w3-container" id="contact">
 					<h2>회원상세</h2>
 					<form action="regist.jsp" method="post">
-						<p>
+						<p>	아이디
 							<input class="w3-input w3-padding-16 w3-border" type="text"
 								value=<%= user.getId() %> readonly>
 						</p>
-						<p>
+						<p> 이름
 							<input class="w3-input w3-padding-16 w3-border" type="text"
 								value=<%= user.getName() %> readonly>
 						</p>
-						<p>
+						<p> 이메일
 							<input class="w3-input w3-padding-16 w3-border" type="text"
 								value=<%= user.getEmail() %> readonly>
 						</p>
-						<p>								
+						<p> 가입일자						
 						<input class="w3-input w3-padding-16 w3-border" type="text" readonly
 						
 								<% if(user.getRegdate() == null){

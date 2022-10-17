@@ -1,27 +1,63 @@
 package namoo.test;
 
+import java.util.List;
+
+import namoo.common.factory.ServiceFactory;
 import namoo.common.factory.ServiceFactoryImpl;
+import namoo.common.web.Params;
+import namoo.user.dto.User;
 import namoo.user.service.UserService;
 
 public class UserDaoTest {
 
 	public static void main(String[] args) {
-		UserService serviceFactory = ServiceFactoryImpl.getInstance().getUserService();
-//		System.out.println(serviceFactory);
+		ServiceFactory serviceFactory = ServiceFactoryImpl.getInstance();
+		UserService userService = serviceFactory.getUserService();
+//		System.out.println(userService);
 //		User user = new User();
-//		user.setId("안드로이드");
-//		user.setName("갤럭시");
-//		user.setPasswd("123456");
-//		user.setEmail("efse@efes.com");
-//		serviceFactory.registUser(user);
-//		List<User> list = serviceFactory.listALl();
+//		user.setId("sylee");
+//		user.setName("이승엽");
+//		user.setPasswd("1111");
+//		user.setEmail("sylee@gmail.com");
+//		userService.registUser(user);
+//		System.out.println("정상 등록 완료..");
+		
+//		List<User> list = userService.listAll();
 //		System.out.println(list);
 		
-//		System.out.println(serviceFactory.findById("gono"));
-//		System.out.println(serviceFactory.login("gono", "1111"));
-//	 	System.out.println(serviceFactory.search("id", "4534"));
-//	 	System.out.println(serviceFactory.search("name", "%기%"));
-	 	System.out.println(serviceFactory.searchCount("name", "이"));
+//		User findUser = userService.findById("bangry");
+//		System.out.println(findUser);
+		
+//		User loginUser = userService.login("bangry", "11222");
+//		System.out.println(loginUser);
+		
+//		List<User> searchList = userService.search("id", "bangry");
+//		List<User> searchList = userService.search("name", "%기정%");
+//		System.out.println(searchList);
+		
+//		int count = userService.searchCount("", "");
+//		int count = userService.searchCount("id", "bangry");
+//		int count = userService.searchCount("name", "기정");
+//		System.out.println(count);
+		
+//		Params params = new Params();
+		Params params = new Params("name", "기정", 20, 10, 1);
+		List<User> list = userService.search(params);
+		for (User user : list) {
+			System.out.println(user);
+		}
+		
+		
+
 	}
 
 }
+
+
+
+
+
+
+
+
+

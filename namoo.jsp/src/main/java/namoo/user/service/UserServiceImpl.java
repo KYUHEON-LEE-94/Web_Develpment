@@ -2,6 +2,7 @@ package namoo.user.service;
 
 import java.util.List;
 
+import namoo.common.web.Params;
 import namoo.user.dao.UserDao;
 import namoo.user.dto.User;
 /*
@@ -55,6 +56,14 @@ public class UserServiceImpl implements UserService {
 			value = "%"+value+"%";
 		}
 		return userDao.countBySearchOption(type, value);
+	}
+	
+	@Override
+	public List<User> search(Params params) {
+		if(params.getSearchType().equalsIgnoreCase("name")) {
+			params.setSearchValue("%" + params.getSearchValue() + "%");
+		}
+		return userDao.findAllBySearchOption(params);
 	}
 
 }

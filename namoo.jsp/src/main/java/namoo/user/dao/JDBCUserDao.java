@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import namoo.common.web.Params;
 import namoo.user.dto.User;
 
 /**
@@ -251,6 +252,66 @@ public class JDBCUserDao implements UserDao {
 			}
 		}
 		return user;
+	}
+	
+	@Override
+	public List<User> findAllBySearchOption(Params params) {
+		List<User> list = new ArrayList<User>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		StringBuilder sb = new StringBuilder();
+		sb.append(" SELECT id, name, email, regdate")
+		  .append(" FROM ( SELECT CEIL(rownum / ?) request_page, id, name, email, regdate")
+		  .append("        FROM   ( SELECT id, name, email, TO_CHAR(regdate, 'YYYY-MM-DD DAY') regdate")
+		  .append("                 FROM users");
+		
+		// type에 따라 WHERE 동적 추가--
+		//params.getSearchType() 는 id로 검색하냐 name으로 검색하냐의 분기점을 알기위함
+		switch (params.getSearchType()) {
+			case "id": sb.append(" WHERE id = ?"); break;
+			case "name": sb.append(" WHERE name LIKE ?"); break;
+		}
+		
+		//위의 switch문이 있든 없든 아래의 SQL문은 무조건 추가되어야함.
+		sb.append("	                ORDER  BY regdate DESC))")
+		  .append("	WHERE  request_page = ?");
+		
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(sb.toString());
+			//페이지 사이즈는 default로 10개 무조건!
+			pstmt.setInt(1, params.getPageSize());
+			
+			//searchType이 없다 = 전체검색이다.
+				//WHERE절이 없다.
+					//2번째 ?  .append("	WHERE  request_page = ?");에 요청하는 페이지 번째를 넣어줌
+			if(params.getSearchType().equals("")) {
+				pstmt.setInt(2, params.getRequestPage());
+			}else {
+				//검색하는 getSearchType()이 있다는건 검색원하는 타입을 입력받는다: 2번째 ?에 입력
+					//3번쩨 ?에 입력하는 건 요청하는 페이지번째
+				pstmt.setString(2, params.getSearchValue());
+				pstmt.setInt(3, params.getRequestPage());
+			}
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				User user = makeUser(rs);
+				list.add(user);
+			}
+		} catch (SQLException e) {
+			// SQLException을 RuntimeException으로 변환
+			throw new RuntimeException(e.getMessage());
+		} finally {
+			try {
+				if (rs != null)    rs.close();
+				if (pstmt != null) pstmt.close();
+				if (con != null)   con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
 	}
 
 	// ------

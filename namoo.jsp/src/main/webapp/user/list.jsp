@@ -1,22 +1,54 @@
-<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
+<%@page import="namoo.common.web.Page"%>
+<%@page import="namoo.common.web.Params"%>
 <%@page import="namoo.user.dto.User"%>
 <%@page import="java.util.List"%>
-<%@page import="namoo.common.factory.ServiceFactory"%>
-<%@page import="namoo.common.factory.ServiceFactoryImpl"%>
 <%@page import="namoo.user.service.UserService"%>
+<%@page import="namoo.common.factory.ServiceFactoryImpl"%>
 <%@page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<% 
+<%
 String type = request.getParameter("type");
-if(type == null) type = "";
-
+if (type == null) {
+	type = "";
+}
 String value = request.getParameter("value");
-if(value == null) value = "";
+if (value == null) {
+	value = "";
+}
+UserService userService = ServiceFactoryImpl.getInstance().getUserService();
+//List<User> list = userService.search(type, value);
+//int count = userService.searchCount(type, value);
 
+// 페이징 처리를 위해 필요한 정보
+// 전체검색개수, 한페이당 보여지는 목록 개수, 한 페이지당 보여지는 페이지 개수
 
-ServiceFactory serviceFactory = ServiceFactoryImpl.getInstance();
-UserService userService = serviceFactory.getUserService();
-List<User> list = userService.search(type, value);
+//한페이지당 10개씩 보여주겠다.
+int pageSize = 3;
+
+//페이지 번호 5개씩~
+int pageCount = 5;
+
+//요청 페이지 - default값으로 1번째 페이지 보여주겠다.
+int requestPage = 1;
+
+String size = request.getParameter("size");
+//size != null라는 건, 사용자가 요청한 사이즈가 있다는 것. 그래서 pageSize값을 변경
+if (size != null) {
+	pageSize = Integer.parseInt(size);
+}
+
+//몇번 페이지를 보여줄것이냐
+String selectPage = request.getParameter("page");
+if (selectPage != null) {
+	requestPage = Integer.parseInt(selectPage);
+}
+
+Params params = new Params(type, value, pageSize, pageCount, requestPage);
+List<User> list = userService.search(params);
+
+//전체 개수를 확인하기 위해서
 int count = userService.searchCount(type, value);
+Page paging = new Page(params, count);
+paging.build();
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -43,7 +75,7 @@ int count = userService.searchCount(type, value);
 <body>
 	<!-- header start -->
 	<div class="header">
-		<h1>Lee's Portfolio Website</h1>
+		<h1>Looney's Portfolio Website</h1>
 		<p>Resize the browser window to see the effect.</p>
 	</div>
 
@@ -57,20 +89,21 @@ int count = userService.searchCount(type, value);
 		<div class="leftcolumn">
 			<div class="w3-container">
 				<div class="w3-center">
-					<h3>회원 목록(총 <%= count %>명)</h3>
+					<h3>
+						회원 목록(총
+						<%=count%>명)
+					</h3>
 				</div>
 
 				<!-- 검색폼 -->
 				<div class="search">
-				<!-- action지정 필요 없음 -> 현재의 URL에서 실행하면 되기때문에  -->
 					<form>
 						<select name="type">
 							<option value="">전체</option>
 							<option value="id">아이디</option>
 							<option value="name">이름</option>
-						</select> 
-						<input type="text" name="value" placeholder="Search..">
-						<input type="submit" value="검색">
+						</select> <input type="text" name="value" placeholder="Search.."> <input
+							type="submit" value="검색">
 					</form>
 				</div>
 
@@ -85,44 +118,81 @@ int count = userService.searchCount(type, value);
 								<th>가입일자</th>
 							</tr>
 						</thead>
-						<% if(count != 0){
-							%>
 						<tbody>
-						<%
-						int i =1;
-						for(User user: list){
-						%>
-							<tr class="w3-white">
-								<td><%= i++ %></td>
-								<td><a href="view.jsp?id=<%= user.getId() %>"><%= user.getId() %></a></td>
-								<td><%= user.getName() %></td>
-								<td><%= user.getEmail() %></td>
-								<td><%= user.getRegdate() %></td>								
-							</tr>
-						<%
-						}
-						%>						
-						</tbody>
-													
 							<%
-							
-						}else{
+							if (count != 0) {
+								int i = 1;
+								for (User user : list) {
 							%>
-						<tbody>
 							<tr class="w3-white">
-								<td colspan=5; style="color:red; text-align:center;">검색된 목록이 없습니다.</td>						
+								<td><%=i++%></td>
+								<td><a href="/user/view.jsp?id=<%=user.getId()%>"><%=user.getId()%></a></td>
+								<td><%=user.getName()%></td>
+								<td><%=user.getEmail()%></td>
+								<td><%=user.getRegdate()%></td>
 							</tr>
+							<%
+							}
+							} else {
+							%>
+							<tr>
+								<td colspan="5" style="color: red; text-align: center">회원이
+									존재하지 않습니다.</td>
+							</tr>
+							<%
+							}
+							%>
 						</tbody>
-						<%
-						}
-						%>						
 					</table>
 				</div>
 				<div class="pagination">
-					<a href="#">&laquo;</a> <a href="#">1</a> <a class="active"
-						href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">5</a>
-					<a href="#">6</a> <a href="#">7</a> <a href="#">8</a> <a href="#">9</a>
-					<a href="#">10</a> <a href="#">&raquo;</a>
+					<%
+					if (paging.isShowFirst()) {
+					%>
+					<a href="<%= paging.getQueryString(1) %>">처음으로</a>
+
+					<%
+					}
+					%>
+
+					<%
+					if (paging.isShowPrevious()) {
+					%>
+						<a href="<%= paging.getQueryString(paging.getPreviousStartPage()) %>">&laquo; </a>
+
+					<%
+					}
+					%>
+					<%
+					for (int i = paging.getStartPage(); i <= paging.getEndPage(); i++) {
+						if (i == params.getRequestPage()) {
+					%>
+						<a class='active'><%=i%></a>
+					<%
+					} else {
+					%>
+						<a href="<%= paging.getQueryString(i) %>"><%= i%></a>
+					<%
+					}
+					}
+					%>
+					<%
+					if (paging.isShowNext()) {
+					%>
+						<a href="<%= paging.getQueryString(paging.getNextStartPage()) %>">&raquo;</a>
+
+					<%
+					}
+					%>
+
+					<%
+					if (paging.isShowLast()) {
+					%>
+						<a href="<%= paging.getQueryString(paging.getPageCount()) %>">끝으로</a>
+
+					<%
+					}
+					%>
 				</div>
 			</div>
 		</div>
