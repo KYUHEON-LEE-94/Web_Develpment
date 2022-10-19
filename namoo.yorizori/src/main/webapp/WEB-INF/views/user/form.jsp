@@ -19,15 +19,8 @@
   <!-- Navigation-->
   <jsp:include page="/WEB-INF/views/Include/nav.jsp" />
   <!-- Navigation End-->
-  <!-- Header-->
-  <header class="bg-dark py-5">
-    <div class="container px-4 px-lg-5 my-5">
-      <div class="text-center text-white">
-        <h1 class="display-4 fw-bolder text-warning">요리조리 요리책 서비스</h1>
-        <p class="lead fw-normal text-white-50 mb-0">세상의 모든 레시피가 여기에</p>
-      </div>
-    </div>
-  </header>
+
+
   <!-- Section-->
   <section class="py-5">
     <div class="container">
@@ -40,20 +33,18 @@
 
           <div class="well">
             <p>회원가입을 위해 아래 내용들을 작성해 주세요.</p>
-            <form class="form-horizontal" action="">
+            <form class="form-horizontal" action="/user/regist.do" method="post">
               <fieldset>
                 <div class="form-group">
                   <label class="col-lg-2 control-label">아이디</label>
                   <div class="col-lg-10">
-                    <input type="test" class="form-control"
-                      placeholder="아이디">
+                    <input type="text" class="form-control" placeholder="아이디" name="id">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-lg-2 control-label">비밀번호</label>
                   <div class="col-lg-10">
-                    <input type="password" class="form-control"
-                      placeholder="비밀번호">
+                    <input type="password" class="form-control" placeholder="비밀번호" name="passwd">
                   </div>
                 </div>
 
@@ -61,16 +52,14 @@
                   <label class="col-lg-2 control-label">이름</label>
 
                   <div class="col-lg-10">
-                    <input type="text" name="name" class="form-control"
-                      placeholder="이름">
+                    <input type="text" class="form-control" placeholder="이름" name="name">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-lg-2 control-label">이메일</label>
 
                   <div class="col-lg-10">
-                    <input type="email" name="email"
-                      class="form-control" placeholder="이메일">
+                    <input type="email" class="form-control" placeholder="이메일" name="email">
                   </div>
                 </div>
 
