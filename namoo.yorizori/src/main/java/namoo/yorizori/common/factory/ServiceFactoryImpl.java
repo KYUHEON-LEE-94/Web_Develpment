@@ -8,10 +8,14 @@ import javax.sql.DataSource;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 
+import namoo.yorizori.cookbook.dao.CookbookDao;
+import namoo.yorizori.cookbook.dao.JDBCCookbookDao;
 import namoo.yorizori.user.dao.JDBCUserDao;
 import namoo.yorizori.user.dao.UserDao;
 import namoo.yorizori.user.service.UserService;
 import namoo.yorizori.user.service.UserServiceImpl;
+import namoo.yoroziri.cookbook.service.CookbookService;
+import namoo.yoroziri.cookbook.service.CookbookServiceImpl;
 
 public class ServiceFactoryImpl implements ServiceFactory {
 	
@@ -29,6 +33,7 @@ public class ServiceFactoryImpl implements ServiceFactory {
 		createDataSource();
 	}
 	
+
 	public static ServiceFactoryImpl getInstance() {
 		return factory;
 	}
@@ -63,10 +68,18 @@ public class ServiceFactoryImpl implements ServiceFactory {
 	public UserDao getUserDao() {
 		return new JDBCUserDao(dataSource);
 	}
+	public CookbookDao getCookbookDao() {
+		return new JDBCCookbookDao(dataSource);
+	}
 
 	@Override
 	public UserService getUserService() {
 		return new UserServiceImpl(getUserDao());
+	}
+	
+	@Override
+	public CookbookService getCookbookService() {
+		return new CookbookServiceImpl(getCookbookDao());
 	}
 	
 }

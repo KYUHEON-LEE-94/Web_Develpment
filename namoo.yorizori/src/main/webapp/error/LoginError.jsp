@@ -122,7 +122,7 @@
           <p>사용자 로그인에 실패하였습니다.로그인 정보를 확인하세요.</p>
         </div>
         <div class="modal-footer flex-column border-top-0">
-          <a href="" class="btn btn-lg btn-primary w-40 mx-0 mb-2">확인</a>
+          <a href="/" class="btn btn-lg btn-primary w-40 mx-0 mb-2">확인</a>
         </div>
       </div>
     </div>
