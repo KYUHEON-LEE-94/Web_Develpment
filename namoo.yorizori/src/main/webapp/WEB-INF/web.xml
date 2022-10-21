@@ -7,19 +7,29 @@
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+  <!-- 500번대 에러 처리 -->
   <error-page>
   	<exception-type>java.lang.Exception</exception-type>
-  	<location>/error/error_500.jsp</location>
+  	<location>/WEB-INF/views/error/error_500.jsp</location>
   </error-page>
+  
+  <!-- 내가 만든 예외처리를 하는 화면 처리 -->
+    <error-page>
+  	<exception-type>namoo.yorizori.common.web.YzruntimeException</exception-type>
+  	<location>/WEB-INF/views/error/error_yorizori.jsp</location>
+  </error-page>
+  
   <!-- 400번대 에러 처리 -->
     <error-page>
   	<error-code>400</error-code>
-  	<location>/error/error_400.jsp</location>
+  	<location>/WEB-INF/views/error/error_400.jsp</location>
   </error-page>
   <error-page>
   	<error-code>404</error-code>
-  	<location>/error/error_404.jsp</location>
+  	<location>/WEB-INF/views/error/error_404.jsp</location>
   </error-page>
+  
+  
   
   <servlet>
   	<servlet-name>index.jsp</servlet-name>

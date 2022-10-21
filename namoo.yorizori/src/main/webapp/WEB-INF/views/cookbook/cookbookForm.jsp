@@ -27,25 +27,27 @@
 
 					<div class="col-auto h2">요리책 등록</div>
 					<!-- cookbook Form -->
-					<form>
+					<form action="/cookbook/register.do" method="post">
 						<div class="row mb-3">
 							<label for="book_name" class="col-sm-2 col-form-label">요리책명</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="book_name">
+								<input type="text" class="form-control" id="book_name" name="bookname">
 							</div>
 						</div>
 						<div class="row mb-3">
 							<label for="author" class="col-sm-2 col-form-label">등록자</label>
 							<div class="col-sm-10">
 								<input type="text" class="form-control"
-									placeholder="한식매니아(kfoodmania)" disabled id="book_author">
+									value="${cookie.loginid.value}" disabled id="book_author">
+                                  <!-- disabled상태로는 값을 받아올 수 없어서 hidden input으로 받아오기 -->
+                   	            <input type="hidden" name="authorid" value="${cookie.loginid.value}">
 							</div>
 						</div>
 
 						<div class="row mb-3">
 							<label for="book_desc" class="col-sm-2 col-form-label">설명</label>
 							<div class="col-sm-10">
-								<textarea class="form-control" id="book_desc" rows="5"></textarea>
+								<textarea class="form-control" id="book_desc" rows="5" name="bookdesc"></textarea>
 							</div>
 						</div>
 
