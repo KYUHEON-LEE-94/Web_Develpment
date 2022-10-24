@@ -1,4 +1,4 @@
-package namoo.yorizori.user.dao;
+package namoo.yorizori.receipe.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,12 +18,12 @@ import namoo.yorizori.user.dto.User;
  * @author Lee KyuHeon
  *
  */
-public class JDBCUserDao implements UserDao {
+public class JDBCReceipeDao implements ReceipeDao {
 
 	private DataSource dataSource;
 
 	// 생성자
-	public JDBCUserDao(DataSource dataSource) {
+	public JDBCReceipeDao(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
 

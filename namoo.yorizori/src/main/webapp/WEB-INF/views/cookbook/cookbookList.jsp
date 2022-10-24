@@ -27,7 +27,7 @@
     <div class="container px-4 px-lg-5 mt-5">
       <div class="row">
         <div class="col h2">
-          요리~조리~ <a href="#" class="btn btn-md btn-primary">요리책 등록</a>
+          요리~조리~ <a href="/cookbook/register.do" class="btn btn-md btn-primary">요리책 등록</a>
         </div>
       </div>
       <div class="row" style="height: 15px">
@@ -44,16 +44,16 @@
         class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
         <!-- 요리책 목록 -->
 
-    <c:forEach items="${CookbookList}" var="CookbookList" varStatus="i">
+    <c:forEach items="${CookbookList}" var="CookbookList" >
             <div class="col mb-5">
           <div class="card h-70">
             <!-- book details-->
             <div class="card-body p-4">
               <div class="text-center">
                 <!-- book name-->
-                <h5 class="fw-bolder">${CookbookList+i.bookName}</h5>
+                <h5 class="fw-bolder">${CookbookList.bookName}</h5>
                 <!-- author-->
-                - 김기정 -
+                - ${CookbookList.authorName} -
               </div>
             </div>
             <!-- Product actions-->

@@ -15,7 +15,7 @@
           aria-current="page" href="/">홈</a></li>
         <li class="nav-item"><a class="nav-link" href="/cookbook/register.do">요리책
             등록</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">요리책 목록</a></li>
+        <li class="nav-item"><a class="nav-link" href="/cookbook/list.do">요리책 목록</a></li>
       </ul>
 
       <c:choose>
@@ -29,7 +29,7 @@
         <c:when test="${empty cookie.loginid}">
           <c:if test="${empty cookie.saveid}">
             <form class="row row-cols-lg-auto g-3 align-items-center"
-              method="post" action="user/login.do">
+              method="post" action="/user/login.do">
               <div class="col-12">
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox"
@@ -57,7 +57,7 @@
           </c:if>
           <c:if test="${not empty cookie.saveid}">
             <form class="row row-cols-lg-auto g-3 align-items-center"
-              method="post" action="user/login.do">
+              method="post" action="/user/login.do">
               <div class="col-12">
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox"

@@ -31,9 +31,7 @@ public class UserController extends HttpServlet {
 	//회원 가입 DB처리
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//한글 인코딩을 위하여
-		request.setCharacterEncoding("utf-8");
-		
+	
 		String id = request.getParameter("id");
 		String passwd = request.getParameter("passwd");		
 		String name = request.getParameter("name");		

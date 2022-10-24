@@ -57,12 +57,12 @@
             </div>
 
             <div class="col-12" id="recipe_sequence">
-              <label for="seq_num1" class="form-label">조리절차</label> 
-              <input type="text" class="form-control" id="seq_num1">
+              <label for="seq_num1" class="form-label">조리절차</label> <input
+                type="text" class="form-control" id="seq_num1">
               <input type="text" class="form-control" id="seq_num2">
               <input type="text" class="form-control" id="seq_num3">
-              <input type="button" class="btn btn-info btn-sm" value="추가">
-                <!-- 조리절차는 기본 2개 - 추가 버튼을 누를때마다 목록을 추가하는 기능도 추가 -->
+              <input type="button" class="btn btn-info btn-sm"
+                value="추가">
             </div>
 
             <div class="col-12">

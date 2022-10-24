@@ -8,6 +8,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import namoo.yorizori.common.factory.ServiceFactoryImpl;
 import namoo.yorizori.user.dto.User;
@@ -62,11 +63,19 @@ public class LoginController extends HttpServlet {
 			Cookie saveidCookie = null;
 			loginCookie.setPath("/");
 			response.addCookie(loginCookie);
+			
+			
 			if (saveid != null) {
 				saveidCookie = new Cookie("saveid", loginUser.getId());
 				saveidCookie.setPath("/");
 				saveidCookie.setMaxAge(60*60*24*30);
 				response.addCookie(saveidCookie);
+				
+				/**
+				 * 비밀번호는 보안을 위해서 session에 저장
+				 */
+				HttpSession session = request.getSession();
+				session.setAttribute("sessionPasswd", passwd);
 			}
 			response.sendRedirect("/");
 		} else {

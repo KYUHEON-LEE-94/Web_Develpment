@@ -26,7 +26,7 @@
     <div class="container px-4 px-lg-5 mt-5">
       <div class="row">
         <div class="col h2">
-          요리~조리~ <a href="#" class="btn btn-md btn-primary">요리책 등록</a>
+          요리~조리~ <a href="/cookbook/register.do" class="btn btn-md btn-primary">요리책 등록</a>
         </div>
       </div>
       <div class="row" style="height: 15px">

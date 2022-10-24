@@ -4,14 +4,9 @@ import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import namoo.yorizori.common.factory.ServiceFactoryImpl;
-import namoo.yorizori.user.dto.User;
-import namoo.yorizori.user.service.UserService;
 
 /**
  * 회원 관련 브라우저 요청 처리 서블릿 컨트롤러입니다.

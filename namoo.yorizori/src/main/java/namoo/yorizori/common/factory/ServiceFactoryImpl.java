@@ -72,6 +72,8 @@ public class ServiceFactoryImpl implements ServiceFactory {
 		return new JDBCCookbookDao(dataSource);
 	}
 
+//	-------Singleton Service생성---------------------
+	
 	@Override
 	public UserService getUserService() {
 		return new UserServiceImpl(getUserDao());
