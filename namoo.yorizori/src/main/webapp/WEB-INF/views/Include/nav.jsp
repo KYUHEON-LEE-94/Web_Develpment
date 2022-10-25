@@ -16,6 +16,7 @@
         <li class="nav-item"><a class="nav-link" href="/cookbook/register.do">요리책
             등록</a></li>
         <li class="nav-item"><a class="nav-link" href="/cookbook/list.do">요리책 목록</a></li>
+         <li class="nav-item"><a class="nav-link" href="/recipe/register.do">레시피 등록</a></li>
       </ul>
 
       <c:choose>

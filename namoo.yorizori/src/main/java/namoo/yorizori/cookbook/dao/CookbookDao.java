@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import namoo.yorizori.cookbook.dto.Cookbook;
-import namoo.yorizori.receipe.dto.Receipe;
+import namoo.yorizori.receipe.dto.Reciepe;
 
 public interface CookbookDao {
 	public void create(Cookbook cookbook) throws RuntimeException;

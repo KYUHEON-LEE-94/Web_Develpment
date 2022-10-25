@@ -12,7 +12,7 @@ import java.util.Map;
 import javax.sql.DataSource;
 
 import namoo.yorizori.cookbook.dto.Cookbook;
-import namoo.yorizori.receipe.dto.Receipe;
+import namoo.yorizori.receipe.dto.Reciepe;
 import namoo.yorizori.user.dto.User;
 
 public class JDBCCookbookDao implements CookbookDao {

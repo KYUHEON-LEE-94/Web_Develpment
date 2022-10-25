@@ -60,7 +60,6 @@ public class CookbookFormController extends HttpServlet {
 		  cookbook.setBookName(bookname);
 		  cookbook.setBookDesc(bookdesc);
 		  cookbook.setAuthorId(authorid);
-		  System.out.println(bookname);
 
 		 CookbookService service =  ServiceFactoryImpl.getInstance().getCookbookService();
 		 service.registerCookbook(cookbook);

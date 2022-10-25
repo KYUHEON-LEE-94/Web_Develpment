@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -27,7 +28,9 @@
 
 					<div class="col-auto h2">요리책 등록</div>
 					<!-- cookbook Form -->
-					<form action="/cookbook/register.do" method="post">
+          <!-- rootPath를 바뀔것을 염두해서 동적으로 설정할 경우의 예시1  -->
+          <!-- ${pageContext.request.contextPath}cookbook/register.do -->
+					<form action="${ctx}/cookbook/register.do" method="post">
 						<div class="row mb-3">
 							<label for="book_name" class="col-sm-2 col-form-label">요리책명</label>
 							<div class="col-sm-10">
@@ -40,6 +43,7 @@
 								<input type="text" class="form-control"
 									value="${cookie.loginid.value}" disabled id="book_author">
                                   <!-- disabled상태로는 값을 받아올 수 없어서 hidden input으로 받아오기 -->
+                       
                    	            <input type="hidden" name="authorid" value="${cookie.loginid.value}">
 							</div>
 						</div>

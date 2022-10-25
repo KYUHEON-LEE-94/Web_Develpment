@@ -10,10 +10,13 @@ import java.util.Map;
 
 import namoo.yorizori.cookbook.dao.CookbookDao;
 import namoo.yorizori.cookbook.dto.Cookbook;
+import namoo.yorizori.receipe.dao.ReceipeDao;
+import namoo.yorizori.receipe.dto.Reciepe;
 import namoo.yorizori.user.dao.UserDao;
 
 public class CookbookServiceImpl implements CookbookService {
 	private CookbookDao Cookbookdao;
+	private ReceipeDao ReceipeDao;
 
 	public CookbookServiceImpl(CookbookDao Cookbookdao) {
 		this.Cookbookdao = Cookbookdao;
@@ -29,6 +32,7 @@ public class CookbookServiceImpl implements CookbookService {
 		return Cookbookdao.findAll();
 	}
 
+
 	@Override
 	public Cookbook findCookbook(int bookId) {
 		return Cookbookdao.findCookbook(bookId);
@@ -37,6 +41,19 @@ public class CookbookServiceImpl implements CookbookService {
 	@Override
 	public List<Map<String, Object>> finAllCookbooksWithName() {
 		return Cookbookdao.finAllCookbooksWithName();
+	}
+	
+	//레시피 기능 등록
+	@Override
+	public Reciepe findRecipeById(int reciepeId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public void registerRecipe(Reciepe Reciepe) {
+		ReceipeDao.create(Reciepe);
+	
 	}
 
 }

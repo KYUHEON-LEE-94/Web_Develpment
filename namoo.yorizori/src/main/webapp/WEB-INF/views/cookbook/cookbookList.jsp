@@ -1,6 +1,5 @@
-<%@ page contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -27,7 +26,8 @@
     <div class="container px-4 px-lg-5 mt-5">
       <div class="row">
         <div class="col h2">
-          요리~조리~ <a href="/cookbook/register.do" class="btn btn-md btn-primary">요리책 등록</a>
+          요리~조리~ <a href="/cookbook/register.do"
+            class="btn btn-md btn-primary">요리책 등록</a>
         </div>
       </div>
       <div class="row" style="height: 15px">
@@ -37,37 +37,44 @@
         </p>
       </div>
     </div>
-    
+
 
     <div class="container px-4 px-lg-5 mt-5">
       <div
         class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
         <!-- 요리책 목록 -->
 
-    <c:forEach items="${CookbookList}" var="CookbookList" >
-            <div class="col mb-5">
-          <div class="card h-70">
-            <!-- book details-->
-            <div class="card-body p-4">
-              <div class="text-center">
-                <!-- book name-->
-                <h5 class="fw-bolder">${CookbookList.bookName}</h5>
-                <!-- author-->
-                - ${CookbookList.authorName} -
+        <c:forEach items="${CookbookList}" var="CookbookList">
+          <div class="col mb-5">
+            <div class="card h-70">
+              <!-- book details-->
+              <div class="card-body p-4">
+                <div class="text-center">
+                  <!-- book name-->
+                  <h5 class="fw-bolder">${CookbookList.bookName}</h5>
+                  <!-- author-->
+                  <c:choose>
+                    <c:when test="${CookbookList.authorName eq null}">
+                      -익명-
+                    </c:when>
+                    <c:otherwise>
+                     - ${CookbookList.authorName}"-
+                    </c:otherwise>
+                  </c:choose>
+                </div>
               </div>
-            </div>
-            <!-- Product actions-->
-            <div
-              class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-              <div class="text-center">
-                <a class="btn btn-outline-dark mt-auto" href="#">레시피
-                  목록조회</a>
+              <!-- Product actions-->
+              <div
+                class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                <div class="text-center">
+                  <a class="btn btn-outline-dark mt-auto" href="#">레시피
+                    목록조회</a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-    </c:forEach>
-        
+        </c:forEach>
+
 
       </div>
     </div>
