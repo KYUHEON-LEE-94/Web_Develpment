@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Ajax Test</title>
+<script type="module" defer>
+
+  //---서버와의 비동기 통신---
+function getAjaxMessage() 
+{
+  let request = new XMLHttpRequest();
+  request.open("get", "helloAjax2.jsp"); 
+  //이벤트소스에 이벤트리스너 등록
+  request.onreadystatechange = function(){
+    //데이터 수신완료일때;
+    if(request.readyState === 4){
+      if(request.status === 200){
+//        console.log(request.responseText);
+        showMessage(request.responseText);
+      }else if (request.status === 404){
+        showMessage("404040404")
+      }else if (request.status === 500){
+        showMessage('서버 문제가 발생하였습니다.')
+      }
+    }else{
+      showMessage("수신중..말걸지마..")
+    }
+  };
+  //다 처리되었으면 데이터를 보낸다!
+  request.send();
+}
+
+//돔을 이용한 화면 동적 처리
+function showMessage(message) {
+  let target = document.querySelector("#message");
+  if(target) target.innerHTML = message;
+}
+
+document.querySelector('#button').addEventListener('click', function(){
+  getAjaxMessage();
+})
+
+
+</script>
+</head>
+<body>
+  <form action="/helloAjax2.jsp">
+    <input type="submit" value="서버에서 데이터 수신(클래식)">
+  </form>
+  <br>
+  <button id="button">서버에서 데이터 수신(Ajax)</button>
+  <h2><span id="message"></span> </h2>
+</body>
+</html>

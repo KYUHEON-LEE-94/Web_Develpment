@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Ajax Test</title>
+<script type="module" defer>
+
+  //---Fetch API를 이용한 서버와의 비동기 통신---
+function getbookList() {
+  //fetch는 어차피 Promise를 리턴하기 때문에 체인걸기 가능
+  fetch("helloAjax2.jsp")
+  //응답메시지를 plainText로 반환
+  .then(response => response.text()) 
+  .then(message => alert(message))
+  .catch(err => console.log("err: ", err))
+}
+
+
+document.querySelector('#button').addEventListener('click', function(){
+  getbookList();
+})
+
+
+</script>
+</head>
+<body>
+  <form action="/helloAjax2.jsp">
+    <input type="submit" value="서버에서 데이터 수신(클래식)">
+  </form>
+  <br>
+  <button id="button">서버에서 데이터 수신(Ajax)</button>
+  <h2><span id="message"></span> </h2>
+</body>
+</html>
