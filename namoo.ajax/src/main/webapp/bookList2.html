@@ -15,17 +15,22 @@ function getbookList() {
 
 //돔을 이용한 화면 동적 처리
 function showList(message) {
-  let message = JSON.parse(message);
-  let body = document.querySelector('body');
-  let h2 = document.createElement('h2');
-  function test (message){
-    for (let index = 0; index < message.list.length; index++) {
-      body.appendChild(h2).innerHTML = message.list[index]
-      
-    }
-  }
+      // html body에 교재목록을 출력하시요...
+      let result = JSON.parse(message);
+      let page = result.page;
+      let list = result.list;
+      let table = `<table border='1'>`;
+      table += `<tr><th>책이름</th><th>저자</th><th>출판사</th><th>가격</th><th>장르</th></tr>`;
+      for (const book of list) {
+        table += `<tr>`;
+        table += `<td>${book.title}</td><td>${book.author}</td><td>${book.publisher}</td><td>${book.price}</td><td>${book.kind}</td>`;
+        table += `</tr>`;
+      }
+      table += `</table>`;
 
-}
+      let target = document.querySelector("#book-list");
+      if (target) target.innerHTML = table;
+    }
 
 document.querySelector('#button').addEventListener('click', function(){
   getbookList();

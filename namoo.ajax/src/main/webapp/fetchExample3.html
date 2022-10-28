@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script type="module" defer>
+function postJsonSend() {
+    let user ={
+        id: "bang",
+        name: "와우",
+        age: 23,
+        address: "기타를 등등하고 친다"
+    }
+    let option = {
+        method:"post",
+        headers:{
+            "Content-type": "application/json",
+        },
+        body: JSON.stringify(user),
+    };
+fetch("/json",option)
+.then(res => res.json())
+.then(mess => receiveJson(mess))
+.catch(err => console.log("err: ", err))
+}
+
+function receiveJson(message) {
+    console.log(message);
+    }
+
+    document.querySelector('#button').addEventListener('click', function(){
+        postJsonSend();
+})
+
+
+</script>
+<body>
+    <button id="button">버튼</button>
+</body>
+</html>

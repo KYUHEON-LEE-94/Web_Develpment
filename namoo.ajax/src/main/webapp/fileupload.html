@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script defer type="module">
+document.querySelector("#uploadFrom").addEventListener('submit',uploadFile);
+
+    function uploadFile(event) {
+        event.preventDefault();
+        const writer = document.querySelector('#writer');
+        const commnets = document.querySelector('#commnets');
+        const infile = document.querySelector("infile");
+
+        //form안에 있는 Data를 저장하기 위한 객체
+        let formData = new FormData();
+        formData.append("writer", writer.value);
+        formData.append("commnets",commnets.value);
+        //파일객체는 여러개를 보낼수 있어서 배열로 되어있음
+        formData.append("infile",infile.files[0]);
+
+        let option = {
+        method:"POST",
+        body: formData,
+    };
+
+fetch("/upload" ,option)
+//단순한 성공여부확인을 위해서 text로 받음
+.then(res => res.text())
+.then(mess => alert(mess))
+.catch(err => console.log("err: ", err))
+}
+//이벤트소스에 이벤트리스너 등록
+
+
+</script>
+<body>
+    <button id="button">Json 전송 및 수신</button>
+    <h2>Upload files with Fetch API</h2>
+    <form id="uploadFrom">
+        <input type="text" id="writer" placeholder="작성자">
+        <input type="text" id="commnets" placeholder="파일설명">
+        <input type="file" id="infile"><br>
+        <button type="submit">Upload File</button>
+    </form>
+</body>
+</html>

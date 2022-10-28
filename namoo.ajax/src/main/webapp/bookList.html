@@ -6,47 +6,45 @@
 <script type="module" defer>
 
   //---서버와의 비동기 통신 (Post 방식)---
-function getbookList() {
-
-  let request = new XMLHttpRequest();
-  request.open("get", "bookList.jsp"); 
-
-  //이벤트소스에 이벤트리스너 등록
-  request.onreadystatechange = function(){
-    //데이터 수신완료일때;
-    if(request.readyState === 4){
-      let parseText = JSON.parse(request.responseText);
-      if(request.status === 200){
-        for (const key in parseText) {
-          if(key === 'list'){
-              parseText['list'].forEach(list =>{
-                for (const [key, value] of Object.entries(list)) {
-                  showList(key+":"+value);
-}
-              })
-            
+  function getBookList() {
+      let request = new XMLHttpRequest();
+      request.open("get", "bookList.jsp");
+      request.onreadystatechange = function () {
+        if (request.readyState === 4) {
+          if (request.status === 200) {
+            //console.log(request.responseText);
+            //showMessage(request.responseText);
+            showList(request.responseText);
+          } else if (request.status === 404) {
+            showMessage("요청하신 자원이 없습니다.");
+          } else if (request.status === 500) {
+            showMessage("서버 문제가 발생하였습니다.");
           }
+        } else {
+          showMessage("데이터 수신중....");
         }
-     
-      }else if (request.status === 404){
-        // showList("404040404")
-      }else if (request.status === 500){
-        showList('서버 문제가 발생하였습니다.')
       }
-    }else{
-      // showMessage("수신중..말걸지마..")
+      request.send();
     }
-  };
-  request.send();
-}
 
 //돔을 이용한 화면 동적 처리
 function showList(message) {
-  let body = document.querySelector('body');
-  let h2 = document.createElement('h2');
-  body.appendChild(h2).innerHTML = message;
+      // html body에 교재목록을 출력하시요...
+      let result = JSON.parse(message);
+      let page = result.page;
+      let list = result.list;
+      let table = `<table border='1'>`;
+      table += `<tr><th>책이름</th><th>저자</th><th>출판사</th><th>가격</th><th>장르</th></tr>`;
+      for (const book of list) {
+        table += `<tr>`;
+        table += `<td>${book.title}</td><td>${book.author}</td><td>${book.publisher}</td><td>${book.price}</td><td>${book.kind}</td>`;
+        table += `</tr>`;
+      }
+      table += `</table>`;
 
-}
+      let target = document.querySelector("#book-list");
+      if (target) target.innerHTML = table;
+    }
 
 document.querySelector('#button').addEventListener('click', function(){
   getbookList();

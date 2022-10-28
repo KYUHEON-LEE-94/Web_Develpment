@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script type="module" defer>
+function postJsonSend() {
+    let user ={
+        id: "bang",
+        name: "와우",
+        email: "sushi좋아요@"
+    }
+    let option = {
+        method:"POST",
+        headers:{
+            "Content-type": "application/json",
+        },
+        body: JSON.stringify(user),
+    };
+fetch("uesr",option)
+.then(res => res.json())
+.then(mess => console.dir(mess))
+.catch(err => console.log("err: ", err))
+}
+
+
+
+    document.querySelector('#button').addEventListener('click', function(){
+        postJsonSend();
+})
+
+
+</script>
+<body>
+    <button id="button">버튼</button>
+</body>
+</html>
