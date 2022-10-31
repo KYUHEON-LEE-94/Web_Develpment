@@ -61,10 +61,10 @@ public class UserController extends HttpServlet {
 		System.out.println("---------post----------------");
 
 		//역직렬화
-		BufferedReader in = req.getReader();
-		Gson gson = new Gson();
-		User user = gson.fromJson(in, User.class);
-		out.println("받은 사용자 정보: "+ user.toString());
+//		BufferedReader in = req.getReader();
+//		Gson gson = new Gson();
+//		User user = gson.fromJson(in, User.class);
+//		out.println(user);
 		List<User> list = new ArrayList<User>();
 		list.add(new User("bang3","fs","sdfes"));
 		list.add(new User("bang5","fs","sdfes"));

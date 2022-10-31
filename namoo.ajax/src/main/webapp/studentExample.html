@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script defer type="module">
+document.querySelector("#listBtn").addEventListener('click', event => requestStudents());
+document.querySelector("#registBtn").addEventListener('click',event => requestCreateStudents());
+
+//학생목록 수신
+function requestStudents() {
+fetch("/students")
+.then(res => res.json())
+.then(mess => receiveJsonStudents(mess))
+.catch(err => console.log("err: ", err))
+};
+
+function receiveJsonStudents(list) {
+        list.forEach(element => {
+            console.log(element);
+            document.querySelector("#students").innerHTML += `<h2>이름: ${element.name}, 학번: ${element.ssn}</h2>`;
+            
+        });
+
+        
+
+
+}
+
+function test(list) {
+    let list2 = JSON.parse(list);
+    document.querySelector("#students").innerHTML = list2.status? `<h2>이름: ${list2.student.name}</h2 style='color:red'>`:`<h2>이름없음</h2>`
+
+}
+
+//신규등록
+function requestCreateStudents() {
+
+    //가상 학생 데이터 생성
+    const student ={
+        ssn: 50,
+		korean: 100,
+		english: 10,
+		math: 70,
+		name: "고양이"
+    }
+
+    let option = {
+    method:"POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify(student)
+};
+
+fetch("/students" ,option)
+.then(res => res.text())
+.then(mess => test(mess))
+.catch(err => console.log("err: ", err))
+}
+</script>
+</body>
+<button id="listBtn">서버에 학생목록 JSON 수신</button>
+<button id="registBtn">서버에 학생 JSON 등록</button>
+<div id="students"></div>
+</html>

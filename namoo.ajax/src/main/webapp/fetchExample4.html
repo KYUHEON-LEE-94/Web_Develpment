@@ -20,17 +20,14 @@ function postJsonSend() {
         },
         body: JSON.stringify(user),
     };
-fetch("uesr",option)
+fetch("/uesr",option)
 .then(res => res.json())
-.then(mess => console.dir(mess))
+.then(mess => console.log(mess))
 .catch(err => console.log("err: ", err))
 }
 
+postJsonSend();
 
-
-    document.querySelector('#button').addEventListener('click', function(){
-        postJsonSend();
-})
 
 
 </script>

@@ -55,10 +55,6 @@ public class UploadController extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		out.println("파일업로드 처리 됬다.");
-//		System.out.println(writer);
-//		System.out.println(commnets);
-//		System.out.println(imgFileName);
-//		System.out.println(contentType);
 		
 		
 		
