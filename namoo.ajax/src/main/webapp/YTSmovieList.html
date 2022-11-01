@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script type="module" defer>
+
+function movieList() {
+
+fetch("movies")
+.then(res => res.json())
+.then(mess => receiveJson(mess))
+.catch(err => console.log("err: ", err))
+}
+
+function receiveJson(message) {
+    for (const key of message.data.movies) {
+        console.log(key.title);
+    }
+    }
+movieList()
+
+</script>
+<body>
+    <button id="button">버튼</button>
+</body>
+</html>
