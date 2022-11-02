@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<!-- Database properties 설정 파일 -->
+	<properties resource="db-config.properties" />
+	<!-- MyBatis에서 사용할 자바클래스(JavaBean) 별칭 등록 -->
+	<typeAliases>
+		<typeAlias type="namoo.mybatis.ems.dto.Employee"
+			alias="Employee" />
+	</typeAliases>
+	<!-- 다수의 Database에 접근하거나 개발, 테스트, 운영 환경에 맞는 다중 환경 설정 지원 -->
+	<environments default="development">
+		<environment id="development">
+			<!-- 트랜잭션 관리 방법 설정 - JDBC : JDBC API의 commit(), rollback() 메소드를 이용하여 MyBatis 
+				자체에서 트랜잭션 관리 - MANAGED : WAS(WebLogic, WebSphere, JBoss 등)에서 지원하는 트랜잭션 관리 
+				이용 -->
+			<transactionManager type="JDBC" />
+			<!-- DataSource 설정 : MyBatis는 JDBC 표준 규약인 DataSource 구현체를 이용하여 DB 연결 -->
+			<dataSource type="POOLED">
+				<property name="driver" value="${database.driver}" />
+				<property name="url" value="${database.url}" />
+				<property name="username" value="${database.username}" />
+				<property name="password" value="${database.password}" />
+				<property name="poolMaximumActiveConnections" value="10" />
+				<property name="poolMaximumIdleConnections" value="5" />
+				<property name="poolMaximumCheckoutTime" value="20000" />
+			</dataSource>
+		</environment>
+		<!-- <environment id="product"> <transactionManager type="JDBC" /> <dataSource 
+			type="POOLED"> </dataSource> </environment> -->
+	</environments>
+	<!-- SQL XML Mapper 파일 설정 -->
+	
+	<mappers>
+		<!-- 클래스패스에 위치한 XML 매퍼 파일 지정 --> 
+		<!-- sQL문을 저장하고 있는 파일 위치를 알려주는..  -->
+		<mapper resource="namoo/mybatis/ems/mapper/EmployeeMapper.xml" />
+		<!-- Annotation Mapper 인퍼페이스를 사용하는 인터페이스 위치 지정 -->
+<!-- 		<mapper class="namoo.mybatis.ems.mapper.EmployeeMapper2" /> -->
+	</mappers>
+	
+</configuration>
