@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 관례상 mapper파일의 경로를 이름으로 많이 사용함 -->
+<mapper namespace="namoo.mybatis.ems.mapper.UserMapper">
+
+	<!-- 전체사원 조회를 위한 SQL 매핑 -->
+	<insert id="register" parameterType="User"> 
+	 INSERT INTO users(id, name, passwd, email)
+	 	VALUES (#{id}, #{name}, #{passwd}, #{email})
+	</insert>
+	
+
+	<select id="findUesr" resultType="User">
+	SELECT id, name, email, TO_CHAR(regdate, 'yyyy-MM-DD') regdate
+	FROM users
+	ORDER BY regdate DESC
+	</select>
+
+
+	<select id="login" parameterType="map" resultType="User">
+	SELECT id, name, email, TO_CHAR(regdate, 'yyyy-MM-DD HH24:MI:SS') regdate, passwd
+	FROM users
+	WHERE id = #{id}  AND passwd = #{passwd}
+	</select>
+	
+	
+
+	<select id="findUserbyid" parameterType="string" resultType="User">
+		SELECT id, name, email, TO_CHAR(regdate, 'yyyy-MM-DD HH24:MI:SS') regdate
+		FROM users
+		WHERE id = #{id}
+	</select>
+	
+
+</mapper>
