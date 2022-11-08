@@ -1,5 +1,8 @@
 package namoo.springbasic.core;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Sword implements Weapon {
 
 	@Override
