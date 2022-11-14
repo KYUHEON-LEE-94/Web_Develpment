@@ -21,6 +21,7 @@ public class MemberController {
 		@GetMapping("/form")
 		public String form(Model model) {		
 			return "members/register";
+			//논리적 view이름
 		}
 		
 		/*
@@ -62,6 +63,7 @@ public class MemberController {
 		public String registerV2(@ModelAttribute("member") Member member, Model model) {		
 		
 //		model.addAttribute("member", member);
+			//@ModelAttribute은 다 Container에 자동등록됨
 		return "members/register-result";
 	}
 		
