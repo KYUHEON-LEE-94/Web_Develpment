@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import namoo.springmvc.web.member.dto.Member;
 
@@ -30,7 +31,6 @@ public class RequestJsonController {
 	@PostMapping("/request-json")
 	@ResponseBody
 	public String processJson(@RequestBody Member member){
-		log.info("회원 객체: {}",member);
 		return "회원 등록 처리 완료";
 		
 	}
@@ -42,7 +42,6 @@ public class RequestJsonController {
 	@PostMapping("/request-json2")
 	@ResponseBody
 	public Member processJson2(@RequestBody Member member){
-		log.info("회원 정보: {}",member);
 		return member;
 		
 	}

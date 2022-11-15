@@ -10,8 +10,8 @@
 <body>
   <h2>Spring MVC 파일 업로드</h2>
   <form method="post" action="/upload" enctype="multipart/form-data">
-    <input type="file" name="uploadfile"><br> <input
-      type="text" name="uploader" placeholder="업로더"><br>
+    단일파일: <input type="file" name="uploadfile"><br> 
+    <input type="text" name="uploader" placeholder="업로더"><br>
     <button type="submit">업로드</button>
   </form>
 </body>
