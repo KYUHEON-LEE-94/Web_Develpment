@@ -12,6 +12,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import lombok.extern.slf4j.Slf4j;
 
+/*
+ * 단일 파일 업로드만 가능한 클래스
+ */
 @Controller
 @Slf4j
 public class FileUploadController {

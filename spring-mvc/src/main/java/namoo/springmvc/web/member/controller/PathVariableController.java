@@ -22,3 +22,6 @@ public class PathVariableController {
 	}
 
 }
+
+//@PathVariable은 REST API 작성에 도움주는 클래스이다.
+//{ } 안의 변수명은 무엇을 입력하더라도 return 으로 지정된 곳으로 포워딩한다.
