@@ -10,13 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import lombok.extern.slf4j.Slf4j;
-
 /*
  * 단일 파일 업로드만 가능한 클래스
  */
 @Controller
-@Slf4j
 public class FileUploadController {
 	// application.properties에 설정된 파일 경로를 참조하는 방법
 	// 1. @Value("D:/WebDevel/workspace/spring-mvc/file-upload/")
@@ -36,13 +33,12 @@ public class FileUploadController {
 						//Servlet의 Part 클래스를 확장한 클래스
 			@RequestParam MultipartFile uploadfile) throws IOException {
 
-		log.info("업로더 = {}", uploader);
-		log.info("multipartFile = {}", uploadfile);
+
 		
 		if (!uploadfile.isEmpty()) {
 								//지정해놓은 경로에 지금 입력받는 파일 이름을 더해
 			String fullPath = location + uploadfile.getOriginalFilename();
-			log.info("파일 저장 fullPath = {}", fullPath);
+			
 			uploadfile.transferTo(new File(fullPath));
 			//Transfer the received file to the given destination file. 
 		}

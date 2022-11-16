@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>타임리프</title>
+</head>
+<body>
+  <h1>URL 링크</h1>
+  <ul>
+    <li><a th:href="@{/hello}">단순 url</a></li>
+    <li><a th:href="@{/hello(param1=${param1}, param2=${param2})}">query param</a></li>
+    <li><a
+      th:href="@{/hello/{param1}/{param2}(param1=${param1}, param2=${param2})}">path
+        variable</a></li>
+    <li><a
+      th:href="@{/hello/{param1}(param1=${param1}, param2=${param2})}">path
+        variable + query string</a></li>
+  </ul>
+</body>
+</html>

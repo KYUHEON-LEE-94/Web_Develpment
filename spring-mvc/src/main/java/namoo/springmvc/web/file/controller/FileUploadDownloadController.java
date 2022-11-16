@@ -26,8 +26,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import lombok.extern.slf4j.Slf4j;
-
 /**
  * 다중 파일 업로드 및 다운로드 처리 컨트롤러
  * 
@@ -35,7 +33,6 @@ import lombok.extern.slf4j.Slf4j;
  *
  */
 @Controller
-@Slf4j
 public class FileUploadDownloadController {
 
 	@Value("${file.dir}")
@@ -67,9 +64,7 @@ public class FileUploadDownloadController {
 		//파일 업로드 여러개 일때
 		List<UploadFile> uploadFiles = fileStore.storeFiles(memberForm.getUploadfiles());
 
-		log.info("원본파일명: {}", uploadFile.getUploadFileName());
-		log.info("DB용 파일명: {}", uploadFile.getStoreFileName());
-		
+
 		
 		// 데이터베이스에 오리지날파일명과 저장파일명 저장했다고 가정
 

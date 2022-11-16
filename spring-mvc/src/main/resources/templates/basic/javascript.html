@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>타임리프</title>
+</head>
+<body>
+  <!-- 자바스크립트 인라인 사용 전 -->
+  <script type="text/javascript">
+let name = [[${member.name}]]
+//이상태면 let name = 변수; 이렇게 적용이 되어버림 원래는 let name ="동적인 값"을 원하는 상태
+let age = [[${member.age}]]
+//자바스크립트 내추럴 템플릿 적용 X
+let name2 = /*[[${member.name}]]*/ "홍길동";
+//객체
+let member = [[${member}]];
+</script>
+
+  <!-- 자바스크립트 인라인 사용 후 -->
+  <script th:inline="javascript">
+let name = [[${member.name}]];
+let age = [[${member.age}]];
+//자바스크립트 내추럴 템플릿
+let name2 = /*[[${member.name}]]*/ "홍길동";
+//값이 없으면 기본값을 넣어줌
+
+//객체 Json형태로 넣어줌
+let member = [[${member}]];
+
+// 자바스크립트 인라인 each
+[# th:each="member, memberStat : ${members}"]
+let member[[${memberStat.count}]] = [[${member}]];
+[/]
+
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>타임리프</title>
+</head>
+<body>
+  <h1>if, unless</h1>
+  <table border="1">
+    <tr>
+      <th>순번</th>
+      <th>이름</th>
+      <th>나이</th>
+    </tr>
+    <tr th:each="member, memberStat : ${members}">
+      <td th:text="${memberStat.count}">1</td>
+      <td th:text="${member.name}">이름</td>
+      <td><span th:text="${member.age}">0</span> <span
+        th:text="'미성년자'" th:if="${member.age < 20}"></span> <span
+        th:text="'성인'" th:unless="${member.age < 20}"></span></td>
+    </tr>
+  </table>
+
+
+  <h1>switch~case</h1>
+  <table border="1">
+    <tr>
+      <th>순번</th>
+      <th>이름</th>
+      <th>나이</th>
+    </tr>
+    <tr th:each="member, memberStat : ${members}">
+      <td th:text="${memberStat.count}">1</td>
+      <td th:text="${member.name}">이름</td>
+      <td th:switch="${member.age}"><span th:case="10">10살</span> <span
+        th:case="20">20살</span> <span th:case="*">기타</span></td>
+    </tr>
+  </table>
+  
+    <h1>Small Quiz</h1>
+  <table border="1">
+    <tr>
+    <td th:switch="${score/10}">
+      <span th:case="10">수</span>
+      <span th:case="9">우</span>
+      <span th:case="8">미</span>
+      <span th:case="7">양</span>
+      <span th:case="*">가</span>
+  </td>
+    </tr>
+  </table>
+</body>
+</html>

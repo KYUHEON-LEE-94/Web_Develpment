@@ -59,6 +59,7 @@ public class FileStore {
 		
 		//여기서 UploadFile객체를 반환함
 		return new UploadFile(originalFilename, storeFileName);
+	
 	}
 
 	/*

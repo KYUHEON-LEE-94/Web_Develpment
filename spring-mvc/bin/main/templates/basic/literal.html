@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>타임리프</title>
+</head>
+<body>
+  <h1>리터럴</h1>
+  <div th:text="${data}">기본 내용</div>
+  <!--/* 에러
+<div th:text="Hello Spring">기본 내용</div>
+*/-->
+  <div th:text="'Hello Spring'">기본 내용</div>
+  <div th:text="'Hello' + ${data}">기본 내용</div>
+  <!-- 리터럴 대체 : 자바스크립트 템플릿 스트링 -->
+  <div th:text="|Hello ${data}|">기본 내용</div>
+</body>
+</html>

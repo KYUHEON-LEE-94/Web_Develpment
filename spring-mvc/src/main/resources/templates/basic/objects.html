@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>타임리프</title>
+</head>
+<body>
+  <h1>타임리프 기본 객체들</h1>
+  <div th:text="${#request}">request</div>
+  <div th:text="${#response}">response</div>
+  <div th:text="${#session}">session</div>
+  <div th:text="${#servletContext}">session</div>
+  <div th:text="${#locale}">session</div>
+  <h1>타임리프 편의 객체들</h1>
+  <div th:text="${#request.getParameter('name')}">param</div>
+  <div th:text="${param.name}">param</div>
+  <div th:text="${session.loginId}">session</div>
+  <div th:text="${@helloBean.hello('김기정')}">session</div>
+</body>
+</html>

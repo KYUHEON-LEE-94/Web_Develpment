@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>타임리프</title>
+</head>
+<body>
+  <h1>속성 설정</h1>
+  <input type="text" name="mock" th:name="김기정" />
+  <h1>속성 추가</h1>
+  <input type="text" class="text" th:attrappend="class='large'">
+  <br>
+  <input type="text" class="text" th:attrprepend="class='large'">
+  <br>
+  <input type="text" class="text" th:classappend="large">
+  <br>
+  <input type="text" class="text" th:classappend="${testClass}">
+  <br>
+  <h1>checked 처리</h1>
+  <input type="checkbox" name="active" checked="false">
+  <input type="checkbox" name="active" th:checked="true">
+  <input type="checkbox" name="active" th:checked="false">
+</body>
+</html>

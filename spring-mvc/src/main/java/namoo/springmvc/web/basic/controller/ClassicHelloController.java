@@ -19,7 +19,6 @@ public class ClassicHelloController implements Controller {
 	
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		log.info("hello 요청 들어옴...");
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("hello");
 		return mav;

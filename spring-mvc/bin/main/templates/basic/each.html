@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>타임리프</title>
+</head>
+<body>
+  <h1>기본 테이블</h1>
+  <table border="1">
+    <tr>
+      <th>이름</th>
+      <th>나이</th>
+      <th>비밀번호</th>
+      <th>아이디</th>
+    </tr>
+    <tr th:each="member : ${members}">
+      <td th:text="${member.name}">이름</td>
+      <td th:text="${member.age}">0</td>
+      <td th:text="${member.passwd}">비번</td>
+      <td th:text="${member.id}">아이디</td>
+    </tr>
+  </table>
+   <h1>선택 변수 사용</h1>
+  <table border="1">
+    <tr>
+      <th>count</th>
+      <th>이름</th>
+      <th>나이</th>
+      <th>기타</th>
+    </tr>
+     <tr th:each="member : ${members}" th:object="${member}">
+      <td th:text="*{name}">이름</td>
+      <td th:text="*{age}">0</td>
+      <td th:text="*{passwd}">비번</td>
+      <td th:text="*{id}">아이디</td>
+    </tr>
+  </table>
+  <h1>반복 상태 유지</h1>
+  <table border="1">
+    <tr>
+      <th>count</th>
+      <th>이름</th>
+      <th>나이</th>
+      <th>기타</th>
+    </tr>
+    <tr th:each="member, memberStat : ${members}">
+      <td th:text="${memberStat.count}">번호</td>
+      <td th:text="${member.name}">이름</td>
+      <td th:text="${member.age}">0</td>
+      <td><span th:text="|\index: ${memberStat.index} |"></span> <span
+        th:text="|size: ${memberStat.size}|"></span> <span
+        th:text="${memberStat.even}"></span> <span
+        th:text="${memberStat.odd}"></span> <span
+        th:text="${memberStat.first}"></span> <span
+        th:text="${memberStat.last}"></span>
+        <span th:text="${memberStat.current}"></span></td>
+    </tr>
+  </table>
+   
+</body>
+</html>

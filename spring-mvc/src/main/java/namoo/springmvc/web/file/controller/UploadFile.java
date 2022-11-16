@@ -1,6 +1,5 @@
 package namoo.springmvc.web.file.controller;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -11,7 +10,6 @@ import lombok.ToString;
  * 중복방지용*
  */
 @RequiredArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
 @ToString
@@ -19,4 +17,12 @@ public class UploadFile {
 
 	private String uploadFileName;
 	private String storeFileName;
+	
+	public UploadFile(String uploadFileName, String storeFileName) {
+		super();
+		this.uploadFileName = uploadFileName;
+		this.storeFileName = storeFileName;
+	}
+	
+	
 }
