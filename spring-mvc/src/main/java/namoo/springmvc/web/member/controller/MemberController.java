@@ -12,8 +12,8 @@ import lombok.extern.slf4j.Slf4j;
 import namoo.springmvc.web.member.dto.Member;
 
 @Slf4j
-@Controller
-@RequestMapping("/members") //아래에 선언된 @RequestMapping은 Class 자체에 선언된 @RequestMapping 아래의 경로로 자동적으로 묶임
+//@Controller
+//@RequestMapping("/members") //아래에 선언된 @RequestMapping은 Class 자체에 선언된 @RequestMapping 아래의 경로로 자동적으로 묶임
 public class MemberController {
 
 	//@RequestMapping({"test1","test2"}) 배열이기 때문에 여러개 받을 수도 있기는함

@@ -147,5 +147,21 @@ public class ThymeleafBasicController {
 		model.addAttribute("members", list);
 		return "basic/javascript";
 	}
+	
+	//fragment
+	@GetMapping("/main")
+	public String main() {
+		return "basic/main";
+	}
 
+	//템플릿 레이아웃
+	@GetMapping("/main2")
+	public String main2() {
+		return "basic/main2";
+	}
+	
+	@GetMapping("/main3")
+	public String main3() {
+	return "basic/main3";
+	}
 }

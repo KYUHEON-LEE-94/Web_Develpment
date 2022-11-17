@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="common_header(title,links)">
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title th:replace="${title}">레이아웃 타이틀</title>
+<link rel="stylesheet" type="text/css" media="all"
+  th:href="@{/css/some.css}">
+<link rel="shortcut icon" th:href="@{/images/favicon.ico}">
+<script th:src="@{/js/some.js}"></script>
+<!--main2에서 넘긴 link를 다 받음 추가  (block태그로 한번에 싹)-->
+<th:block th:replace="${links}" />
+</head>
+<body>
+기본 레이아웃 페이지..
+</body>
+</html>

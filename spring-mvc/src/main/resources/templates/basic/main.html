@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>타임리프</title>
+</head>
+<body>
+  <div>머리글</div>
+  <hr>
+  <div>내용</div>
+  <hr>
+  <!-- fragment 포함 -->
+  <div th:insert="~{fragment/footer :: copy}"></div>
+
+  <!-- fragment 대체 -->
+  <div th:replace="~{fragment/footer :: copy}"></div>
+
+  <!-- 파라메터 사용 -->
+  <div th:replace="~{fragment/footer :: copyParam ('데이터1', '데이터2')}"></div>
+</body>
+</html>
