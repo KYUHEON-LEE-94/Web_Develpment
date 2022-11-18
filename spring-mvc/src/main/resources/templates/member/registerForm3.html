@@ -27,29 +27,29 @@ color: #ff0000;
       <h2 th:text="#{member.page.register.title}">회원 등록</h2>
     </div>
     <form action="/members/register" method="post" th:object="${member}">
-    <!-- SpringEL 표현식 : errors?. 은 errors가 null 일때 NullPointerException 이 발생하는 대신, null 을 반환한다. -->
-      <div th:if="${errors?.containsKey('globalError')}">
-      <p class="field-error" th:text="${errors['globalError']}">글로벌 오류 메시지</p>
+    <!-- 글로벌 오류 처리 -->
+      <div th:if="${#fields.hasGlobalErrors()}">
+      <p class="field-error" th:each="err : ${#fields.globalErrors()}" th:text="${err}">글로벌 오류 메시지</p>
       </div>
       <div>
         <label for="id" th:text="#{member.label.id}">아이디</label> 
         <input type="text" th:field="*{id}" class="form-control">
-        <div class="field-error" th:if="${errors?.containsKey('id')}" th:text="${errors['id']}">아이디 입력 오류</div>
+        <div class="field-error" th:errors="*{id}">아이디 입력 오류</div>
       </div>
       <div>
         <label for="passwd" th:text="#{member.label.password}">비밀번호</label> 
         <input type="password"  th:field="*{passwd}" class="form-control">
-        <div class="field-error" th:if="${errors?.containsKey('password')}" th:text="${errors['password']}">비밀번호 입력 오류</div>
+        <div class="field-error" th:errors="*{passwd}">비밀번호 입력 오류</div>
       </div>
       <div>
         <label for="name" th:text="#{member.label.name}">이름</label> 
         <input type="text" th:field="*{name}" class="form-control">
-        <div class="field-error" th:if="${errors?.containsKey('name')}" th:text="${errors['name']}">이름 입력 오류</div>
+       <div class="field-error" th:errors="*{name}">이름 입력 오류</div>
       </div>
       <div>
         <label for="age" th:text="#{member.label.age}">나이</label> 
         <input type="number" th:field="*{age}" class="form-control">
-        <div class="field-error" th:if="${errors?.containsKey('age')}" th:text="${errors['age']}">나이 입력 오류</div>
+        <div class="field-error" th:errors="*{age}">>나이 입력 오류</div>
       </div>
       <hr class="my-4">
       <div class="row">
