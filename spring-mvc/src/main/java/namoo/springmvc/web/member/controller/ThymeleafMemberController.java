@@ -3,13 +3,17 @@ package namoo.springmvc.web.member.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.extern.slf4j.Slf4j;
 import namoo.springmvc.web.member.dto.Member;
+import namoo.springmvc.web.validation.MemberValidator;
 
 @Slf4j
 @Controller
@@ -172,7 +177,7 @@ public class ThymeleafMemberController {
 	}
 	
 //-----------------------------------------기존값 유지하는 방법------------------------------------------------------------------------------
-	@PostMapping("/register")                                        
+//	@PostMapping("/register")                                        
 	public String registerV3(@ModelAttribute("member") Member member, BindingResult bindingResult,
 			RedirectAttributes redirectAttributes, Model model) {
 		
@@ -217,4 +222,148 @@ public class ThymeleafMemberController {
 		 return "redirect:/members/{id}";
 		//return "redirect:/";
 	}
+	
+// --------------------------errors.properties 적용한 예시-------------------------------------------------------
+//	@PostMapping("/register")                                        
+	public String registerV4(@ModelAttribute("member") Member member, BindingResult bindingResult,
+			RedirectAttributes redirectAttributes, Model model) {
+		
+		// 폼 필드 검증
+		if (!StringUtils.hasText(member.getId())) {
+			// 검증대상객체명, 검증실패 필드명, 오류 메시지
+			FieldError fieldError = new FieldError("member", "id", member.getId(), false, new String[] {"required.member.id"}, null, null);
+			bindingResult.addError(fieldError);
+		} else {
+			if (member.getId().length() < 6 || member.getId().length() > 12) {
+				//회원 아이디 길이의 조건 제어
+				bindingResult.addError(new FieldError("member", "id", member.getId(), false, new String[]
+						{"range.member.id"}, new Object[] {6,12}, null));
+			}
+		}
+		if (!StringUtils.hasText(member.getPasswd())) {
+			bindingResult.addError(new FieldError("member", "passwd", member.getPasswd(), false, new String[]{"required.member.password"}, null, null));
+		}
+		if (!StringUtils.hasText(member.getName())) {
+			bindingResult.addError(new FieldError("member", "name", member.getName(), false, new String[]
+					{"required.member.name"}, null, null));
+		}
+		
+		if (member.getAge() == null || member.getAge() < 10 || member.getAge() > 100) {
+			bindingResult.addError(new FieldError("member", "age", member.getAge(), false, new String[] {"range.member.age"}, new Object[] {10,100}, null));
+		}
+		// 특정 필드가 아닌 글로벌(복합) 룰 검증
+		// 예) 상품 주문 시 (상품갯수 * 가격 = 10000원 이상이어야 하는 경우)
+		int totalPrice = 9000;
+		if (totalPrice < 10000) {
+				//ObjectError가 부모고 FieldError가 자식
+			bindingResult.addError(new ObjectError("member",new String[] {"totalPriceMin"},new Object[] {10000,totalPrice}, "총 주문금액은 10,000원 이상이어야 합니다(현재 주문금액=" + totalPrice + ")."));
+									//field가 없기 때문에 인자 2개만 줘도 됨
+		}
+		// 검증 실패 시 다시 회원가입 폼으로 포워드
+		if (bindingResult.hasErrors()) {
+
+			log.info("bindingResult : {}", bindingResult);
+			// BindingResult는 모델에 자동 저장된다.
+			return "member/registerForm3";
+
+		}
+		// 검증 성공 시 DB 연동 후 회원가입 상세 화면으로 리다이렉트
+		redirectAttributes.addAttribute("id", member.getId());
+		redirectAttributes.addAttribute("status", true);
+		 return "redirect:/members/{id}";
+	}
+//------------------------MessageCodesResolver 동작 방식 적용-------------------------------------------
+//	@PostMapping("/register")                                        
+	public String registerV5(@ModelAttribute("member") Member member, BindingResult bindingResult,
+			RedirectAttributes redirectAttributes, Model model) {
+		
+		// 폼 필드 검증
+		if (!StringUtils.hasText(member.getId())) {
+
+				bindingResult.rejectValue("id", "required");
+		} else {
+			if (member.getId().length() < 6 || member.getId().length() > 12) {
+
+				bindingResult.rejectValue("id", "range", new Object[] {6,12}, null);
+			}
+		}
+		if (!StringUtils.hasText(member.getPasswd())) {
+			bindingResult.rejectValue("passwd", "required");
+		}
+		if (!StringUtils.hasText(member.getName())) {
+			bindingResult.rejectValue("name", "required");
+		}
+		
+		if (member.getAge() == null || member.getAge() < 10 || member.getAge() > 100) {
+			bindingResult.rejectValue("age", "range", new Object[] {10,100}, null);
+		}
+		// 특정 필드가 아닌 글로벌(복합) 룰 검증
+		// 예) 상품 주문 시 (상품갯수 * 가격 = 10000원 이상이어야 하는 경우)
+		int totalPrice = 9000;
+		if (totalPrice < 10000) {		
+			bindingResult.reject("totalPriceMin", new Object[] {10000,totalPrice},null);
+		}
+		
+		// 검증 실패 시 다시 회원가입 폼으로 포워드
+		if (bindingResult.hasErrors()) {
+
+			log.info("bindingResult : {}", bindingResult);
+			// BindingResult는 모델에 자동 저장된다.
+			return "member/registerForm3";
+
+		}
+		// 검증 성공 시 DB 연동 후 회원가입 상세 화면으로 리다이렉트
+		redirectAttributes.addAttribute("id", member.getId());
+		redirectAttributes.addAttribute("status", true);
+		 return "redirect:/members/{id}";
+	}
+	
+	
+	
+	
+	//---------- Validator클래스 사용-----------------------------------------------------
+	
+	//DI
+	@Autowired
+	private MemberValidator memberValidator;
+	
+//	@PostMapping("/register")                                        
+	public String registerV6(@ModelAttribute("member") Member member, BindingResult bindingResult,
+			RedirectAttributes redirectAttributes, Model model) {
+		
+		memberValidator.validate(member, bindingResult);
+				
+		// 검증 실패 시 다시 회원가입 폼으로 포워드
+		if (bindingResult.hasErrors()) {
+			return "member/registerForm3";
+		}
+		
+		// 검증 성공 시 DB 연동 후 회원가입 상세 화면으로 리다이렉트
+		redirectAttributes.addAttribute("id", member.getId());
+		redirectAttributes.addAttribute("status", true);
+		 return "redirect:/members/{id}";
+	}
+//--------------webDataBinder 추가 적용----------------------------------------------------------------------
+	
+	//해당 컨트롤러에서 검증기를 자동으로 적용
+	@InitBinder
+	public void init(WebDataBinder webDataBinder) {
+		webDataBinder.addValidators(memberValidator);
+	}
+	 
+	@PostMapping("/register")                                        
+	public String registerV7(@Validated @ModelAttribute("member") Member member, BindingResult bindingResult,
+			RedirectAttributes redirectAttributes, Model model) {
+				
+		// 검증 실패 시 다시 회원가입 폼으로 포워드
+		if (bindingResult.hasErrors()) {
+			return "member/registerForm3";
+		}
+		
+		// 검증 성공 시 DB 연동 후 회원가입 상세 화면으로 리다이렉트
+		redirectAttributes.addAttribute("id", member.getId());
+		redirectAttributes.addAttribute("status", true);
+		 return "redirect:/members/{id}";
+	}
+
 }

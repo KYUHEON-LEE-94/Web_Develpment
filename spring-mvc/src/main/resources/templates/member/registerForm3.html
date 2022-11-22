@@ -33,7 +33,7 @@ color: #ff0000;
       </div>
       <div>
         <label for="id" th:text="#{member.label.id}">아이디</label> 
-        <input type="text" th:field="*{id}" class="form-control">
+        <input type="text" th:field="*{id}" class="form-control" th:errorclass="field-error">
         <div class="field-error" th:errors="*{id}">아이디 입력 오류</div>
       </div>
       <div>
@@ -43,7 +43,7 @@ color: #ff0000;
       </div>
       <div>
         <label for="name" th:text="#{member.label.name}">이름</label> 
-        <input type="text" th:field="*{name}" class="form-control">
+        <input type="text" th:field="*{name}" class="form-control" th:errorclass="field-error">
        <div class="field-error" th:errors="*{name}">이름 입력 오류</div>
       </div>
       <div>
