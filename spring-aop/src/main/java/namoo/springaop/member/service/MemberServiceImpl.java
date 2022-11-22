@@ -15,7 +15,8 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void join() {
 		log.info("회원가입 완료");
-
+		//Test를 위해서 강제로 예외 발생
+		//System.out.println(10/0);
 	}
 
 	@Override
