@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="namoo.springmybatis.domain.member.mapper.MemberMapper"> <!-- 인터페이스 이름과 일치 -->
+<mapper
+	namespace="namoo.springmybatis.domain.member.mapper.MemberMapper"> <!-- 인터페이스 이름과 일치 -->
 
 	<select id="findByAll" resultType="Member">
 		SELECT id, passwd, name, age
@@ -13,7 +14,7 @@
 		FROM member
 		WHERE id = #{id}
 	</select>
-	
+
 	<select id="findByAgeRange" parameterType="int"
 		resultType="Member">
 		SELECT id, passwd, name, age
@@ -21,7 +22,7 @@
 		WHERE age BETWEEN
 		#{begin} AND #{end}
 	</select>
-	
+
 	<select id="findByNameLike" parameterType="string"
 		resultType="Member">
 		SELECT id, passwd, name, age
@@ -32,35 +33,42 @@
 
 
 
-	<!-- 동적 SQL <select id="findBySearch" parameterType="map" resultType="Member"> 
-		SELECT id, passwd, name, age FROM member <if test="type != null and type 
-		!= ''"> <choose> <when test="type == 'id'"> WHERE id = #{value} </when> <when 
-		test="type== 'name'"> WHERE name LIKE '%' || #{value} || '%' </when> </choose> 
-		</if> </select> -->
-
-
+	<!-- 동적 SQL --> <!-- || 가 +연산자 -->
+<!--	<select id="findBySearch" parameterType="map"
+		resultType="Member">
+		SELECT id, passwd, name, age 
+		FROM member
+		<if test="type != null and type!= ''">
+			<choose>
+				<when test="type == 'id'"> WHERE id = #{value} </when>
+				<when test="type== 'name'"> WHERE name LIKE '%' || #{value} || '%' </when> 
+			</choose>
+		</if>
+	</select> -->
+	
 	<select id="findBySearch" parameterType="map"
 		resultType="Member">
 		SELECT id, passwd, name, age
 		FROM member
 		<where>
-			<if test="type != null and type == id">
-				and id = #{id}
+			<if test="type != null and type == 'id'">
+				and id = #{value}
 			</if>
-			<if test="type != null and type == name">
+			<if test="type != null and type == 'name'">
 				and name LIKE '%' || #{value} || '%'
 			</if>
 		</where>
 	</select>
-	<select id="findBySearchV2"
-		parameterType="MemberSearchCondition" resultType="Member">
+
+
+	<select id="findBySearchV2" parameterType="MemberSearchCondition" resultType="Member">
 		SELECT id, passwd, name, age
 		FROM member
 		<where>
 			<if test="id != null and id != ''">
 				or id = #{id}
 			</if>
-			<if test="name ! =null and name ! =''">
+			<if test="name != null and name != ''">
 				or name LIKE '%' || #{name} || '%'
 			</if>
 			<if test="age != null">
@@ -68,14 +76,18 @@
 			</if>
 		</where>
 	</select>
+	
 	<insert id="create" parameterType="Member">
 		INSERT INTO member(id,
-		passwd, name, age)
+		passwd,
+		name, age)
 		VALUES(#{id}, #{passwd}, #{name}, #{age})
 	</insert>
+	
 	<update id="update" parameterType="Member">
 		UPDATE member
 		SET age = #{age}
 		WHERE id = #{id}
 	</update>
+	
 </mapper>	

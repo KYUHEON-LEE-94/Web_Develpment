@@ -1,4 +1,4 @@
-package namoo.springmybatis.domain.member.dto;
+package namoo.springmybatis.domain.guestbook.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,9 +11,8 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Member {
-	private String id;
-	private String passwd;
-	private String name;
-	private Integer age;
+public class Guestbook {
+	private String writer;
+	private String contents;
+	private String regdate;
 }
