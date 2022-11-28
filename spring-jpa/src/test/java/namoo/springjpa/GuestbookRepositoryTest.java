@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import namoo.springjpa.domain.guestbook.entity.Guestbook;
 import namoo.springjpa.domain.guestbook.repository.GuestbookRepository;
+import namoo.springjpa.domain.guestbook.repository.GuestbookRepositoryImpl;
 import namoo.springjpa.domain.member.entity.Member;
 import namoo.springjpa.domain.member.repository.MemberRepository;
 
@@ -23,10 +24,10 @@ import namoo.springjpa.domain.member.repository.MemberRepository;
 class GuestbookRepositoryTest {
 
 	@Autowired
-	private GuestbookRepository guestbookRepository;
+	private GuestbookRepositoryImpl guestbookRepository;
 
 	@Test
-	//@Disabled
+	@Disabled
 	 //@Commit //@Transactional을 사용하고 있지만, test임에도 불구하고 commit을 원한다면 이 @사용
 	public void createTest() {
 		// 회원 등록
@@ -35,6 +36,15 @@ class GuestbookRepositoryTest {
 		guestbook.setWriter("나");
 		guestbookRepository.create(guestbook);
 		log.info("회원등록 완료 : {}", guestbook);
+	}
+	
+	@Test
+	//@Disabled
+	 //@Commit 
+	public void findAll() {
+		// 회원 등록
+		List<Guestbook> list =  guestbookRepository.findAll();
+		log.info("리스트 : {}", list);
 	}
 
 
