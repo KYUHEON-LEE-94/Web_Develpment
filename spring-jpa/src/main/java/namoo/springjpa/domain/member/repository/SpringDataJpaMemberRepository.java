@@ -12,10 +12,11 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import namoo.springjpa.domain.member.entity.Member;
+import namoo.springjpa.domain.member.entity.Member3;
 
 @Repository
 @Transactional													//<bean객체 ,pk로 사용하는 데이터타입>
-public interface SpringDataJpaMemberRepository extends JpaRepository<Member, String>{
+public interface SpringDataJpaMemberRepository extends JpaRepository<Member3, String>{
 	// 기본 CRUD 메소드 제공
 	// save()
 	// findAll()

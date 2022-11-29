@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import lombok.extern.slf4j.Slf4j;
 import namoo.springjpa.domain.member.entity.Member;
+import namoo.springjpa.domain.member.entity.Member3;
 import namoo.springjpa.domain.member.repository.MemberRepository;
 
 @SpringBootTest
@@ -28,7 +29,7 @@ class MemberRepositoryTest {
 	 //@Commit //@Transactional을 사용하고 있지만, test임에도 불구하고 commit을 원한다면 이 @사용
 	public void createTest() {
 		// 회원 등록
-		Member member = new Member();
+		Member3 member = new Member3();
 		member.setId("monday");
 		member.setPasswd("1111");
 		member.setName("월요일");

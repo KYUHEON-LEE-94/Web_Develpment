@@ -1,12 +1,9 @@
 package namoo.springjpa.domain.member.entity;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.DynamicInsert;
 
@@ -15,24 +12,19 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import namoo.springjpa.domain.team.entity.Team;
 
 @Entity
-@DynamicInsert
+@DynamicInsert // SQL 디폴트 값 자동 입력
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @ToString
-public class Member {
+public class Member3 {
 	@Id
-	@Column(name = "member_id")
 	private String id;
-	@ManyToOne
-	@JoinColumn(name = "TEAM_ID")
-	private Team team;
-	private String password;
+	private String passwd;
 	private String name;
 	private Integer age;
-	private LocalDateTime regdate;
+	private Date regdate;
 }
