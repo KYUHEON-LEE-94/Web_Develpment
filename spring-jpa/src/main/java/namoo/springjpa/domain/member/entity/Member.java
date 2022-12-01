@@ -26,7 +26,7 @@ import namoo.springjpa.domain.team.entity.Team;
 @ToString
 public class Member {
 	@Id
-	@Column(name = "member_id")
+	@Column(name = "MEMBER_ID")
 	private String id;
 	@ManyToOne
 	@JoinColumn(name = "TEAM_ID")

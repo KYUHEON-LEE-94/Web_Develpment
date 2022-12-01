@@ -30,6 +30,6 @@ public class Order {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_seq_gen")
 	private Long id;
 	private String username;
-	private String payStatus; // 대기, 완료
+	private String paystatus; // 대기, 완료
 
 }

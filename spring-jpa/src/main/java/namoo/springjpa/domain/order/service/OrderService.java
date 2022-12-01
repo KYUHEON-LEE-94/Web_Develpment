@@ -30,13 +30,13 @@ public class OrderService {
 	} else if (order.getUsername().equals("잔고부족님")) {
 		//Rollback되지 않고 지금까지 입력한 정보들을 DB에 저장해서 기록을 남겨놓고, 고객이 추후에 그 정보 그대로 결제할 수 있도록 예외발생
 		log.info("※ 잔고 부족 비즈니스 예외 발생 ※");
-		order.setPayStatus("정상승인");
+		order.setPaystatus("완료");
 		throw new NotEnoughMoneyException("고객님 잔고가 부족합니다");
 		
 	} else {
 		// 정상 승인
 		log.info(">> 정상 승인");
-		order.setPayStatus("완료");
+		order.setPaystatus("완료");
 	}
 		log.info(">> 결제 프로세스 완료");
 		log.info("===== order() 메소드 종료 =====");

@@ -23,6 +23,8 @@ class MemberRepositoryTest {
 
 	@Autowired
 	private MemberRepository memberRepository;
+	
+
 
 	@Test
 	@Disabled
