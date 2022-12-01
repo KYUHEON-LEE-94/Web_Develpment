@@ -1,19 +1,17 @@
---단일행 함수
---문자/문자열 함수
-SELECT CONCAT('Oracle', 'Java Developer')
-FROM dual;
-SELECT INITCAP('kim ki jung')
-FROM dual;
-SELECT first_name, last_name
+SELECT employee_id, last_name, email, salary, To_CHAR(hire_date, 'yyyy-MM-DD HH24:MI:SS') hire_date
 FROM employees
---WHERE first_name = 'james';
-WHERE LOWER(first_name) = 'james';
-SELECT UPPER('bangry')
-FROM dual;
-SELECT LPAD('DataBase', 10, '*')
-FROM dual;
-SELECT SUBSTR('Java Developer', 6, 9)
-FROM dual;
-SELECT SUBSTR('서울시가산동', 4)
-FROM dual;
+WHERE employee_id = 200;
+
+INSERT INTO students(ssn,name,korean,english,math)
+VALUES(stu_seq.nextval, '강아지',50,60,70);
+
+ROLLBACK;
+
+SELECT *
+FROM students;
+
+DELETE FROM students
+WHERE NAME = '황소';
+
+
 

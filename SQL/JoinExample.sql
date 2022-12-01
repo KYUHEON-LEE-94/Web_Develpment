@@ -58,19 +58,17 @@ FROM employees e
 
 
 SELECT
-    e.employee_id,
-    e.last_name,
-    d.department_name,
-    l.city,
-    l.state_province,
-    c.country_name,
-    r.region_name
+    e.employee_id id,
+    e.last_name name,
+    e.salary salary,
+    d.department_name dname,
+    l.city city
 FROM
          employees e
-    JOIN departments d ON e.department_id = d.department_id
-    JOIN locations   l ON d.location_id = l.location_id
-    JOIN countries   c ON l.country_id = c.country_id
-    JOIN regions r ON c.region_id = r.region_id;
+    JOIN departments d 
+    ON e.department_id = d.department_id
+    JOIN locations   l 
+    ON d.location_id = l.location_id;
     
 -- NON-EQUI JOIN------------
 -- 테스트를 위한 급여등급(salgrace) 테이블 생성
