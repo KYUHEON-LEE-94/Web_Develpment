@@ -22,3 +22,4 @@ spring-basic-1|Spring 기본 수업|
 spring-jpa|Spring 과 JPA 사용|
 spring-mvc|Spring MVC 예제 수업|
 spring-mybatis|Spring과 mybatis를 연결해서 사용하기|
+spring-allinone|Spring의 모든 개념및 활용방안 총집합|
