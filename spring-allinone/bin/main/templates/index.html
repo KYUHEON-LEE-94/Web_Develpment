@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  th:replace="~{layout/templateV1 :: layout(~{::title}, ~{::header}, ~{::nav}, ~{::section})}">
+
+<!-- 타이틀 -->
+<title>:: Spring AllInOne Community ::</title>
+
+<!-- 커뮤니티 소개 -->
+<header>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="jumbotron">
+          <h1>스프링 올인원 커뮤니티</h1>
+          <p class="text-success">Spring Triangle (IoC/DI, AOP, PSA)</p>
+          <p>
+            <a th:href="@{/members/register}"
+              class="btn btn-warning btn-lg">커뮤니티 가입하기</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- 내비게이션 -->
+<nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-lg-12">
+        <ol class="breadcrumb">
+          <li><a href="/">홈</a></li>
+          <li class="active">커뮤니티 소개</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- 컨텐츠 -->
+<section class="row">
+  <div class="col-lg-12">
+    <div class="page-header">
+      <h2>커뮤니티 임시 메인 페이지입니다.</h2>
+    </div>
+  </div>
+</section>
+
+
+</html>

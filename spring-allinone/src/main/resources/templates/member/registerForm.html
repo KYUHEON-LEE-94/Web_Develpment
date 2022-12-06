@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  th:replace="~{layout/templateV1 :: layout(~{::title}, ~{::header}, ~{::nav}, ~{::section})}">
+
+<!-- 타이틀 -->
+<title>:: 커뮤니티 회원 가입 ::</title>
+
+<!-- 커뮤니티 소개 -->
+<!--/* 없으면 빈 껍데기만 전달하는 방법 */-->
+<header></header>
+
+<!-- 내비게이션 -->
+<nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-lg-12">
+        <ol class="breadcrumb">
+          <li><a href="/">홈</a></li>
+          <li class="active">커뮤니티 회원가입</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- 컨텐츠 -->
+<section class="row">
+  <div class="col-lg-12">
+
+    <div class="page-header">
+      <h2 id="container">커뮤니티 가입하기</h2>
+    </div>
+
+    <div class="well">
+      <p>아래 항목들을 정성껏 작성해 주세요^^.</p>
+      <form class="form-horizontal" method="post" th:object="${member}">
+        <fieldset>
+          <div class="form-group">
+            <label class="col-lg-1 control-label">아이디</label>
+            <div class="col-lg-11">
+              <input type="text" class="form-control"
+                placeholder="필수 입력항목입니다." th:field="*{id}"
+                th:errorclass="field-error">
+              <div class="field-error" th:errors="*{id}">아이디 입력 오류</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-lg-1 control-label">비밀번호</label>
+            <div class="col-lg-11">
+              <input type="password" class="form-control"
+                placeholder="필수 입력항목입니다." th:field="*{password}"
+                th:errorclass="field-error">
+              <div class="field-error" th:errors="*{password}">비밀번호
+                입력 오류</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-lg-1 control-label">이름</label>
+            <div class="col-lg-11">
+              <input type="text" class="form-control"
+                placeholder="필수 입력항목입니다." th:field="*{name}"
+                th:errorclass="field-error">
+              <div class="field-error" th:errors="*{name}">이름 입력
+                오류</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-lg-1 control-label">나이</label>
+            <div class="col-lg-11">
+              <input type="number" class="form-control"
+                placeholder="테스트용 항목입니다." th:field="*{age}"
+                th:errorclass="field-error">
+              <div class="field-error" th:errors="*{age}">나이 입력 오류</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-lg-11 col-lg-offset-5">
+              <button type="submit" class="btn btn-success">확 인</button>
+              <button class="btn btn-default">취 소</button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+</html>

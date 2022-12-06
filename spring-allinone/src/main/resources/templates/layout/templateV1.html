@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(title, header, navi, contents)">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:replace="${title}">템플릿 타이틀</title>
+    <!-- 공통 CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/bootswatch.min.css}" rel="stylesheet">
+    <style>
+      .field-error {
+        color: #ff0000;
+      }
+    </style>
+</head>
+
+<body>
+    <!-- Top Menu Start -->
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target=".navbar-responsive-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                
+                <ul class="nav navbar-nav">
+                    <li class="active"><a th:href="@{/}">커뮤니티 홈</a></li>
+                </ul>
+                
+            </div>
+            <div class="navbar-collapse collapse navbar-responsive-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">커뮤니티 소개</a></li>
+                    <li><a th:href="@{/members}">회원목록</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">게시판<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">자유게시판</a></li>
+                            <li><a href="#">OOO게시판</a></li>
+                            <li><a href="#">OOO게시판</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">기타메뉴들</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li th:if="${session.loginMember == null}"><a th:href="@{/members/signup}">로그인</a></li>
+                    <li th:if="${session.loginMember != null}"><a>[[${session.loginMember.name}]]님 즐거운 하루 되세요.</a></li>
+                    <li th:if="${session.loginMember != null}"><a th:href="@{/members/logout}">로그아웃</a></li>
+                    
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">관리 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/management/community.html">커뮤니티 관리</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">커뮤니티 홍보</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Top Menu End -->
+
+    <!-- Community Intro Start -->
+    <header th:replace="${header}">커뮤니티 소개</header>
+    <!-- Community Intro End -->
+    <br>
+    <!-- Navigation Start -->
+    <nav th:replace="${navi}">내비게이션</nav>
+    <!-- Navigation Intro End -->
+    
+    <div class="container" >
+        <!-- Contents Start -->
+        <section class="row" th:replace="${contents}">
+            <div class="col-lg-12">
+                <div class="page-header">
+                    <h2>홈페이지 컨텐츠</h2>
+                </div>
+            </div>
+        </section>
+        <!-- Contents End -->
+        
+        <!-- Footer Start -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="list-unstyled">
+                        <li class="pull-right"><a href="#top">위로 이동</a></li>
+                        <li><a href="#">커뮤니티 홈</a></li>
+                        <li><a href="#">이용약관</a></li>
+                        <li><a href="#">도움말</a></li>
+                        <li><a href="#">회원탈퇴</a></li>
+                    </ul>
+                    <p>© Company 2020.</p>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer End -->
+    </div>
+    <script src="/js/jquery-2.1.0.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootswatch.js"></script>
+</body>
+
+</html>
