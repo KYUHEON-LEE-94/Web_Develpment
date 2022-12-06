@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  th:replace="~{layout/templateV1 :: layout(~{::title}, ~{::header}, ~{::nav}, ~{::section})}">
+
+<!-- 타이틀 -->
+<title>:: 커뮤니티 회원 가입 ::</title>
+
+<!-- 커뮤니티 소개 -->
+<header></header>
+
+<!-- 내비게이션 -->
+<nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-lg-12">
+        <ol class="breadcrumb">
+          <li><a href="/">홈</a></li>
+          <li class="active">커뮤니티 회원가입</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- 컨텐츠 -->
+<section class="row">
+  <div class="col-lg-12">
+
+    <div class="page-header">
+      <h2 id="container">커뮤니티 회원상세</h2>
+    </div>
+
+<!-- 쿼리 스트링을 받는 #strings를 지원함 -->
+    <div class="alert alert-dismissable alert-success"
+      th:if="${#strings.equals(param.status, 'new')}">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <strong>커뮤니티 회원 가입을 축하합니다.</strong>
+    </div>
+
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <strong>우리 커뮤니티는 한번 가입하면 절대 탈퇴 불가능합니다.^^</strong>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <colgroup>
+          <col width="15%">
+          <col width="35%">
+          <col width="15%">
+          <col width="35%">
+        </colgroup>
+        <tbody>
+          <tr>
+            <th class="text-center">아이디</th>
+            <td class="text-left" th:text="${member.id}">id</td>
+            <th class="text-center">회원명</th>
+            <td class="text-left" th:text="${member.name}">name</td>
+          </tr>
+          <tr>
+            <th class="text-center">나이</th>
+            <td class="text-left" th:text="${member.age}">age</td>
+            <th class="text-center">가입일자</th>
+            <td class="text-left"
+              th:text="${#temporals.format(member.regdate, 'yyyy-MM-dd HH:mm:ss')}">regdate</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pull-right">
+      <button class="btn btn-success" onclick="location.href='#'">정보수정</button>
+      <button class="btn btn-warning" onclick="location.href='/members'">회원목록</button>
+    </div>
+
+  </div>
+</section>
+
+
+</html>

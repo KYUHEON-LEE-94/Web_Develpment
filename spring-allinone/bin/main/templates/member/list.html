@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  th:replace="~{layout/templateV1 :: layout(~{::title}, ~{::header}, ~{::nav}, ~{::section})}">
+
+<!-- 타이틀 -->
+<title>:: 커뮤니티 회원 목록 ::</title>
+
+<!-- 커뮤니티 소개 -->
+<header></header>
+
+<!-- 내비게이션 -->
+<nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-lg-12">
+        <ol class="breadcrumb">
+          <li><a href="/">홈</a></li>
+          <li class="active">커뮤니티 회원목록</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- 컨텐츠 -->
+<section class="row">
+  <div class="col-lg-12">
+    <div class="page-header">
+      <h2 id="container">커뮤니티 회원목록 (총 <span th:text="${totalElements}">0</span> 명)</h2>
+    </div>
+    <!-- 검색 -->
+    <div>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form class="form-search">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="아이디 또는 회원명" name="search"> 
+              <span class="input-group-btn">
+                <button type="submit" class="btn btn-primary">검색</button>
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- 회원목록 -->
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered table-hover">
+          <thead>
+            <tr>
+              <th class="text-center">번호</th>
+              <th class="text-center">아이디</th>
+              <th class="text-center">이름</th>
+              <th class="text-center">나이</th>
+              <th class="text-center">등록일자</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr th:if="${totalElements == 0}"><td colspan="5" class="text-center">검색된 회원이 없습니다.</td></tr>
+              <tr class="text-center" th:each="member, memberStat : ${list}">
+                <td th:text="${memberStat.count}">1</td>
+                <td th:text="${member.id}">tester</td>
+                <td><a th:href="@{/members/{memberId}(memberId=${member.id})}">[[${member.name}]]</a></td>
+                <td th:text="${member.age}">10</td>
+                <td th:text="${#temporals.format(member.regdate, 'yyyy-MM-dd HH:mm:ss')}">2022-10-10</td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <!-- 페이징 처리 -->
+      <div class="text-center">
+        <ul class="pagination">
+          <li th:if="${hasPrevious}"><a th:href="@{/members(page=${startPage-1}, search=${param.search})}" th:text="'처음'">처음</a></li>
+          <li th:if="${hasPrevious}"><a th:href="@{/members(page=${requestPage-2}, search=${param.search})}" th:text="'Previous'">이전페이지</a></li>
+          
+          <th:block th:if="${totalElements != 0}" th:each="page : ${#numbers.sequence(startPage, endPage)}">
+            <li class="active" th:if="${page == requestPage}"><a th:text="${page}">1</a></li>
+            <li th:if="${page != requestPage}"><a th:href="@{/members(page=${page-1}, search=${param.search})}" th:text="${page}">1</a></li>
+          </th:block>
+          
+          
+          <li th:if="${hasNext}"><a th:href="@{/members(page=${requestPage}, search=${param.search})}" th:text="'Next'">다음페이지</a></li>
+          <li th:if="${hasNext}"><a th:href="@{/members(page=${endPage-1}, search=${param.search})}" th:text="'마지막'">마지막</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+</html>
